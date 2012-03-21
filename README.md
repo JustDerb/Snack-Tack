@@ -9,8 +9,10 @@ Tabs
 ----
 ### Plan
 * Create events for the campus
+
 ### Find
 * Find events that are not happening now
+
 ### Promote
 * ‘Create’/tell people about events that are not yours
 
