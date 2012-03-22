@@ -35,8 +35,10 @@
 		<div class="contentwrapper">
 			<div class="contentcolumn">
 				<div class="innertube">
-					<b>Content Column: <em>Fluid</em></b> 
-					<script type="text/javascript">filltext(45)</script>
+					<p><b>Content Column: <em>Fluid</em></b></p>
+					<p><a href="login.php">Login</a></p>
+					<p><a href="example.php">Example</a></p>
+					<p><script type="text/javascript">filltext(45)</script></p>
 				</div>
 			</div>
 		</div>

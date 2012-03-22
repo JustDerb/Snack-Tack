@@ -2,7 +2,7 @@
 
    $app_id = "116798491783875";
    $app_secret = "9367c3a6f4bfd318cf405d014841ea41";
-   $my_url = "localhost/index.php";
+   $my_url = "http://localhost/snacktack/login.php";
 
    session_start();
    $code = $_REQUEST["code"];
@@ -29,7 +29,8 @@
        . $params['access_token'];
 
      $user = json_decode(file_get_contents($graph_url));
-     echo("Hello " . $user->name);
+     echo("<p>Hello " . $user->name . "</p>\n");
+     var_dump($user);
    }
    else {
      echo("The state does not match. You may be a victim of CSRF.");
