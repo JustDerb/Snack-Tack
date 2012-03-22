@@ -1,0 +1,76 @@
+﻿body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	margin:0;
+	padding:0;
+	line-height: 1.5em;
+}
+b {
+	font-weight: bold;
+}
+em {
+	font-style: oblique;
+}
+
+
+.maincontainer {
+	width:80%;
+	min-width:700px;
+	margin:0 auto;
+}
+.header {
+	background: #EAEAEA;
+}
+.hflist ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+} 
+
+.hflist li
+{
+	float:left;
+}
+.hflist a
+{
+	display: block;
+	text-align: center;
+	padding-right: 1em;
+}
+.hflist #fixed {
+	width:100px;
+	padding-right: 0;
+}
+
+.contentwrapper{
+	float: left;
+	width: 100%;
+}
+
+.contentcolumn{
+	margin-right: 300px; /*Set right margin to RightColumnWidth*/
+}
+
+.rightcolumn{
+	float: left;
+	width: 300px; /*Width of right column in pixels*/
+	margin-left: -300px; /*Set left margin to -(RightColumnWidth) */
+	background: #FDE95E;
+}
+
+.footer{
+	clear: left;
+	width: 100%;
+	padding: 4px 0;
+	background: #EAEAEA;
+}
+
+.innertube{
+	margin: 0 10px 0px 10px; /*Margins for inner DIV inside each column (to provide padding)*/
+}
+#clear
+{
+	clear:both;
+	width:0;
+	height:0;
+}
