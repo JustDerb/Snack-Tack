@@ -38,6 +38,7 @@
 					<p><b>Content Column: <em>Fluid</em></b></p>
 					<p><a href="login.php">Login</a></p>
 					<p><a href="example.php">Example</a></p>
+					<p><a href="mobile.php">Mobile</a></p>
 					<p><script type="text/javascript">filltext(45)</script></p>
 				</div>
 			</div>
