@@ -26,3 +26,12 @@ Creating event
  * Description
  * Type (Pizza/Ice Cream)
  * Facebook Event
+ 
+Requirements
+============
+
+PHP
+---
+* php_openssl module
+* php_mysql module
+* php_mysqli module
