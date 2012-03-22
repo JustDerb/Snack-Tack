@@ -16,6 +16,7 @@
 */
 
 require 'includes/fbsdk/facebook.php';
+require 'api/snacktack.php';
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
@@ -74,6 +75,15 @@ $naitik = $facebook->api('/naitik');
 	<h1>php-sdk</h1>
 	
 	<?php if ($user): ?>
+		<p><?php 
+			if (st_user_isRegistered($user_profile['id']))
+				print("You are already registered!");
+			else
+			{
+				st_user_register($user_profile); 
+				print("Congratulations! You have been registered!");
+			}
+		?></p>
 		<a href="<?php echo $logoutUrl; ?>">Logout</a>
 	<?php else: ?>
 		<div>
@@ -90,6 +100,7 @@ $naitik = $facebook->api('/naitik');
 		
 		<h3>Your User Object (/me)</h3>
 		<pre><?php print_r($user_profile); ?></pre>
+		
 	<?php else: ?>
 		<strong>
 			<em>You are not Connected.</em>
