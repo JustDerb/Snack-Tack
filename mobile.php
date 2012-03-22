@@ -22,6 +22,13 @@
                 </h3>
             </div>
             <div data-role="content">
+            	<ul data-role="listview" data-divider-theme="b" data-inset="true">
+					<li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Login with Facebook
+                        </a>
+                    </li>
+				</ul>
                 <ul data-role="listview" data-divider-theme="b" data-inset="true">
                     <li data-role="list-divider" role="heading">
                         Snack
@@ -41,8 +48,8 @@
                             Promote
                         </a>
                     </li>
-                    <li data-role="list-divider" role="heading">
-                    </li>
+                </ul>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
                     <li data-theme="c">
                         <a href="#page1" data-transition="slide">
                             About
