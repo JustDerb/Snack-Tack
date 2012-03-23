@@ -70,9 +70,10 @@ function st_user_setPhone($fbID, $number)
 	global $st_sql;
 	
 	$fbID = mysql_real_escape_string($fbID,$st_sql);	
+	$number = mysql_real_escape_string($number,$st_sql);
 	
-	//Check for record
-	$query = "SELECT * FROM users WHERE fbID='$fbID'";
+	//Update record
+	$query = "UPDATE users SET 'phone'='$number' WHERE 'fbID'='$fbID'";
 	$result = mysql_query($query, $st_sql);
 }
 
@@ -82,9 +83,10 @@ function st_user_setNetwork($fbID, $network)
 	global $st_sql;
 	
 	$fbID = mysql_real_escape_string($fbID,$st_sql);	
+	$network = mysql_real_escape_string($network,$st_sql);
 	
-	//Check for record
-	$query = "SELECT * FROM users WHERE fbID='$fbID'";
+	//Update record
+	$query = "UPDATE users SET 'networkid'='$network' WHERE 'fbID'='$fbID'";
 	$result = mysql_query($query, $st_sql);
 }
 
