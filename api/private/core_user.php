@@ -50,14 +50,27 @@ function st_user_getData($fbID)
 	
 	$user = new st_arr_user();
 	$array = mysql_fetch_row($result);
+	
 	if (!$array)
-		return false;
+		return $user;
 	else
-		return true;
+	{
+		$user->array['ID'] = $array['id'];
+		$user->array['fbID'] = $array['fbID'];
+		$user->array['Registered'] = $array['registered'];
+		$user->array['Phone'] = $array['phone'];
+		return $user;
+	}
 }
 
-function st_user_register($facebookProfile)
+function st_user_register($facebookProfile, $check = false)
 {
+	if ($check)
+	{
+		if (st_user_isRegistered($fbID))
+			return st_user_getData($fbID);
+	}
+	
 	global $st_sql;
 
     $user = new st_arr_user();
