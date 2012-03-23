@@ -86,7 +86,8 @@ class st_arr_user extends st_a_array {
     		"ID" => "",
     		"fbID" => "",
     		"Registered" => new DateTime(),
-    		"Phone" => ""
+    		"Phone" => "",
+    		"Network" => ""
        	);
     }
 }
