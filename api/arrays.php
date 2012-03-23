@@ -50,11 +50,12 @@ class st_arr_event extends st_a_array {
     private function initArray()
     {
     	$this->array = array(
+    		"TYPE" => "EVENT",
     		"ID" => "",
     		"creatorID" => "",
     		"Name" => "",
     		"Description" => "",
-    		"Type" => new arr_types(),
+    		"Type" => new st_arr_types(),
     		"When" => new DateTime(),
     		"Location" => new Location(),
     		"FacebookEvent" => "",
@@ -74,6 +75,7 @@ class st_arr_user extends st_a_array {
     private function initArray()
     {
     	$this->array = array(
+    		"TYPE" => "USER",
     		"ID" => "",
     		"fbID" => "",
     		"Registered" => new DateTime(),
@@ -87,32 +89,67 @@ class st_arr_award extends st_a_array {
 	public function __construct() 
 	{
        parent::__construct();
+       //Construct our array
+       $this->initArray();
+    }
+    
+    private function initArray()
+    {
+    	$this->array = array(
+    		"TYPE" => "AWARD",
+    		"ID" => "",
+    		"Name" => "",
+    		"Description" => "",
+    		"Icon" => ""
+       	);
     }
     
     
 }
 
-class st_arr_types extends st_a_array {
-	public function __construct() 
+class st_arr_types extends st_a_array {    
+    public function __construct() 
 	{
        parent::__construct();
+       //Construct our array
+       $this->initArray();
     }
     
-    /**public function addType(EventType t)
+    private function initArray()
     {
-    
+    	$this->array = array(
+			"TYPE" => "TYPES",
+			"ID" => "",
+			"Name" => "",
+			"Description" => "",
+			"Category" => ""
+       	);
     }
-    
-    public function removeType(EventType t)
-    {
-    
-    }**/
+
 }
 
 
 class st_arr_message extends st_a_array {
-	public function __construct() 
+	private $error;
+	
+	public function __construct($error = false) 
 	{
        parent::__construct();
+       $this->error = $error;
+       //Construct our array
+       $this->initArray();
+    }
+    
+    private function initArray()
+    {
+    	$err = "0";
+    	if ($this->error)
+    		$err = "1";
+    	$this->array = array(
+    		"TYPE" => "MESSAGE",
+    		"Error" => $err,
+    		"Message" => "",
+    		"URL" => ""
+       	);
     }
 }
