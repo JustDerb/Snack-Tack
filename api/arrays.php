@@ -14,9 +14,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
-//require_once "file.php";
-
+ 
 /**
  * Abstract array object that gives common functions for the array
  */
