@@ -25,21 +25,16 @@ require_once('api/private/pass/sql.php');
  */
  
 
-
+/*
+ * Class that creates a connection to the mySQl database based on the specified credentials
+ */
 class st_mysql
 {
+    // Resource link
     public $link;
     
 	public function __construct()
 	{
-	    //@$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
-		//if (mysqli_connect_errno()) {
-		//	die('<h1>Could not connect to the database</h1><h2>Please try again after a few moments.</h2>');
-		//}
-		
-		//$mysqli->set_charset("utf8");
-
 		//Connect to our MySQL service
 		global $db_host;
 		global $db_user;
@@ -61,12 +56,4 @@ class st_mysql
 $st_sql_d = new st_mysql(); 
 //Simplify the resources connection
 $st_sql = $st_sql_d->link;
-
-
-/*
-$st_sql = mysql_connect($db_host, $db_user, $db_pass) 
-	or die('<h1>Could not connect to the database</h1><h2>Please try again after a few moments.</h2>');	
-//Select our database
-mysql_select_db($db_name, $st_sql);
-*/
 ?>
