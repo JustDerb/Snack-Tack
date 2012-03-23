@@ -59,9 +59,36 @@ function st_user_getData($fbID)
 		$user->array['fbID'] = $array['fbID'];
 		$user->array['Registered'] = $array['registered'];
 		$user->array['Phone'] = $array['phone'];
+		$user->array['Network'] = $array['networkId'];
 		return $user;
 	}
 }
+
+// TODO: NOT DONE!
+function st_user_setPhone($fbID, $number)
+{
+	global $st_sql;
+	
+	$fbID = mysql_real_escape_string($fbID,$st_sql);	
+	
+	//Check for record
+	$query = "SELECT * FROM users WHERE fbID='$fbID'";
+	$result = mysql_query($query, $st_sql);
+}
+
+// TODO: NOT DONE!
+function st_user_setNetwork($fbID, $network)
+{
+	global $st_sql;
+	
+	$fbID = mysql_real_escape_string($fbID,$st_sql);	
+	
+	//Check for record
+	$query = "SELECT * FROM users WHERE fbID='$fbID'";
+	$result = mysql_query($query, $st_sql);
+}
+
+
 
 function st_user_register($facebookProfile, $check = false)
 {
