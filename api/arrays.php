@@ -36,9 +36,12 @@ class st_a_array {
 
 
 
-/**
-	
-**/
+/*
+ * EVENT array
+ * 
+ * Holds information about events (For adding/deleting/modifying)
+ *	
+ */
 class st_arr_event extends st_a_array {
 	public function __construct() 
 	{
@@ -64,6 +67,12 @@ class st_arr_event extends st_a_array {
     }
 }
 
+/*
+ * USER array
+ * 
+ * Holds information about users (For adding/deleting/modifying)
+ *	
+ */
 class st_arr_user extends st_a_array {
 	public function __construct() 
 	{
@@ -84,7 +93,12 @@ class st_arr_user extends st_a_array {
     }
 }
 
-
+/*
+ * AWARD array
+ * 
+ * Holds information about awards, or thumb-tacks
+ *	
+ */
 class st_arr_award extends st_a_array {
 	public function __construct() 
 	{
@@ -107,6 +121,13 @@ class st_arr_award extends st_a_array {
     
 }
 
+/*
+ * TYPES array
+ * 
+ * Holds information about types of events
+ * e.i: Pizza, Ice Cream, T-Shirts....
+ *	
+ */
 class st_arr_types extends st_a_array {    
     public function __construct() 
 	{
@@ -128,7 +149,12 @@ class st_arr_types extends st_a_array {
 
 }
 
-
+/*
+ * MESSAGE array
+ * 
+ * Array to show that something went wrong (or right)
+ *
+ */
 class st_arr_message extends st_a_array {
 	private $error;
 	
