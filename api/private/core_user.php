@@ -16,10 +16,10 @@
  */
  
  
-
-require_once 'includes/fbsdk/facebook.php';
-require_once 'api/arrays.php';
-require_once 'api/private/sql_functions.php';
+$dir = dirname(__FILE__);
+require_once $dir.'/../fbsdk/facebook.php';
+require_once $dir.'/../arrays.php';
+require_once $dir.'/sql_functions.php';
 
 function st_user_isRegistered($fbID)
 {
@@ -31,7 +31,8 @@ function st_user_isRegistered($fbID)
 	$query = "SELECT * FROM users WHERE fbID='$fbID'";
 	$result = mysql_query($query, $st_sql);
 	
-	if (mysql_num_rows($result) < 1)
+	$rows = mysql_num_rows($result);
+	if ($rows < 1)
 		return false;
 	else
 		return true;
@@ -49,17 +50,19 @@ function st_user_getData($fbID)
 	$result = mysql_query($query, $st_sql);
 	
 	$user = new st_arr_user();
-	$array = mysql_fetch_row($result);
+	$array = mysql_fetch_assoc($result);
 	
 	if (!$array)
+	{
 		return $user;
+	}
 	else
 	{
 		$user->array['ID'] = $array['id'];
-		$user->array['fbID'] = $array['fbID'];
+		$user->array['fbID'] = $array['fbid'];
 		$user->array['Registered'] = $array['registered'];
 		$user->array['Phone'] = $array['phone'];
-		$user->array['Network'] = $array['networkId'];
+		$user->array['Network'] = $array['networkid'];
 		return $user;
 	}
 }
@@ -108,16 +111,13 @@ function st_user_register($facebookProfile, $check = false)
 	
 	$fbID =             mysql_real_escape_string($user->array['fbID'],$st_sql);
 	$registerTimeDate = mysql_real_escape_string(st_DateTime_PHPtoMySQL($user->array['Registered']),$st_sql);
-	$phone =             mysql_real_escape_string($user->array['Phone'],$st_sql);
+	$phone =            mysql_real_escape_string($user->array['Phone'],$st_sql);
+	$networkID =        mysql_real_escape_string($user->array['Network'],$st_sql);
 	
 	//Insert new record
-	$query = "INSERT INTO users(fbID,registered,phone) VALUES ('$fbID','$registerTimeDate','$phone')";// OUTPUT INSERTED.id AS 'newID' ";
+	$query = "INSERT INTO users(fbID,registered,phone,networkid) VALUES ('$fbID','$registerTimeDate','$phone','$networkID')";// OUTPUT INSERTED.id AS 'newID' ";
 	$result = mysql_query($query, $st_sql);
 		
 	return $user;
 }
-
-
-
-
 ?>
