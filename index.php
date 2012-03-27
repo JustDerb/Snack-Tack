@@ -36,9 +36,9 @@
 			<div class="contentcolumn">
 				<div class="innertube">
 					<p><b>Content Column: <em>Fluid</em></b></p>
-					<p><a href="login.php">Login</a></p>
-					<p><a href="example.php">Example</a></p>
-					<p><a href="mobile.php">Mobile</a></p>
+					<p><a href="example.php">OAuth Login With Facebook</a></p>
+					<p><a href="test/">API Testing</a></p>
+					<p><a href="cam/">Mobile</a></p>
 					<p><script type="text/javascript">filltext(45)</script></p>
 				</div>
 			</div>
