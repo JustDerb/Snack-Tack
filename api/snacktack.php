@@ -32,7 +32,8 @@ function st_DateTime_MySQLtoPHP($mysqldate)
 /*
  * Include library
  */
-include_once('arrays.php');
-include_once('api/private/includes.php');
+$dir = dirname(__FILE__);
+include_once($dir.'/arrays.php');
+include_once($dir.'/private/includes.php');
 
 ?>

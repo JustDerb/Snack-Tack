@@ -15,8 +15,8 @@
  * under the License.
  */
 
-
-include_once('api/private/core_user.php');
-include_once('api/private/sql_functions.php');
+$dir = dirname(__FILE__);
+include_once($dir.'/core_user.php');
+include_once($dir.'/sql_functions.php');
 
 ?>

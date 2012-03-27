@@ -16,10 +16,10 @@
  */
  
  
-
-require_once 'includes/fbsdk/facebook.php';
-require_once 'api/arrays.php';
-require_once 'api/private/sql_functions.php';
+$dir = dirname(__FILE__);
+require_once $dir.'/../fbsdk/facebook.php';
+require_once $dir.'/../arrays.php';
+require_once $dir.'/sql_functions.php';
 
 
 function st_types_getList()

@@ -15,7 +15,8 @@
  * under the License.
  */
 
-require_once('api/private/pass/sql.php');
+$dir = dirname(__FILE__);
+require_once($dir.'/pass/sql.php');
 
 /**
  * Object to do SQL operations on:
