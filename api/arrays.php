@@ -83,8 +83,8 @@ class st_arr_user extends st_a_array {
     {
     	$this->array = array(
     		"TYPE" => "USER",
-    		"ID" => "",
-    		"fbID" => "",
+    		"ID" => "-1",
+    		"fbID" => "-1",
     		"Registered" => new DateTime(),
     		"Phone" => "",
     		"Network" => ""
