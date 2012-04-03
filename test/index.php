@@ -73,11 +73,12 @@ if ($user) {
 	
 	<?php if ($user): ?>
 		<p><?php 
-			if (st_user_isRegistered($user_profile['id']))
+			$st_user = st_user_getData($user_profile['id']);
+			if ($user != NULL)
 				print("You are already registered!");
 			else
 			{
-				st_user_register($user_profile); 
+				$st_user = st_user_register($user_profile); 
 				print("Congratulations! You have been registered!");
 			}
 		?></p>
@@ -101,9 +102,6 @@ if ($user) {
 		<h2>Testing Features</h2>
 		<h3>User Data</h3>
 		<form>
-			<?php 
-				$st_user = st_user_getData($user_profile['id']);
-			?>
 			<p><b>Internal ID:</b> <?php print($st_user->array['ID']); ?></p>
 			<p><b>User ID:</b> <?php print($st_user->array['fbID']); ?></p>
 			<p><b>Registered:</b> <?php print($st_user->array['Registered']); ?></p>
@@ -115,6 +113,8 @@ if ($user) {
 		<p>Create Event</p>
 		<p>Search Event</p>
 		<p>Delete Event</p>
+		<h3>Awards</h3>
+		<pre><?php print_r(st_award_getAll($st_user->array['ID'])); ?></pre>
 	<?php endif ?>
 </body>
 </html>
