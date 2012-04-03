@@ -30,6 +30,11 @@ class st_a_array {
 	public function __destruct() {
 		//Object being deleted.  Free up any resources we need.        
     }
+    
+    public function toJSON($options = 0)
+    {
+    	return json_encode($this->array, $options);
+    }
 }
 
 
@@ -58,7 +63,7 @@ class st_arr_event extends st_a_array {
     		"Description" => "",
     		"Type" => new st_arr_types(),
     		"When" => new DateTime(),
-    		"Location" => new Location(),
+    		"Location" => new st_arr_location(),
     		"FacebookEvent" => "",
     		"Organization" => new arr_Org()
     	);
@@ -178,3 +183,35 @@ class st_arr_message extends st_a_array {
        	);
     }
 }
+
+/*
+ * LOCATION array
+ * 
+ * Array to hold common locations
+ *
+ */
+class st_arr_location extends st_a_array {	
+	public function __construct($error = false) 
+	{
+       parent::__construct();
+       //Construct our array
+       $this->initArray();
+    }
+    
+    private function initArray()
+    {
+    	$err = "0";
+    	if ($this->error)
+    		$err = "1";
+    	$this->array = array(
+    		"TYPE" => "LOCATION",
+    		"NetworkID" => "-1",
+    		"LocationID" => "-1",
+    		"Name" => "",
+    		"Room" => "",
+    		"Address" => ""
+       	);
+    }
+}
+
+?>
