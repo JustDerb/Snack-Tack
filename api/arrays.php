@@ -118,7 +118,8 @@ class st_arr_award extends st_a_array {
     		"ID" => "",
     		"Name" => "",
     		"Description" => "",
-    		"Icon" => ""
+    		"Icon" => "",
+    		"Received" => new DateTime()
        	);
     }
     
