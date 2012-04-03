@@ -23,8 +23,50 @@ require_once $dir.'/sql_functions.php';
 
 function st_award_give($internalID, $awardID)
 {
-
+	if ($internalID < 0)
+		return false;
+		
+	global $st_sql;
+	
+	$internalID = mysql_real_escape_string($internalID,$st_sql);
+	$awardID =    mysql_real_escape_string($awardID,$st_sql);		
+	
+	//Check for record
+	$query = "INSERT INTO userawards(user,awardid,received) VALUES ('$internalID','$awardID',NOW())";
+	$result = mysql_query($query, $st_sql);
+		
+	return $result;
 }
+
+// TODO: NOT DONE!
+function st_award_getAll($internalID)
+{
+	$awards = array();
+	
+	if ($internalID < 0)
+		return $awards;
+		
+	global $st_sql;
+	
+	$internalID = mysql_real_escape_string($internalID,$st_sql);	
+	
+	//Check for record
+	$query = "SELECT * FROM userawards WHERE user='$internalID'";
+	$result = mysql_query($query, $st_sql);
+	
+	while ($row = mysql_fetch_assoc($result)) {
+		$award = new st_arr_award();
+		$award->array['ID'] = $row['awardid'];
+		$award->array['Name'] = $row['Need to JOIN table awards'];
+		$award->array['Description'] = $row['Need to JOIN table awards'];
+		$award->array['Icon'] = $row['Need to JOIN table awards'];
+		$award->array['Received'] = st_DateTime_MySQLtoPHP($row['received']);
+	    array_push($awards, $award);
+	}
+		
+	return $awards;
+}
+
 
 /****************************************************************************
  *  INDIVIDUAL AWARD FUNCTIONS                                              *
