@@ -20,19 +20,12 @@ $dir = dirname(__FILE__);
 require_once $dir.'/../fbsdk/facebook.php';
 require_once $dir.'/../arrays.php';
 require_once $dir.'/sql_functions.php';
+//Registering awards
+require_once $dir.'/core_awards.php';
 
 function st_user_isRegistered($fbID)
 {
-	global $st_sql;
-	
-	$fbID = mysql_real_escape_string($fbID,$st_sql);	
-	
-	//Check for record
-	$query = "SELECT * FROM users WHERE fbID='$fbID'";
-	$result = mysql_query($query, $st_sql);
-	
-	$rows = mysql_num_rows($result);
-	if ($rows < 1)
+	if (st_user_getData($fbID) == NULL)
 		return false;
 	else
 		return true;
@@ -54,7 +47,7 @@ function st_user_getData($fbID)
 	
 	if (!$array)
 	{
-		return $user;
+		return NULL;
 	}
 	else
 	{
@@ -99,12 +92,13 @@ function st_user_register($facebookProfile, $check = false)
 {
 	if ($check)
 	{
-		if (st_user_isRegistered($fbID))
-			return st_user_getData($fbID);
+		if (st_user_isRegistered($facebookProfile['id']))
+			return st_user_getData($facebookProfile['id']);
 	}
 	
 	global $st_sql;
 
+    /*
     $user = new st_arr_user();
 	$user->array['fbID'] = $facebookProfile['id'];
 	$user->array['Registered'] = new DateTime(); //Now
@@ -113,10 +107,21 @@ function st_user_register($facebookProfile, $check = false)
 	$registerTimeDate = mysql_real_escape_string(st_DateTime_PHPtoMySQL($user->array['Registered']),$st_sql);
 	$phone =            mysql_real_escape_string($user->array['Phone'],$st_sql);
 	$networkID =        mysql_real_escape_string($user->array['Network'],$st_sql);
+	*/
+	$fbID =             mysql_real_escape_string($facebookProfile['id'],$st_sql);
+	$registerTimeDate = mysql_real_escape_string(st_DateTime_PHPtoMySQL(new DateTime()),$st_sql);
+	$phone =            "";
+	$networkID =        "";
 	
 	//Insert new record
 	$query = "INSERT INTO users(fbID,registered,phone,networkid) VALUES ('$fbID','$registerTimeDate','$phone','$networkID')";// OUTPUT INSERTED.id AS 'newID' ";
 	$result = mysql_query($query, $st_sql);
+	
+	$user = st_user_getData($facebookProfile['id']);
+	
+	//Give user award
+	if (!st_award_registered($user->array['ID']))
+		print mysql_error($st_sql);
 		
 	return $user;
 }
