@@ -60,7 +60,6 @@ function st_user_getData($fbID)
 	}
 }
 
-// TODO: NOT DONE!
 function st_user_setPhone($fbID, $number)
 {
 	global $st_sql;
@@ -69,24 +68,35 @@ function st_user_setPhone($fbID, $number)
 	$number = mysql_real_escape_string($number,$st_sql);
 	
 	//Update record
-	$query = "UPDATE users SET 'phone'='$number' WHERE 'fbID'='$fbID'";
+	$query = "UPDATE users SET phone='$number' WHERE fbid='$fbID'";
 	$result = mysql_query($query, $st_sql);
+	
+	return $query;
 }
 
-// TODO: NOT DONE!
-function st_user_setNetwork($fbID, $network)
+function st_user_setNetwork($fbID, $networkid)
 {
 	global $st_sql;
 	
 	$fbID = mysql_real_escape_string($fbID,$st_sql);	
-	$network = mysql_real_escape_string($network,$st_sql);
+	$networkid = mysql_real_escape_string($networkid,$st_sql);
 	
 	//Update record
-	$query = "UPDATE users SET 'networkid'='$network' WHERE 'fbID'='$fbID'";
+	$query = "UPDATE users SET networkid='$networkid' WHERE fbid='$fbID'";
 	$result = mysql_query($query, $st_sql);
+	
+	return $query;
 }
 
-
+function st_user_getNetworks($fbID, $facebookObj)
+{
+	$fql = 'SELECT affiliations FROM user WHERE uid='.$fbID;
+	$array = $facebookObj->api(array(
+                       'method' => 'fql.query',
+                       'query' => $fql,
+                     ));
+	return $array[0]['affiliations'];
+}
 
 function st_user_register($facebookProfile, $check = false)
 {
@@ -98,16 +108,6 @@ function st_user_register($facebookProfile, $check = false)
 	
 	global $st_sql;
 
-    /*
-    $user = new st_arr_user();
-	$user->array['fbID'] = $facebookProfile['id'];
-	$user->array['Registered'] = new DateTime(); //Now
-	
-	$fbID =             mysql_real_escape_string($user->array['fbID'],$st_sql);
-	$registerTimeDate = mysql_real_escape_string(st_DateTime_PHPtoMySQL($user->array['Registered']),$st_sql);
-	$phone =            mysql_real_escape_string($user->array['Phone'],$st_sql);
-	$networkID =        mysql_real_escape_string($user->array['Network'],$st_sql);
-	*/
 	$fbID =             mysql_real_escape_string($facebookProfile['id'],$st_sql);
 	$registerTimeDate = mysql_real_escape_string(st_DateTime_PHPtoMySQL(new DateTime()),$st_sql);
 	$phone =            "";
@@ -121,7 +121,7 @@ function st_user_register($facebookProfile, $check = false)
 	
 	//Give user award
 	if (!st_award_registered($user->array['ID']))
-		print mysql_error($st_sql);
+		print mysql_error($st_sql); // TODO: REMOVE
 		
 	return $user;
 }
