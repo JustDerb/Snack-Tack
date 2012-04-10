@@ -73,12 +73,6 @@ if ($user) {
 	<pre><?php print_r($_GET); ?></pre>
 	<h3>POST</h3>
 	<pre><?php print_r($_POST); ?></pre>
-	
-	<?php
-		if ($_POST['form'] == 'saveUserData')
-		{
-		}
-	?>
 
 	<h1>SnackTack API Testing Ground</h1>
 	<p><a href="index.php">User</a> | <a href="events.php">Events</a> | <a href="awards.php">Awards</a></p>
@@ -86,6 +80,21 @@ if ($user) {
 	<?php if ($user): ?>
 		<p><?php 
 			$st_user = st_user_getData($user_profile['id']);
+			if ($_POST['form'] == 'createEvent')
+			{
+				$event = new st_arr_event();
+	    		$event->array["creatorID"] = $st_user->array['ID'];
+	    		$event->array["Name"] = $_POST['eventName'];
+	    		$event->array["Description"] = $_POST['eventDescription'];
+	    		//$event->array["Type"][] = $_POST['eventName'];
+	    		$event->array["WhenStart"] = "";
+	    		$event->array["WhenEnd"] = "";
+	    		$event->array["Location"] = $_POST['location'];
+	    		$event->array["FacebookEvent"] = $_POST['eventFBurl'];
+	    		$event->array["Organization"] = $_POST['eventOrg'];	
+				
+				st_events_createEvent($event);
+			}			
 			if ($user != NULL)
 				print("You are already registered!");
 			else
@@ -104,9 +113,32 @@ if ($user) {
 	<?php if ($user): ?>
 		<h2>Testing Features</h2>
 		<h3>Events</h3>
-		<p>Create Event</p>
-		<p>Search Event</p>
-		<p>Delete Event</p>
+		<h4>Create Event</h4>
+		<form method="post">
+			<p>Creator ID: <?php print($st_user->array['ID']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['ID']); ?>"></p>
+			<p>Network ID: <?php print($st_user->array['Network']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['Network']); ?>"></p>
+			<p>Name: <input type="text" name="eventName"></p>
+			<p>Description: <input type="text" name="eventDescription"></p>
+			<p>Type: 
+				<select name="eventType[]" multiple="multiple">
+					<?php
+						$types = st_types_getList();
+						foreach($types as $type)
+						{
+							print('<option value="'.$type->array['ID'].'">'.$type->array['Category'].' - '.$type->array['Name'].'</option>');
+						}
+					?>
+				</select>
+			</p>
+			<p>When: <input type="text" name="eventDate"> at <input type="text" name="eventTimeStart"> to <input type="text" name="eventTimeEnd"></p>
+			<p>Location: <input type="text" name="location"></p>
+			<p>FB Event? <input type="url" name="eventFBurl"></p>
+			<p>Organization: <input type="text" name="eventOrg"></p>
+			<input type="hidden" name="form" value="createEvent">
+			<input type="submit" name="submit" value="Create">
+		</form>
+		<h4>Search Event</h4>
+		<h4>Delete Event</h4>
 	<?php endif ?>
 </body>
 </html>
