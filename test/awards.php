@@ -100,6 +100,7 @@ if ($user) {
 		<pre><?php print_r(st_award_getAll($st_user->array['ID'])); ?></pre>
 	</div>
 	<div id="middle">
+		<h2>Facebook API /me Array</h2>
 		<?php if ($_GET['me']): ?>
 			<p><a href="?me=0">Hide /me data</a></p>
 			<h3>Your User Object (/me)</h3>
