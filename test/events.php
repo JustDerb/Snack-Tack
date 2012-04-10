@@ -140,8 +140,8 @@ if ($user) {
 		<h4>Delete Event</h4>
 	</div>
 	<div id="middle">
+	<h2>Facebook API /me Array</h2>
 	<?php if ($_GET['me']): ?>
-		<h2>Facebook API /me Array</h2>
 		<p><a href="?me=0">Hide /me data</a></p>
 		<h3>Your User Object (/me)</h3>
 		<pre><?php print_r($user_profile); ?></pre>
