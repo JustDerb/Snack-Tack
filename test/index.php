@@ -62,36 +62,11 @@ if ($user) {
 	<meta http-equiv= "pragma" content="no-cache" />
 </head>
 <body>
-<div id="top">
-	<div style="float:left">
-		<h1>SnackTack API Testing Ground - User</h1>
-	</div>
-	<div style="float:right">
-		<?php if ($user): ?>
-			<p><?php 
-				$st_user = st_user_getData($user_profile['id']);
-				if ($user != NULL)
-					print("You are already registered!");
-				else
-				{
-					$st_user = st_user_register($user_profile); 
-					print("Congratulations! You have been registered!");
-				}
-			?></p>
-			<a href="<?php echo $logoutUrl; ?>">Logout</a>
-		<?php else: ?>
-			<div>
-				Login using OAuth 2.0 handled by the PHP SDK: <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
-			</div>
-		<?php endif ?>
-	</div>
-	<div style="clear:both"></div>
-</div>
-<div id="left">
-	<pre><a href="index.php">User</a></pre>
-	<pre><a href="events.php">Events</a></pre>
-	<pre><a href="awards.php">Awards</a></pre>	
-</div>
+<?php
+	$title = 'User';
+	include 'includes/top.php';
+	include 'includes/left.php';
+?>
 <?php if ($user): ?>
 	<div id="middle">
 		<?php
@@ -202,14 +177,8 @@ if ($user) {
 		<p>Please login to access testing features.</p>
 	</div>
 <?php endif ?>
-<div id="right">
-	<h2 style="text-align:center">PHP Stuff</h2>
-	<h3>GET</h3>
-	<pre><?php print_r($_GET); ?></pre>
-	<h3>POST</h3>
-	<pre><?php print_r($_POST); ?></pre>	
-	<img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt=""/><h2><?php print($user_profile['name']); ?></h2>
-	<h3>User: <?php echo $user; ?></h3>
-</div>
+<?php
+	include 'includes/right.php';
+?>
 </body>
 </html>
