@@ -69,6 +69,22 @@ if ($user) {
 	</style>
 </head>
 <body>
+	<h3>GET</h3>
+	<pre><?php print_r($_GET); ?></pre>
+	<h3>POST</h3>
+	<pre><?php print_r($_POST); ?></pre>
+	
+	<?php
+		if ($_POST['form'] == 'saveUserData')
+		{
+			//print('Saving...');
+			if (st_user_setNetwork($user_profile['id'], $_POST['userNetworkID']))
+				print('<b>Error (Setting Network): '.mysql_error().'</b>');
+			if (st_user_setPhone($user_profile['id'], $_POST['userPhone']))
+				print('<b>Error (Setting Phone): '.mysql_error().'</b>');
+		}
+	?>
+
 	<h1>SnackTack API Testing Ground</h1>
 	
 	<?php if ($user): ?>
@@ -95,19 +111,68 @@ if ($user) {
 		<?php if ($_GET['me']): ?>
 			<h3>Your User Object (/me)</h3>
 			<pre><?php print_r($user_profile); ?></pre>
+			<h3>Your networks</h3>
+			<pre><?php 
+				print_r(st_user_getNetworks($user, $facebook)); 
+			?></pre>
 			<p><a href="?me=0">Hide /me data</a></p>
 		<?php else: ?>
 			<p><a href="?me=1">Show /me data</a></p>
 		<?php endif ?>
 		<h2>Testing Features</h2>
 		<h3>User Data</h3>
-		<form>
-			<p><b>Internal ID:</b> <?php print($st_user->array['ID']); ?></p>
+		<form method="post">
+			<p><b>Internal ID:</b> <?php print($st_user->array['ID']); ?><input type="hidden" id="userID" value="</b> <?php print($st_user->array['ID']); ?>"></p>
 			<p><b>User ID:</b> <?php print($st_user->array['fbID']); ?></p>
 			<p><b>Registered:</b> <?php print($st_user->array['Registered']); ?></p>
-			<p><b>Phone:</b> <input type="text" value="<?php print($st_user->array['Phone']); ?>"></p>
-			<p><b>Network ID:</b> <input type="text" value="<?php print($st_user->array['Network']); ?>"></p>
-			<p><input type="submit" value="Save"></p>
+			<p><b>Phone:</b> <input type="text" name="userPhone" value="<?php print($st_user->array['Phone']); ?>"></p>
+			<p><b>Network ID:</b> <select name="userNetworkID">
+				<?php
+					$networks = st_user_getNetworks($user, $facebook);
+				?>
+				<optgroup label="Current Network:">
+						<?php 
+							$gotone = false;
+							foreach ($networks as $element)
+							{
+								if ($element['nid'] == $st_user->array['Network'])
+								{
+									$gotone = true;
+									print('<option value="'.$element['nid'].'" selected="">'.$element['name'].'</option>');
+								}
+							}
+							if (!$gotone)
+							{
+								print('<option value="-1" selected="">NONE</option>');
+							}
+						?>
+				</optgroup>
+				<optgroup label="Select network:">
+					<?php
+						
+						$gotone = false;
+						foreach ($networks as $element)
+						{
+							if ($element['type'] == 'college')
+							{
+								$gotone = true;
+								print('<option value="'.$element['nid'].'">'.$element['name'].'</option>');
+							}
+						}
+						if (!$gotone)
+						{
+							print(
+								'<option value="-1">
+									NONE
+								</option>');
+						}
+					?>
+					
+				</optgroup>
+				
+			</select></p>
+			<input type="hidden" name="form" value="saveUserData">
+			<p><input type="submit" name="submit" value="Save"></p>
 		</form>
 		<h3>Events</h3>
 		<p>Create Event</p>
