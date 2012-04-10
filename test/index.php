@@ -51,65 +51,121 @@ if ($user) {
 }
 
 ?>
-<!doctype html>
-<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>SnackTack | API Testing Ground</title>
-	<style>
-		body {
-		font-family: 'Lucida Grande', Verdana, Arial, sans-serif;
-		}
-		h1 a {
-		text-decoration: none;
-		color: #3b5998;
-		}
-		h1 a:hover {
-		text-decoration: underline;
-		}
-	</style>
+	<title>SnackTack API Testing Ground</title>
+	<link rel="stylesheet" href="css/testing.css" type="text/css" media="all" />
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
+	<meta http-equiv="expires" content="-1" />
+	<meta http-equiv= "pragma" content="no-cache" />
 </head>
 <body>
-	<h3>GET</h3>
-	<pre><?php print_r($_GET); ?></pre>
-	<h3>POST</h3>
-	<pre><?php print_r($_POST); ?></pre>
-	
-	<?php
-		if ($_POST['form'] == 'saveUserData')
-		{
-			//print('Saving...');
-			if (!st_user_setNetwork($user_profile['id'], $_POST['userNetworkID']))
-				print('<b>Error (Setting Network): '.mysql_error().'</b>');
-			if (!st_user_setPhone($user_profile['id'], $_POST['userPhone']))
-				print('<b>Error (Setting Phone): '.mysql_error().'</b>');
-		}
-	?>
-
-	<h1>SnackTack API Testing Ground</h1>
-	<p><a href="index.php">User</a> | <a href="events.php">Events</a> | <a href="awards.php">Awards</a></p>
-	
-	<?php if ($user): ?>
-		<p><?php 
-			$st_user = st_user_getData($user_profile['id']);
-			if ($user != NULL)
-				print("You are already registered!");
-			else
+<div id="top">
+	<div style="float:left">
+		<h1>SnackTack API Testing Ground - User</h1>
+	</div>
+	<div style="float:right">
+		<?php if ($user): ?>
+			<p><?php 
+				$st_user = st_user_getData($user_profile['id']);
+				if ($user != NULL)
+					print("You are already registered!");
+				else
+				{
+					$st_user = st_user_register($user_profile); 
+					print("Congratulations! You have been registered!");
+				}
+			?></p>
+			<a href="<?php echo $logoutUrl; ?>">Logout</a>
+		<?php else: ?>
+			<div>
+				Login using OAuth 2.0 handled by the PHP SDK: <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
+			</div>
+		<?php endif ?>
+	</div>
+	<div style="clear:both"></div>
+</div>
+<div id="left">
+	<pre><a href="index.php">User</a></pre>
+	<pre><a href="events.php">Events</a></pre>
+	<pre><a href="awards.php">Awards</a></pre>	
+</div>
+<?php if ($user): ?>
+	<div id="middle">
+		<?php
+			if ($_POST['form'] == 'saveUserData')
 			{
-				$st_user = st_user_register($user_profile); 
-				print("Congratulations! You have been registered!");
+				//print('Saving...');
+				if (!st_user_setNetwork($user_profile['id'], $_POST['userNetworkID']))
+					print('<b>Error (Setting Network): '.mysql_error().'</b>');
+				if (!st_user_setPhone($user_profile['id'], $_POST['userPhone']))
+					print('<b>Error (Setting Phone): '.mysql_error().'</b>');
 			}
-		?></p>
-		<a href="<?php echo $logoutUrl; ?>">Logout</a>
-	<?php else: ?>
-		<div>
-			Login using OAuth 2.0 handled by the PHP SDK: <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
+		?>
+		<h2>Testing Features</h2>
+		<div id="area">
+			<h3>User Data</h3>
+			<form method="post">
+				<p><b>Internal ID:</b> <?php print($st_user->array['ID']); ?><input type="hidden" id="userID" value="</b> <?php print($st_user->array['ID']); ?>"/></p>
+				<p><b>User ID:</b> <?php print($st_user->array['fbID']); ?></p>
+				<p><b>Registered:</b> <?php print($st_user->array['Registered']); ?></p>
+				<p><b>Phone:</b> <input type="text" name="userPhone" value="<?php print($st_user->array['Phone']); ?>"/></p>
+				<p><b>Network ID:</b> <select name="userNetworkID">
+					<?php
+						$networks = st_user_getNetworks($user, $facebook);
+					?>
+					<optgroup label="Current Network:">
+							<?php 
+								$gotone = false;
+								foreach ($networks as $element)
+								{
+									if ($element['nid'] == $st_user->array['Network'])
+									{
+										$gotone = true;
+										print('<option value="'.$element['nid'].'" selected="">'.$element['name'].'</option>');
+									}
+								}
+								if (!$gotone)
+								{
+									print('<option value="-1" selected="">NONE</option>');
+								}
+							?>
+					</optgroup>
+					<optgroup label="Select network:">
+						<?php
+							
+							$gotone = false;
+							foreach ($networks as $element)
+							{
+								if ($element['type'] == 'college')
+								{
+									$gotone = true;
+									print('<option value="'.$element['nid'].'">'.$element['name'].'</option>');
+								}
+							}
+							if (!$gotone)
+							{
+								print(
+									'<option value="-1">
+										NONE
+									</option>');
+							}
+						?>
+						
+					</optgroup>
+					
+				</select></p>
+				<input type="hidden" name="form" value="saveUserData"/>
+				<p><input type="submit" name="submit" value="Save"/></p>
+			</form>
 		</div>
-	<?php endif ?>
-	
-	<?php if ($user): ?>
-		<h2>You (<?php print($user_profile['name']); ?>) User: <?php echo $user; ?></h2>
-		<img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
+	</div>
+	<div id="middle">
+		<h2>Facebook API /me Array</h2>
 		<?php if ($_GET['me']): ?>
+			<p><a href="?me=0">Hide /me data</a></p>
 			<h3>Your User Object (/me)</h3>
 			<pre><?php print_r($user_profile); ?></pre>
 			<h3>Your networks</h3>
@@ -120,61 +176,20 @@ if ($user) {
 		<?php else: ?>
 			<p><a href="?me=1">Show /me data</a></p>
 		<?php endif ?>
-		<h2>Testing Features</h2>
-		<h3>User Data</h3>
-		<form method="post">
-			<p><b>Internal ID:</b> <?php print($st_user->array['ID']); ?><input type="hidden" id="userID" value="</b> <?php print($st_user->array['ID']); ?>"></p>
-			<p><b>User ID:</b> <?php print($st_user->array['fbID']); ?></p>
-			<p><b>Registered:</b> <?php print($st_user->array['Registered']); ?></p>
-			<p><b>Phone:</b> <input type="text" name="userPhone" value="<?php print($st_user->array['Phone']); ?>"></p>
-			<p><b>Network ID:</b> <select name="userNetworkID">
-				<?php
-					$networks = st_user_getNetworks($user, $facebook);
-				?>
-				<optgroup label="Current Network:">
-						<?php 
-							$gotone = false;
-							foreach ($networks as $element)
-							{
-								if ($element['nid'] == $st_user->array['Network'])
-								{
-									$gotone = true;
-									print('<option value="'.$element['nid'].'" selected="">'.$element['name'].'</option>');
-								}
-							}
-							if (!$gotone)
-							{
-								print('<option value="-1" selected="">NONE</option>');
-							}
-						?>
-				</optgroup>
-				<optgroup label="Select network:">
-					<?php
-						
-						$gotone = false;
-						foreach ($networks as $element)
-						{
-							if ($element['type'] == 'college')
-							{
-								$gotone = true;
-								print('<option value="'.$element['nid'].'">'.$element['name'].'</option>');
-							}
-						}
-						if (!$gotone)
-						{
-							print(
-								'<option value="-1">
-									NONE
-								</option>');
-						}
-					?>
-					
-				</optgroup>
-				
-			</select></p>
-			<input type="hidden" name="form" value="saveUserData">
-			<p><input type="submit" name="submit" value="Save"></p>
-		</form>
-	<?php endif ?>
+	</div>
+<?php else: ?>
+	<div id="middle">
+		<p>Please login to access testing features.</p>
+	</div>
+<?php endif ?>
+<div id="right">
+	<h2 style="text-align:center">PHP Stuff</h2>
+	<h3>GET</h3>
+	<pre><?php print_r($_GET); ?></pre>
+	<h3>POST</h3>
+	<pre><?php print_r($_POST); ?></pre>	
+	<img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt=""/><h2><?php print($user_profile['name']); ?></h2>
+	<h3>User: <?php echo $user; ?></h3>
+</div>
 </body>
 </html>
