@@ -61,7 +61,7 @@ class st_arr_event extends st_a_array {
     		"creatorID" => "-1",
     		"Name" => "",
     		"Description" => "",
-    		"Type" => new st_arr_types(),
+    		"Type" => array(),
     		"WhenStart" => new DateTime(),
     		"WhenEnd" => new DateTime(),
     		"Location" => "", //Will be location array
@@ -163,27 +163,21 @@ class st_arr_types extends st_a_array {
  * Array to show that something went wrong (or right)
  *
  */
-class st_arr_message extends st_a_array {
-	private $error;
-	
-	public function __construct($error = false) 
+class st_arr_message extends st_a_array {	
+	public function __construct($error = 0, $message = "", $URL = "") 
 	{
        parent::__construct();
-       $this->error = $error;
        //Construct our array
-       $this->initArray();
+       $this->initArray($error, $message, $URL);
     }
     
-    private function initArray()
+    private function initArray($error, $message, $URL)
     {
-    	$err = "0";
-    	if ($this->error)
-    		$err = "1";
     	$this->array = array(
     		"TYPE" => "MESSAGE",
-    		"Error" => $err,
-    		"Message" => "",
-    		"URL" => ""
+    		"Error" => $error,
+    		"Message" => $message,
+    		"URL" => $URL
        	);
     }
 }
