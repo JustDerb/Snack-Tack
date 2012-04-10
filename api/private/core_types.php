@@ -17,14 +17,32 @@
  
  
 $dir = dirname(__FILE__);
-require_once $dir.'/../fbsdk/facebook.php';
 require_once $dir.'/../arrays.php';
 require_once $dir.'/sql_functions.php';
 
 
 function st_types_getList()
 {
-
+	global $st_sql;
+	
+	$types = array();
+	
+	//Check for record
+	$query = "SELECT t.id,c.id AS 'categoryid',c.name AS 'category',c.description AS 'categorydesc',t.name,t.description FROM `eventcategory` c, `eventtypes` t WHERE c.id=t.category";
+	$result = mysql_query($query, $st_sql);
+	
+	while ($row = mysql_fetch_assoc($result)) {
+		$type = new st_arr_types();
+		$type->array['ID'] = $row['id'];
+		$type->array['Name'] = $row['name'];
+		$type->array['Description'] = $row['description'];
+		$type->array['CategoryID'] = $row['categoryid'];
+		$type->array['Category'] = $row['category'];
+		$type->array['CategoryDescription'] = $row['categorydesc'];
+	    array_push($types, $type);
+	}
+	
+	return $types;
 }
 
 function st_types_search($name)
@@ -32,14 +50,14 @@ function st_types_search($name)
 
 }
 
-function st_types_addType($name, $description)
+function st_types_addType($types_arr)
 {
-
+	//Admin only (Implement last)
 }
 
 function st_types_deleteTypes($typeID)
 {
-
+	//Admin only (Implement last)
 }
 
 
