@@ -18,6 +18,10 @@
 		</script>
 		<div class="fb-login-button" data-show-faces="false" data-width="500" data-max-rows="1"></div>
 
+		<ul>
+			<li><a href="#" class="link">Awards</a>
+		</ul>
+		
 		<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
 	</body>
 </html>
