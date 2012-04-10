@@ -108,57 +108,77 @@ if ($user) {
 		<div id="area">
 			<h3>User Data</h3>
 			<form method="post">
-				<p><b>Internal ID:</b> <?php print($st_user->array['ID']); ?><input type="hidden" id="userID" value="</b> <?php print($st_user->array['ID']); ?>"/></p>
-				<p><b>User ID:</b> <?php print($st_user->array['fbID']); ?></p>
-				<p><b>Registered:</b> <?php print($st_user->array['Registered']); ?></p>
-				<p><b>Phone:</b> <input type="text" name="userPhone" value="<?php print($st_user->array['Phone']); ?>"/></p>
-				<p><b>Network ID:</b> <select name="userNetworkID">
-					<?php
-						$networks = st_user_getNetworks($user, $facebook);
-					?>
-					<optgroup label="Current Network:">
-							<?php 
-								$gotone = false;
-								foreach ($networks as $element)
-								{
-									if ($element['nid'] == $st_user->array['Network'])
-									{
-										$gotone = true;
-										print('<option value="'.$element['nid'].'" selected="">'.$element['name'].'</option>');
-									}
-								}
-								if (!$gotone)
-								{
-									print('<option value="-1" selected="">NONE</option>');
-								}
-							?>
-					</optgroup>
-					<optgroup label="Select network:">
-						<?php
-							
-							$gotone = false;
-							foreach ($networks as $element)
-							{
-								if ($element['type'] == 'college')
-								{
-									$gotone = true;
-									print('<option value="'.$element['nid'].'">'.$element['name'].'</option>');
-								}
-							}
-							if (!$gotone)
-							{
-								print(
-									'<option value="-1">
-										NONE
-									</option>');
-							}
-						?>
-						
-					</optgroup>
-					
-				</select></p>
-				<input type="hidden" name="form" value="saveUserData"/>
-				<p><input type="submit" name="submit" value="Save"/></p>
+				<table>
+					<tr>
+						<td>Internal ID:</td>
+						<td><?php print($st_user->array['ID']); ?><input type="hidden" id="userID" value="</b> <?php print($st_user->array['ID']); ?>"/></td>
+					</tr>
+					<tr>
+						<td>User ID:</td>
+						<td><?php print($st_user->array['fbID']); ?></td>
+					</tr>
+					<tr>
+						<td>Registered:</td>
+						<td><?php print($st_user->array['Registered']); ?></td>
+					</tr>
+					<tr>
+						<td>Phone:</td>
+						<td><input type="text" name="userPhone" value="<?php print($st_user->array['Phone']); ?>"/></td>
+					</tr>
+					<tr>
+						<td>Network ID:</td>
+						<td>
+							<select name="userNetworkID">
+								<?php
+									$networks = st_user_getNetworks($user, $facebook);
+								?>
+								<optgroup label="Current Network:">
+										<?php 
+											$gotone = false;
+											foreach ($networks as $element)
+											{
+												if ($element['nid'] == $st_user->array['Network'])
+												{
+													$gotone = true;
+													print('<option value="'.$element['nid'].'" selected="">'.$element['name'].'</option>');
+												}
+											}
+											if (!$gotone)
+											{
+												print('<option value="-1" selected="">NONE</option>');
+											}
+										?>
+								</optgroup>
+								<optgroup label="Select network:">
+									<?php
+										
+										$gotone = false;
+										foreach ($networks as $element)
+										{
+											if ($element['type'] == 'college')
+											{
+												$gotone = true;
+												print('<option value="'.$element['nid'].'">'.$element['name'].'</option>');
+											}
+										}
+										if (!$gotone)
+										{
+											print(
+												'<option value="-1">
+													NONE
+												</option>');
+										}
+									?>
+									
+								</optgroup>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="hidden" name="form" value="saveUserData"/></td>
+						<td><input type="submit" name="submit" value="Save"/></td>
+					</tr>
+				</table>
 			</form>
 		</div>
 	</div>

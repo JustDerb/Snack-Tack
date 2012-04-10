@@ -114,30 +114,93 @@ if ($user) {
 		<h3>Events</h3>
 		<h4>Create Event</h4>
 		<form method="post">
-			<p>Creator ID: <?php print($st_user->array['ID']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['ID']); ?>"/></p>
-			<p>Network ID: <?php print($st_user->array['Network']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['Network']); ?>"/></p>
-			<p>Name: <input type="text" name="eventName"/></p>
-			<p>Description: <input type="text" name="eventDescription"/></p>
-			<p>Type: 
-				<select name="eventType[]" multiple="multiple">
-					<?php
-						$types = st_types_getList();
-						foreach($types as $type)
-						{
-							print('<option value="'.$type->array['ID'].'">'.$type->array['Category'].' - '.$type->array['Name'].'</option>');
-						}
-					?>
-				</select>
-			</p>
-			<p>When: <input type="text" name="eventDate"/> at <input type="text" name="eventTimeStart"/> to <input type="text" name="eventTimeEnd"/></p>
-			<p>Location: <input type="text" name="location"/></p>
-			<p>FB Event? <input type="url" name="eventFBurl"/></p>
-			<p>Organization: <input type="text" name="eventOrg"/></p>
-			<input type="hidden" name="form" value="createEvent"/>
-			<input type="submit" name="submit" value="Create"/>
+			<table>
+				<tr>
+					<td>Creator ID:</td>
+					<td><?php print($st_user->array['ID']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['ID']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Network ID:</td>
+					<td><?php print($st_user->array['Network']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['Network']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="eventName"/></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><input type="text" name="eventDescription"/></td>
+				</tr>
+				<tr>
+					<td>Type:</td>
+					<td>
+						<select name="eventType[]" multiple="multiple">
+							<?php
+								$types = st_types_getList();
+								foreach($types as $type)
+								{
+									print('<option value="'.$type->array['ID'].'">'.$type->array['Category'].' - '.$type->array['Name'].'</option>');
+								}
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>When:</td>
+					<td><input type="text" name="eventDate"/> at <input type="text" name="eventTimeStart"/> to <input type="text" name="eventTimeEnd"/></td>
+				</tr>
+				<tr>
+					<td>Location:</td>
+					<td><input type="text" name="location"/></td>
+				</tr>
+				<tr>
+					<td>FB Event?</td>
+					<td><input type="url" name="eventFBurl"/></td>
+				</tr>
+				<tr>
+					<td>Organization:</td>
+					<td><input type="text" name="eventOrg"/></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="form" value="createEvent"/></td>
+					<td><input type="submit" name="submit" value="Create"/></td>
+				</tr>
+			</table>
 		</form>
 		<h4>Search Event</h4>
+		<form method="post">
+			<table>
+				<tr>
+					<td>User ID:</td>
+					<td><?php print($st_user->array['ID']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['ID']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Network ID:</td>
+					<td><?php print($st_user->array['Network']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['Network']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Search:</td>
+					<td><input type="text" name="eventSearch"/></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="form" value="searchEvent"/></td>
+					<td><input type="submit" name="submit" value="Search"/></td>
+				</tr>
+			</table>
+		</form>
 		<h4>Delete Event</h4>
+		<form method="post">
+			<table>
+				<tr>
+					<td>Event ID:</td>
+					<td><input type="text" name="eventSearch"/></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="form" value="deleteEvent"/></td>
+					<td><input type="submit" name="submit" value="Delete"/></td>
+				</tr>
+			</table>
+		</form>
 	</div>
 	<div id="middle">
 	<h2>Facebook API /me Array</h2>
