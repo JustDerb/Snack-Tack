@@ -57,15 +57,16 @@ class st_arr_event extends st_a_array {
     {
     	$this->array = array(
     		"TYPE" => "EVENT",
-    		"ID" => "",
-    		"creatorID" => "",
+    		"ID" => "-1",
+    		"creatorID" => "-1",
     		"Name" => "",
     		"Description" => "",
     		"Type" => new st_arr_types(),
-    		"When" => new DateTime(),
-    		"Location" => new st_arr_location(),
-    		"FacebookEvent" => "",
-    		"Organization" => new arr_Org()
+    		"WhenStart" => new DateTime(),
+    		"WhenEnd" => new DateTime(),
+    		"Location" => "", //Will be location array
+    		"FacebookEvent" => "", 
+    		"Organization" => "" //Will be organization
     	);
     }
 }
@@ -115,7 +116,7 @@ class st_arr_award extends st_a_array {
     {
     	$this->array = array(
     		"TYPE" => "AWARD",
-    		"ID" => "",
+    		"ID" => "-1",
     		"Name" => "",
     		"Description" => "",
     		"Icon" => "",
@@ -145,10 +146,12 @@ class st_arr_types extends st_a_array {
     {
     	$this->array = array(
 			"TYPE" => "TYPES",
-			"ID" => "",
+			"ID" => "-1",
 			"Name" => "",
 			"Description" => "",
-			"Category" => ""
+			"CategoryID" => "-1",
+			"Category" => "",
+			"CategoryDescription" => ""
        	);
     }
 
