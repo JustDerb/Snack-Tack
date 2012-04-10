@@ -25,7 +25,7 @@
 
 		<ul>
 			<li><a>Settings</a></li>
-			<li><a href="#" class="link">Profile</a></li>
+			<li><a href="profile.php" class="link">Profile</a></li>
 			<li><a href="#" class="link">Help, Privacy, Terms</a></li>
 		</ul>
 

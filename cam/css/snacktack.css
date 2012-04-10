@@ -66,44 +66,19 @@ ul li a.link:hover {
 	color: #FFFFFF;
 }
 
-/* Form CSS */
+/* 
+ * Form CSS 
+ */
 
-form ul li input[type=text] {
-	border: solid 0px #E5E5E5;
-	font-family: 'Segoe UI', Tahoma, Helvetica;
-	font-size: 17px;
-	overflow: hidden;
-	width: 100%;
-}
-
-form ul li input[type=checkbox] {
-	font-family: 'Segoe UI', Tahoma, Helvetica;
-	font-size: 17px;
-	overflow: hidden;
-}
-
-form ul li div {
+form ul li.info {
 	background-color: #FFFFFF;
 	border: 1px solid #999999;
 	color: #222222;
+	display: block;
 	font-size: 17px;
 	margin-bottom: -1px;
 	padding: 10px 10px;
 	text-decoration: none;
-}
-
-form ul li textarea {
-	border: solid 0px #E5E5E5;
-	font-family: 'Segoe UI', Tahoma, Helvetica;
-	font-size: 17px;
-	overflow: auto;
-	padding: 0;
-	resize: none;
-	width: 100%;
-}
-
-form ul li > select {
-	font-size: 17px;
 }
 
 form ul li:first-child {
@@ -122,13 +97,61 @@ form ul li:last-child {
 	-webkit-border-bottom-right-radius: 8px;
 }
 
-form ul li.info {
-	background-color: #FFFFFF;
-	border: 1px solid #999999;
-	color: #222222;
-	display: block;
+form ul li input[type=text] {
+	border: solid 0px #E5E5E5;
+	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
-	margin-bottom: -1px;
+	overflow: hidden;
+	width: 100%;
+}
+
+form ul li textarea {
+	border: solid 0px #E5E5E5;
+	font-family: 'Segoe UI', Tahoma, Helvetica;
+	font-size: 17px;
+	overflow: auto;
+	padding: 0;
+	resize: none;
+	width: 100%;
+}
+
+form ul li input[type=checkbox] {
+	font-family: 'Segoe UI', Tahoma, Helvetica;
+	font-size: 17px;
+	overflow: hidden;
+}
+
+form ul li > select {
+	font-size: 17px;
+}
+
+form div, div#back {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border: solid 2px #000000;
+	display: block;
+	font-family: 'Segoe UI', Tahoma, Helvetica;
+	font-size: 17px;
+	margin: 10px;
 	padding: 10px 10px;
-	text-decoration: none;
+	text-align: center;
+}
+
+form div#submit {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(40%,#dedede), color-stop(100%,#b6b6b6));
+}
+
+form div#submit:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4beae), color-stop(60%,#dfe5d7), color-stop(100%,#fcfff5));
+}
+
+form div#cancel, div#back {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2f2b), color-stop(50%,#ff4f4f), color-stop(51%,#ff0307), color-stop(71%,#ff090d), color-stop(100%,#ff0f1b));
+	color: #FFFFFF;
+}
+
+form div#cancel:hover, div#back:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c70a07), color-stop(50%,#d41212), color-stop(51%,#ac0609), color-stop(71%,#ab0b0e), color-stop(100%,#a7131a));
 }
