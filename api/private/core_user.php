@@ -71,7 +71,7 @@ function st_user_setPhone($fbID, $number)
 	$query = "UPDATE users SET phone='$number' WHERE fbid='$fbID'";
 	$result = mysql_query($query, $st_sql);
 	
-	return $query;
+	return $result;
 }
 
 function st_user_setNetwork($fbID, $networkid)
@@ -85,7 +85,7 @@ function st_user_setNetwork($fbID, $networkid)
 	$query = "UPDATE users SET networkid='$networkid' WHERE fbid='$fbID'";
 	$result = mysql_query($query, $st_sql);
 	
-	return $query;
+	return $result;
 }
 
 function st_user_getNetworks($fbID, $facebookObj)
