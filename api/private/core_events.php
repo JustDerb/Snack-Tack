@@ -17,26 +17,50 @@
  
  
 $dir = dirname(__FILE__);
-require_once $dir.'/../fbsdk/facebook.php';
 require_once $dir.'/../arrays.php';
 require_once $dir.'/sql_functions.php';
 
 
 //For individual page
-function st_events_getEvent()
+function st_events_getEvent($eventID)
 {
 
 }
+
+//For users page
+function st_events_getUsersEvents($internalID)
+{
+
+}
+
+//For users page
+function st_events_getUsersTacked($internalID)
+{
+
+}
+
 
 //For searchs
-function st_events_lookupEvent()
+function st_events_lookupEvent($searchTerms, $number, $page)
 {
 
 }
 
-function st_events_createEvent()
+function st_events_createEvent($event_arr)
 {
-
+	if (get_class($event_arr) != 'st_arr_event')
+	{
+		return new st_arr_message(1, "[st_events_createEvent] $event_arr is not of type st_arr_message");
+	}
+	
+	//Check for any errors
+	
+	
+	
+	//Escape all our data
+	
+	
+	
 }
 
 //Implement last!
