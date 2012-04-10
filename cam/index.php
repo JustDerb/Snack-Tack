@@ -18,17 +18,14 @@
 		<div class="fb-login-button" data-show-faces="false" data-width="500" data-max-rows="1"></div>
 
 		<ul>
-			<li><a href="#">Find</a><div class="arrow"></div></li>
+			<li><a href="plan.php">Plan</a></li>
+			<li><a href="#">Find</a></li>
 		</ul>
 
 		<ul>
-			<li><a href="#">Profile</a><div class="arrow"></div></li>
-			<li><a href="#">Help</a><div class="arrow"></div></li>
-			<li><a href="#">Privacy</a><div class="arrow"></div></li>
-			<li><a href="#">Terms</a><div class="arrow"></div></li>
-			<li><a href="#">Support</a><div class="arrow"></div></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Help, Privacy, Terms</a></li>
 		</ul>
-
 
 	</body>
 </html>

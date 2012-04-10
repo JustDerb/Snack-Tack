@@ -17,6 +17,18 @@ img {
 	margin-right: auto;
 }
 
+/* Header Title CSS */
+
+h1 {
+	margin: 10px;
+}
+
+h2 {
+	margin: 10px;
+}
+
+/* Basic Button CSS */
+
 ul {
 	list-style: none;
 	margin: 10px;
@@ -34,6 +46,9 @@ ul li:last-child a {
 }
 
 ul li a {
+	background-image: url(../img/chevron.png);
+	background-position: right center;
+	background-repeat: no-repeat;
 	border: 1px solid #999999;
 	color: #222222;
 	display: block;
@@ -44,14 +59,39 @@ ul li a {
 	text-decoration: none;
 }
 
-ul li .arrow {
-	background-image: url(../img/chevron.png);
-	background-position: right center;
-	background-repeat: no-repeat;
-	display: block;
-}
-
 ul li a:hover {
 	background-color: #0000FF;
 	color: #FFFFFF;
+}
+
+/* Form CSS */
+
+input {
+	outline: 0;
+	width: 200px;
+}
+
+form h3 ul {
+	color: red;
+}
+
+form ul li:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+form ul li:last-child {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+
+form ul li {
+	border: 1px solid #999999;
+	color: #222222;
+	display: block;
+	font-size: 17px;
+	font-style: bold;
+	margin-bottom: -1px;
+	padding: 12px 10px;
+	text-decoration: none;
 }
