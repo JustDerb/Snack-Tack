@@ -15,6 +15,9 @@
  * under the License.
  */
 
+
+error_reporting(E_ALL ^ E_NOTICE);
+
 /*
  * General utils
  */
