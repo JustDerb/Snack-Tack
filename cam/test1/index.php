@@ -61,7 +61,7 @@
 					<li><input type="checkbox" name="foodOptions" value="root beer floats" title="Root Beer Floats" /></li>
 					<li><input type="checkbox" name="foodOptions" value="apparel" title="Apparel" /></li>
 					<li><input type="checkbox" name="foodOptions" value="other"/>
-						<input type="text" placeholder="Other" name="otherText" id="otherText" autocapitalizater="on" autocorrect="on" autocomplete="off /></li>
+						<input type="text" placeholder="Other" name="otherText" id="otherText" autocapitalizater="on" autocorrect="on" autocomplete="off" /></li>
 				</ul>
 
 				<h2>Time and Place<h2>

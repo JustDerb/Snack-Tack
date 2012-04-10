@@ -4,7 +4,7 @@
 		<link rel="stylesheet" href="css/snacktack.css" type="text/css" media="screen" />
 	</head>
 	<body>
-		<img src="img/snacktack.jpg" />
+		<img src="img/snacktack.png" />
 		<div id="fb-root"></div>
 		<script>
 			(function(d, s, id) {
@@ -18,13 +18,15 @@
 		<div class="fb-login-button" data-show-faces="false" data-width="500" data-max-rows="1"></div>
 
 		<ul>
-			<li><a href="plan.php">Plan</a></li>
-			<li><a href="#">Find</a></li>
+			<li><a>Events</a></li>
+			<li><a href="plan.php" class="link">Plan</a></li>
+			<li><a href="#" class="link">Find</a></li>
 		</ul>
 
 		<ul>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Help, Privacy, Terms</a></li>
+			<li><a>Settings</a></li>
+			<li><a href="#" class="link">Profile</a></li>
+			<li><a href="#" class="link">Help, Privacy, Terms</a></li>
 		</ul>
 
 	</body>
