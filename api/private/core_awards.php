@@ -51,15 +51,15 @@ function st_award_getAll($internalID)
 	$internalID = mysql_real_escape_string($internalID,$st_sql);	
 	
 	//Check for record
-	$query = "SELECT * FROM userawards WHERE user='$internalID'";
+	$query = "SELECT * FROM userawards u,awards a WHERE user='$internalID' and u.awardid=a.id";
 	$result = mysql_query($query, $st_sql);
 	
 	while ($row = mysql_fetch_assoc($result)) {
 		$award = new st_arr_award();
 		$award->array['ID'] = $row['awardid'];
-		$award->array['Name'] = $row['Need to JOIN table awards'];
-		$award->array['Description'] = $row['Need to JOIN table awards'];
-		$award->array['Icon'] = $row['Need to JOIN table awards'];
+		$award->array['Name'] = $row['name'];
+		$award->array['Description'] = $row['description'];
+		$award->array['Icon'] = $row['icon'];
 		$award->array['Received'] = st_DateTime_MySQLtoPHP($row['received']);
 	    array_push($awards, $award);
 	}
