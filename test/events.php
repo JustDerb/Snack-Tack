@@ -178,21 +178,9 @@ if ($user) {
 			</table>
 		</form>
 	</div>
-	<div id="middle">
-	<h2>Facebook API /me Array</h2>
-	<?php if ($_GET['me']): ?>
-		<p><a href="?me=0">Hide /me data</a></p>
-		<h3>Your User Object (/me)</h3>
-		<pre><?php print_r($user_profile); ?></pre>
-		<h3>Your networks</h3>
-		<pre><?php 
-			print_r(st_user_getNetworks($user, $facebook)); 
-		?></pre>
-		<p><a href="?me=0">Hide /me data</a></p>
-	<?php else: ?>
-		<p><a href="?me=1">Show /me data</a></p>
-	<?php endif ?>
-	</div>
+	<?php
+		include 'includes/me.php';
+	?>
 <?php else: ?>
 	<div id="middle">
 		<p>Please login to access testing features.</p>

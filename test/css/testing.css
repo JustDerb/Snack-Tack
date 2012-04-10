@@ -168,3 +168,8 @@ form p {
 form input,select,optgroup,option {
 	font-family: "Courier New", Courier, monospace;
 }
+code {
+	font-family: Consolas, "andale mono", monotype.com, "lucida console", monospace;
+	color: #000000;
+	background-color: #FFFFFF;
+}

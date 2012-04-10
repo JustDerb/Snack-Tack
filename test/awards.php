@@ -17,6 +17,7 @@
 
 require '../api/fbsdk/facebook.php';
 require '../api/snacktack.php';
+require 'includes/code_formatter.php';
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
@@ -71,23 +72,11 @@ if ($user) {
 	<div id="middle">
 		<h2>Testing Features</h2>
 		<h3>Awards</h3>
-		<pre><?php print_r(st_award_getAll($st_user->array['ID'])); ?></pre>
+		<?php printCode(st_award_getAll($st_user->array['ID']),true); ?>
 	</div>
-	<div id="middle">
-		<h2>Facebook API /me Array</h2>
-		<?php if ($_GET['me']): ?>
-			<p><a href="?me=0">Hide /me data</a></p>
-			<h3>Your User Object (/me)</h3>
-			<pre><?php print_r($user_profile); ?></pre>
-			<h3>Your networks</h3>
-			<pre><?php 
-				print_r(st_user_getNetworks($user, $facebook)); 
-			?></pre>
-			<p><a href="?me=0">Hide /me data</a></p>
-		<?php else: ?>
-			<p><a href="?me=1">Show /me data</a></p>
-		<?php endif ?>
-	</div>
+	<?php
+		include 'includes/me.php';
+	?>
 <?php else: ?>
 	<div id="middle">
 		<p>Please login to access testing features.</p>

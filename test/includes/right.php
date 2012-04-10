@@ -1,9 +1,12 @@
+<?php
+require_once 'includes/code_formatter.php';
+?>
 <div id="right">
 	<h2 style="text-align:center">PHP Stuff</h2>
 	<h3>GET</h3>
-	<pre><?php print_r($_GET); ?></pre>
+	<?php printCode($_GET, true); ?>
 	<h3>POST</h3>
-	<pre><?php print_r($_POST); ?></pre>	
+	<?php printCode($_POST, true); ?>	
 	<?php if ($user): ?>
 	<h2><?php print($user_profile['name']); ?></h2>
 	<h3>User: <?php echo $user; ?></h3>
