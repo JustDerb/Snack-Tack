@@ -1,4 +1,4 @@
-body {
+﻿body {
 	/*background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #DBFFFF), color-stop(1, #00A3EF));*/
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d60000), color-stop(50%,#b20b00), color-stop(100%,#770000));
 	font-family: 'Segoe UI', Tahoma, Helvetica;
@@ -76,6 +76,53 @@ ul li a.link:hover {
 	background-color: #CCCCCC;
 	color: #FFFFFF;
 }
+
+ul.normal li:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+ul.normal li:last-child {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+
+ul.normal li {
+	background-color: #EEEEEE;
+	border: 1px solid #999999;
+	color: #222222;
+	display: block;
+	font-size: 17px;
+	margin-bottom: -1px;
+	padding: 12px 10px;
+	text-decoration: none;
+}
+ul li.error {
+	background:#FF9900;
+	color:#000000;
+}
+ul li.error b {
+	color: #FF0000;
+	font-weight: bold;
+}
+ul li.message {
+	background:#FFFF00;
+	color:#000000;
+}
+ul li.message b {
+	color:#000000;
+	font-weight: bold;
+}
+ul li.success {
+	background:#00CC00;
+	color:#000000;
+}
+ul li.success b {
+	color:#000000;
+	font-weight: bold;
+}
+
+
 
 /* 
  * Form CSS 
