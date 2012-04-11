@@ -106,7 +106,7 @@
 			</ul>
 
 			<ul>
-				<li>Place</lil>
+				<li>Place</li>
 				<li class="info"><input type="text" placeholder="Event Location" name="location" id="location" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
 			</ul>
 
@@ -122,6 +122,7 @@
 			
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>
 			<div id="cancel" name="cancel" onclick="window.location.replace('index.php')">Cancel</div>
+		</form>
 <?php include "includes/labelfix.php"; ?>
 	</body>
 </html>
