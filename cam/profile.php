@@ -91,6 +91,24 @@
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>
 			<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
 		</form>
+		
+		<ul>
+			<li>Awards</li>
+<?php
+	$awards_arr = st_award_getAll($st_user->array['ID']);
+	$numAwards = 0;
+	
+	//$awards_arr = $awards_arr->array;
+	foreach ($awards_arr as $award)
+	{
+		$award = $award->array;
+		print('<li><img src="'.$award['Icon'].'" alt="'.$award['Name'].'"/> <strong>'.$award['Name'].'</strong> '.$award['Description'].' ('.$award['Received']->format('m/d/y h:ia').')</li>');
+		$numAwards++;
+	}
+	if ($numAwards == 0)
+		print('<li>You don\'t have any awards!</li>');
+?>
+		</ul>
 <?php endif ?>
 		
 <?php include "includes/labelfix.php"; ?>
