@@ -101,11 +101,12 @@ if ($user) {
 				</tr>
 				<tr>
 					<td>Name:</td>
-					<td><input type="text" name="eventName"/></td>
+					<td><input type="text" name="eventName" value="Name <?php print(rand()); ?>"/></td>
 				</tr>
 				<tr>
 					<td>Description:</td>
-					<td><input type="text" name="eventDescription"/></td>
+					<td><textarea name="eventDescription">This is a test description.</textarea>
+					</td>
 				</tr>
 				<tr>
 					<td>Type:</td>
@@ -123,11 +124,75 @@ if ($user) {
 				</tr>
 				<tr>
 					<td>When:</td>
-					<td><input type="text" name="eventDate"/> at <input type="text" name="eventTimeStart"/> to <input type="text" name="eventTimeEnd"/></td>
+					<td>
+						<select name="eventDateMonth">
+						<?php 
+							$months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+							foreach ($months as $month)
+								echo "<option value=\"" . $month . "\">" . $month . "</option>";
+						?>
+						</select>
+						<select name="eventDateDay">
+						<?php
+							for ($i = 1; $i < 32; $i++)
+								echo "<option value=\"" . $i . "\">" . $i . "</option>";
+						?>
+						</select>
+						<select name="eventDateYear">
+							<?php
+							for ($i = 2012; $i < 2013; $i++)
+								echo "<option value=\"" . $i . "\">" . $i . "</option>";
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Time Start:</td>
+					<td>					
+						<select name="eventTimeStartHour">
+							<?php
+							for ($i = 1; $i < 13; $i++)
+								echo "<option value=\"" . $i . "\">" . $i . "</option>";
+							?>
+						</select>
+						<select name="eventTimeStartMinute">
+							<?php
+							$minutes = array("00","10","15","30","45","50");
+							foreach ($minutes as $min)
+								echo "<option value=\"" . $min . "\">" . $min . "</option>";
+							?>
+						</select>	
+						<select name="eventTimeStartPMAM">
+							<option value="AM">AM</option>
+							<option value="PM">PM</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Time End:</td>
+					<td>					
+						<select name="eventTimeEndHour">
+							<?php
+							for ($i = 1; $i < 13; $i++)
+								echo "<option value=\"" . $i . "\">" . $i . "</option>";
+							?>
+						</select>
+						<select name="eventTimeEndMinute">
+							<?php
+							$minutes = array("00","10","15","30","45","50");
+							foreach ($minutes as $min)
+								echo "<option value=\"" . $min . "\">" . $min . "</option>";
+							?>
+						</select>	
+						<select name="eventTimeEndPMAM">
+							<option value="AM">AM</option>
+							<option value="PM">PM</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>Location:</td>
-					<td><input type="text" name="location"/></td>
+					<td><input type="text" name="location" value="Coover Hall Room <?php print(rand(1000,9999)); ?>"/></td>
 				</tr>
 				<tr>
 					<td>FB Event?</td>
