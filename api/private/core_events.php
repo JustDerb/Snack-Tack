@@ -40,10 +40,23 @@ function st_events_getUsersTacked($internalID)
 }
 
 
-//For searchs
-function st_events_lookupEvent($searchTerms, $number, $page)
+function st_events_getEvents($page, $numItems, $sorting = "date")
 {
+	return st_events_lookupEvent("", $page, $numItems, $sorting);
+}
 
+
+//For searchs
+function st_events_lookupEvent($searchTerms, $page, $numItems, $sorting = "date")
+{
+	$events = array();
+	
+	if ($days >= 0)
+	{
+	
+	}
+	
+	return $events;
 }
 
 function st_events_createEvent($event_arr)
