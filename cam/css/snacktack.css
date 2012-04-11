@@ -1,40 +1,17 @@
 body {
-	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #DBFFFF), color-stop(1, #00A3EF));
+	/*background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #DBFFFF), color-stop(1, #00A3EF));*/
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d60000), color-stop(50%,#b20b00), color-stop(100%,#770000));
 	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 14px;
 	margin: 0;
 	padding: 0;
 }
 
-img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.fb-login-button {
-	display: block;
-	margin: 10px;
-}
-
 /* Header Title CSS */
 
-#header h1 {
-	color: #FFFFFF;
+#header {
 	display: block;
-	font-size: 20px;
-	font-weight: bold;
-	padding: 10px 0;
-	text-align: center;
-	text-decoration: none;
-}
-
-
-#header h1 div {
-	display: block;
-	position: absolute;
-	right: -10px;
-	top: -10px;
+	padding: 10px 10px;
 }
 
 h2 {
@@ -50,10 +27,10 @@ ul {
 	padding: 0;
 }
 
-ul li:first-child a {
+ul li:first-child a, form ul li:first-child {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
-	background-color: blue;
+	background-color: #000000;
 	border: 1px solid #999999;
 	color: white;
 	display: block;
@@ -68,7 +45,7 @@ ul li:last-child a {
 
 ul li a.link {
 	background: url(../img/chevron.png) right center no-repeat;
-	background-color: #FFFFFF;
+	background-color: #EEEEEE;
 	border: 1px solid #999999;
 	color: #222222;
 	display: block;
@@ -79,7 +56,7 @@ ul li a.link {
 }
 
 ul li a.link:hover {
-	background-color: #0000FF;
+	background-color: #CCCCCC;
 	color: #FFFFFF;
 }
 
@@ -96,17 +73,6 @@ form ul li.info {
 	margin-bottom: -1px;
 	padding: 10px 10px;
 	text-decoration: none;
-}
-
-form ul li:first-child {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	background-color: blue;
-	border: 1px solid #999999;
-	color: white;
-	display: block;
-	padding: 0px 10px;
-	margin-bottom: -1px;
 }
 
 form ul li:last-child {
@@ -141,7 +107,6 @@ form ul li input[type=checkbox] {
 
 form ul li > select {
 	font-size: 17px;
-	margin: 0px -2px;
 }
 
 form div, div#back {
@@ -158,19 +123,19 @@ form div, div#back {
 	text-align: center;
 }
 
-form div#submit {
+form div#submit, div#back {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(40%,#dedede), color-stop(100%,#b6b6b6));
 }
 
-form div#submit:hover {
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4beae), color-stop(60%,#dfe5d7), color-stop(100%,#fcfff5));
+form div#submit:hover, div#back:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c8c8c8), color-stop(40%,#b1b1b1), color-stop(100%,#919191));
 }
 
-form div#cancel, div#back {
+form div#cancel {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2f2b), color-stop(50%,#ff4f4f), color-stop(51%,#ff0307), color-stop(71%,#ff090d), color-stop(100%,#ff0f1b));
 	color: #FFFFFF;
 }
 
-form div#cancel:hover, div#back:hover {
+form div#cancel:hover {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c70a07), color-stop(50%,#d41212), color-stop(51%,#ac0609), color-stop(71%,#ab0b0e), color-stop(100%,#a7131a));
 }
