@@ -6,7 +6,7 @@
 		<?php if ($user): ?>
 			<p><?php 
 				$st_user = st_user_getData($user_profile['id']);
-				if ($user != NULL)
+				if ($st_user != NULL)
 					print("You are already registered!");
 				else
 				{
