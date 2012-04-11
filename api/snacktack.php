@@ -29,7 +29,15 @@ function st_DateTime_PHPtoMySQL($phpdate)
 
 function st_DateTime_MySQLtoPHP($mysqldate)
 {
-   return strtotime($mysqldate);
+   return new DateTime($mysqldate);
+}
+function st_DateTime_getDateTime($year, $month, $day, $hour, $minute, $am = true)
+{
+	if (!$am)
+		$hour = $hour + 12;
+	if ($hour >= 24)
+		$hour = $hour - 24;
+	return new DateTime($year.'-'.$month.'-'.$day.' '.$hour.':'.$minute.':00');
 }
  
 /*

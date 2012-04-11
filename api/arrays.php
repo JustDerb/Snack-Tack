@@ -58,6 +58,7 @@ class st_arr_event extends st_a_array {
     	$this->array = array(
     		"TYPE" => "EVENT",
     		"ID" => "-1",
+    		"NetworkID" => "-1",
     		"creatorID" => "-1",
     		"Name" => "",
     		"Description" => "",
@@ -93,7 +94,7 @@ class st_arr_user extends st_a_array {
     		"fbID" => "-1",
     		"Registered" => new DateTime(),
     		"Phone" => "",
-    		"Network" => ""
+    		"Network" => "-1"
        	);
     }
 }

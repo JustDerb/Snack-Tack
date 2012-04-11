@@ -74,16 +74,26 @@ if ($user) {
 			{
 				$event = new st_arr_event();
 	    		$event->array["creatorID"] = $st_user->array['ID'];
+	    		$event->array["NetworkID"] = $st_user->array['Network'];
 	    		$event->array["Name"] = $_POST['eventName'];
 	    		$event->array["Description"] = $_POST['eventDescription'];
-	    		//$event->array["Type"][] = $_POST['eventName'];
-	    		$event->array["WhenStart"] = "";
-	    		$event->array["WhenEnd"] = "";
-	    		$event->array["Location"] = $_POST['location'];
+	    		if ($_POST['eventType'])
+	    		{
+		    		$types = $_POST['eventType'];
+		    		foreach ($types as $key => $value)
+		    		{
+		    			$event->array["Type"][] = $value;
+		    		}
+	    		}
+	    		$event->array["WhenStart"] = st_DateTime_getDateTime($_POST['eventDateYear'],$_POST['eventDateMonth'],$_POST['eventDateDay'],$_POST['eventTimeStartHour'],$_POST['eventTimeStartMinute'],$_POST['eventTimeStartPMAM'] == 'AM');
+	    		$event->array["WhenEnd"] = st_DateTime_getDateTime($_POST['eventDateYear'],$_POST['eventDateMonth'],$_POST['eventDateDay'],$_POST['eventTimeEndHour'],$_POST['eventTimeEndMinute'],$_POST['eventTimeEndPMAM'] == 'AM');;
+	    		$event->array["Location"] = $_POST['eventLocation'];
 	    		$event->array["FacebookEvent"] = $_POST['eventFBurl'];
 	    		$event->array["Organization"] = $_POST['eventOrg'];	
 				
-				st_events_createEvent($event);
+				print('<pre>'.print_r($event,true).'</pre>');
+				
+				print('<pre>'.print_r(st_events_createEvent($event),true).'</pre>');
 			}
 		?>
 		<form method="post">
@@ -189,7 +199,7 @@ if ($user) {
 				</tr>
 				<tr>
 					<td>Location:</td>
-					<td><input type="text" name="location" value="Coover Hall Room <?php print(rand(1000,9999)); ?>"/></td>
+					<td><input type="text" name="eventLocation" value="Coover Hall Room <?php print(rand(1000,9999)); ?>"/></td>
 				</tr>
 				<tr>
 					<td>FB Event?</td>
