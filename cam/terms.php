@@ -12,18 +12,9 @@
 			<a href="index.php"><img src="img/logo_mini.png" /></a>
 		</div>
 
-		<ul>
-			<li><a>Events</a></li>
-			<li><a href="plan.php" class="link">Plan</a></li>
-			<li><a href="find.php" class="link">Find</a></li>
-		</ul>
 
-		<ul>
-			<li><a>Settings</a></li>
-			<li><a href="profile.php" class="link">Profile</a></li>
-			<li><a href="help.php" class="link">Help</a></li>
-			<li><a href="terms.php" class="link">Privacy, Terms</a></li>
-		</ul>
+
+
 
 	</body>
 </html>

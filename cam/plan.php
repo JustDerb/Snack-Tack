@@ -8,8 +8,9 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />		
 	</head>
 	<body>
+		<script type=”text/javascript”>// <![CDATA[ function BlockMove(event) { event.preventDefault() ; } // ]]></script>
 		<div id="header">
-			<h1>Snack Tack</h1>
+			<a href="index.php"><img src="img/logo_mini.png" /></a>
 		</div>
 		
 		<form id="eventForm" name="eventForm" method="post">
@@ -31,13 +32,6 @@
 			<ul>
 				<li>Day</li>
 				<li class="info">
-					<select name="day">
-<?php 
-	$days = array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
-	foreach ($days as $day)
-		echo "<option value=\"" . $day . "\">" . $day . "</option>";
-?>
-					</select>
 					
 					<select name="month">
 <?php 
@@ -63,8 +57,66 @@
 			<ul>
 				<li>Time</li>
 				<li class="info">
-				
+					<label>Start&nbsp;&nbsp;</label>
+					<select name="startHour">
+<?php
+	for ($i = 1; $i < 13; $i++)
+		echo "<option value=\"" . $i . "\">" . $i . "</option>";
+?>
+					</select>
+					:
+					<select name="startMinute">
+						<option>00</option>
+						<option>10</option>
+						<option>15</option>
+						<option>30</option>
+						<option>45</option>
+						<option>50</option>
+					</select>
+					&nbsp;&nbsp;
+					<select name="startAMPM">
+						<option>AM</option>
+						<option>PM</option>
+					</select>
 				</li>
+				<li class="info">
+					<label>End&nbsp;&nbsp;&nbsp;</label>
+					<select name="startHour">
+<?php
+	for ($i = 1; $i < 13; $i++)
+		echo "<option value=\"" . $i . "\">" . $i . "</option>";
+?>
+					</select>
+					:
+					<select name="startMinute">
+						<option>00</option>
+						<option>10</option>
+						<option>15</option>
+						<option>30</option>
+						<option>45</option>
+						<option>50</option>
+					</select>
+					&nbsp;&nbsp;
+					<select name="startAMPM">
+						<option>AM</option>
+						<option>PM</option>
+					</select>					
+				</li>
+			</ul>
+
+			<ul>
+				<li>Place</lil>
+				<li class="info"><input type="text" placeholder="Event Location" name="location" id="location" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
+			</ul>
+
+			<ul>
+				<li>Facebook Event URL</li>
+				<li class="info"><input type="text" placeholder="(Optional)" name="fburl" id="fburl" autocapitalizer="off" autocorrect="off" autocomplete="off" /></li>
+			</ul>
+
+			<ul>
+				<li>Organization</li>
+				<li class="info"><input type="text" placeholder="Name of Organization" name="organization" id="organization" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
 			</ul>
 			
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>

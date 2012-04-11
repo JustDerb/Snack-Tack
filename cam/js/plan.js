@@ -8,9 +8,6 @@ function onloadChangeDate() {
 	var fullDate = new Date();
 	
 	// Change all the default select options to today's date
-	var day = form['day'];
-	$(day[fullDate.getDay()]).attr('selected', 'true');
-	
 	var month = form['month'];
 	$(month[fullDate.getMonth()]).attr('selected', 'true');
 	
