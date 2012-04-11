@@ -51,7 +51,7 @@ function st_award_getAll($internalID)
 	$internalID = mysql_real_escape_string($internalID,$st_sql);	
 	
 	//Check for record
-	$query = "SELECT * FROM userawards u,awards a WHERE user='$internalID' and u.awardid=a.id";
+	$query = "SELECT * FROM userawards u,awards a WHERE user='$internalID' and u.awardid=a.id ORDER BY u.received DESC";
 	$result = mysql_query($query, $st_sql);
 	
 	while ($row = mysql_fetch_assoc($result)) {
