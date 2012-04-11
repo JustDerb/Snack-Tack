@@ -12,3 +12,12 @@ require_once 'includes/code_formatter.php';
 	<h3>User: <?php echo $user; ?></h3>
 	<?php endif ?>
 </div>
+<script type="text/javascript">
+	$('#right').hover(function(){
+		$('#right').animate({'width':800}, 300);
+		//$('#middle').animate({'margin-right':870}, 300);
+	},function(){
+		$('#right').animate({'width':300}, 300);
+		//$('#middle').animate({'margin-right':370},300);
+	});
+</script>
