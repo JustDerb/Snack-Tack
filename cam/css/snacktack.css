@@ -7,11 +7,9 @@
 	padding: 0;
 }
 
-div.fb-login-button {
-	margin: 10px;
-}
-
-/* Header Title CSS */
+/* 
+ * Header Title CSS
+ */
 
 #header {
 	display: block;
@@ -36,17 +34,22 @@ h2 {
 	text-align: left;
 }
 
-/* Basic Button CSS */
+/* 
+ * Basic Button CSS
+ */
 
-ul {
+ul, ul.form {
 	list-style: none;
 	margin: 10px;
 	padding: 0;
 }
 
-ul li:first-child a, form ul li:first-child {
+ul li#connect a, ul li.head {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
+}
+
+ul li.head {
 	background-color: #000000;
 	border: 1px solid #999999;
 	color: white;
@@ -55,12 +58,12 @@ ul li:first-child a, form ul li:first-child {
 	padding: 0px 10px;
 }
 
-ul li:last-child a {
+ul li:last-child, ul li:last-child a {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
 }
 
-ul li a.link {
+ul li a {
 	background: url(../img/chevron.png) right center no-repeat;
 	background-color: #EEEEEE;
 	border: 1px solid #999999;
@@ -72,22 +75,26 @@ ul li a.link {
 	text-decoration: none;
 }
 
-ul li a.link:hover {
+ul li a:hover {
 	background-color: #CCCCCC;
 	color: #FFFFFF;
 }
 
-ul.normal li:first-child {
+/*
+ * User Messages
+ */
+
+ul.message li:first-child {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 }
 
-ul.normal li:last-child {
+ul.message li:last-child {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
 }
 
-ul.normal li {
+ul.message li {
 	background-color: #EEEEEE;
 	border: 1px solid #999999;
 	color: #222222;
@@ -97,39 +104,43 @@ ul.normal li {
 	padding: 12px 10px;
 	text-decoration: none;
 }
+
 ul li.error {
 	background:#FF9900;
 	color:#000000;
 }
-ul li.error b {
+
+ul li.error strong {
 	color: #FF0000;
 	font-weight: bold;
 }
+
 ul li.message {
 	background:#FFFF00;
 	color:#000000;
 }
-ul li.message b {
+
+ul li.message strong {
 	color:#000000;
 	font-weight: bold;
 }
+
 ul li.success {
 	background:#00CC00;
 	color:#000000;
 }
-ul li.success b {
+
+ul li.success strong {
 	color:#000000;
 	font-weight: bold;
 }
-
-
 
 /* 
  * Form CSS 
  */
 
-form ul li.info {
-	background-color: #FFFFFF;
+form ul li {
+	background-color: #EEEEEE;
 	border: 1px solid #999999;
 	color: #222222;
 	display: block;
@@ -139,12 +150,8 @@ form ul li.info {
 	text-decoration: none;
 }
 
-form ul li:last-child {
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
-}
-
 form ul li input[type=text] {
+	background-color: #EEEEEE;
 	border: solid 0px #E5E5E5;
 	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
@@ -154,6 +161,7 @@ form ul li input[type=text] {
 }
 
 form ul li textarea {
+	background-color: #EEEEEE;
 	border: solid 0px #E5E5E5;
 	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
@@ -173,6 +181,7 @@ form ul li input[type=checkbox], form ul li input[type=radio] {
 
 form ul li > select {
 	font-size: 17px;
+	margin: 0;
 }
 
 label {
