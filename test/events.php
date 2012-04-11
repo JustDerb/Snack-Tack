@@ -94,7 +94,7 @@ if ($user) {
 				</tr>
 				<tr>
 					<td>Network ID:</td>
-					<td><?php print($st_user->array['Network']); ?><input type="hidden" name="eventID" value="<?php print($st_user->array['Network']); ?>"/></td>
+					<td><?php print($st_user->array['Network']); ?><input type="hidden" name="eventNetworkID" value="<?php print($st_user->array['Network']); ?>"/></td>
 				</tr>
 				<tr>
 					<td>Name:</td>
