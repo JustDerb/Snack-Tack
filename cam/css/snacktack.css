@@ -130,7 +130,6 @@ form ul li > select {
 
 label {
 	display: block;
-	line-height: 1em;
 	overflow: ellipsis;
 }
 

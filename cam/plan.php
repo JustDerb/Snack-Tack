@@ -1,4 +1,4 @@
-<?php require "fb-login.php"; 
+<?php require "includes/fb-login.php"; 
 	  require '../api/snacktack.php'; ?>
 <html>
 	<head>
@@ -10,9 +10,13 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />		
 	</head>
 	<body>
-		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault() ; } // ]]></script>
+		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault(); } // ]]></script>
 		<div id="header">
-			<a href="index.php"><img src="img/logo_mini.png" /></a>
+			<a href="index.php"><img src="img/logo_mini.png" id="logo" /></a>
+<?php if ($user): ?>
+			<img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" />
+<?php endif ?>
+		<div id="clear"></div>
 		</div>
 		
 		<form id="eventForm" name="eventForm" method="post">
@@ -123,5 +127,6 @@
 			
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>
 			<div id="cancel" name="cancel" onclick="window.location.replace('index.php')">Cancel</div>
+<?php include "includes/labelfix.php"; ?>
 	</body>
 </html>
