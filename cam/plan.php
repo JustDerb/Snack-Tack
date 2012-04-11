@@ -1,3 +1,5 @@
+<?php require "fb-login.php"; 
+	  require '../api/snacktack.php'; ?>
 <html>
 	<head>
 		<title>Snack Tack</title>
@@ -22,11 +24,11 @@
 			
 			<ul>
 				<li>Food Options</li>
-				<li class="info"><input type="checkbox" name="foodOptions" value="pizza" />Pizza</li>
-				<li class="info"><input type="checkbox" name="foodOptions" value="ice cream" />Ice Cream</li>
-				<li class="info"><input type="checkbox" name="foodOptions" value="root beer floats" />Root Beer Floats</li>
-				<li class="info"><input type="checkbox" name="foodOptions" value="apparel" />Apparel</li>
-				<li class="info"><input type="checkbox" name="foodOptions" value="other"/>Other</li>
+				<li class="info"><input type="checkbox" name="foodOptions" id="pizza" value="pizza" /><label for="pizza">Pizza</label></li>
+				<li class="info"><input type="checkbox" name="foodOptions" id="ice cream" value="ice cream" /><label for="ice cream">Ice Cream</label></li>
+				<li class="info"><input type="checkbox" name="foodOptions" id="root beer floats" value="root beer floats" /><label for="root beer floats">Root Beer Floats</label></li>
+				<li class="info"><input type="checkbox" name="foodOptions" id="apparel" value="apparel" /><label for="apparel">Apparel</label></li>
+				<li class="info"><input type="checkbox" name="foodOptions" id="other" value="other"/><label for="other">Other</label></li>
 			</ul>
 			
 			<ul>

@@ -15,9 +15,8 @@
 		<form>
 			<ul>
 				<li>Search Options</li>
-				<li class="info">
-					<input type="radio" name="searchOption" value="byFoodType" />By Food Type
-					<input type="radio" name="searchOption" value="byOrganization" />By Organization
+				<li class="info"><input type="radio" name="searchOption" value="byFoodType" />By Food Type</li>
+				<li class="info"><input type="radio" name="searchOption" value="byOrganization" />By Organization</li>
 				</li>
 				<li class="info"><input type="text" placeholder="Search Terms" name="searchTerms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" />
 			</ul>

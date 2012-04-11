@@ -15,7 +15,20 @@ div.fb-login-button {
 
 #header {
 	display: block;
+	height: 44px;
 	padding: 10px 10px;
+}
+
+#header img#logo {
+	float: left;
+}
+
+#header img#fbPicture {
+	float: right;
+}
+
+#clear {
+	clear: both;
 }
 
 h2 {
@@ -103,14 +116,22 @@ form ul li textarea {
 	width: 100%;
 }
 
-form ul li input[type=checkbox] {
+form ul li input[type=checkbox], form ul li input[type=radio] {
+	display: block;
 	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
+	float: left;
 	overflow: hidden;
 }
 
 form ul li > select {
 	font-size: 17px;
+}
+
+label {
+	display: block;
+	line-height: 1em;
+	overflow: ellipsis;
 }
 
 form div, div#back {
