@@ -34,52 +34,6 @@ h2 {
 	text-align: left;
 }
 
-/* 
- * Basic Button CSS
- */
-
-ul, ul.form {
-	list-style: none;
-	margin: 10px;
-	padding: 0;
-}
-
-ul li#connect a, ul li.head {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-}
-
-ul li.head {
-	background-color: #000000;
-	border: 1px solid #999999;
-	color: white;
-	display: block;
-	margin-bottom: -1px;
-	padding: 0px 10px;
-}
-
-ul li:last-child, ul li:last-child a {
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
-}
-
-ul li a {
-	background: url(../img/chevron.png) right center no-repeat;
-	background-color: #EEEEEE;
-	border: 1px solid #999999;
-	color: #222222;
-	display: block;
-	font-size: 17px;
-	margin-bottom: -1px;
-	padding: 12px 10px;
-	text-decoration: none;
-}
-
-ul li a:hover {
-	background-color: #CCCCCC;
-	color: #FFFFFF;
-}
-
 /*
  * User Messages
  */
@@ -134,6 +88,53 @@ ul li.success strong {
 	color:#000000;
 	font-weight: bold;
 }
+
+/* 
+ * Basic Button CSS
+ */
+
+ul, ul.form {
+	list-style: none;
+	margin: 10px;
+	padding: 0;
+}
+
+ul li#connect a, ul li.head {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+ul li.head {
+	background-color: #000000;
+	border: 1px solid #999999;
+	color: white;
+	display: block;
+	margin-bottom: -1px;
+	padding: 0px 10px;
+}
+
+ul li:last-child, ul li:last-child a {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+
+ul li a {
+	background: url(../img/chevron.png) right center no-repeat;
+	background-color: #EEEEEE;
+	border: 1px solid #999999;
+	color: #222222;
+	display: block;
+	font-size: 17px;
+	margin-bottom: -1px;
+	padding: 12px 10px;
+	text-decoration: none;
+}
+
+ul li a:hover {
+	background-color: #CCCCCC;
+	color: #FFFFFF;
+}
+
 
 /* 
  * Form CSS 
