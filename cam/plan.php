@@ -8,7 +8,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />		
 	</head>
 	<body>
-		<script type=”text/javascript”>// <![CDATA[ function BlockMove(event) { event.preventDefault() ; } // ]]></script>
+		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault() ; } // ]]></script>
 		<div id="header">
 			<a href="index.php"><img src="img/logo_mini.png" /></a>
 		</div>
