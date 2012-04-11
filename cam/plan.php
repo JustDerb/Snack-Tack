@@ -3,6 +3,7 @@
 <html>
 	<head>
 <?php require "includes/head.php"; ?>	
+		<script type="text/javascript" src="js/plan.js"></script>
 	</head>
 	<body>
 		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault(); } // ]]></script>
