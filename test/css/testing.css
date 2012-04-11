@@ -144,6 +144,7 @@ html>body #left {
 	voice-family: "\"}\"";
 	voice-family:inherit;
 	width: 300px;
+	overflow:hidden;
 	}
 html>body #right {
 	width: 300px; /* ie5win fudge ends */
@@ -169,7 +170,7 @@ form input,select,optgroup,option {
 	font-family: "Courier New", Courier, monospace;
 }
 code {
-	font-family: Consolas, "andale mono", monotype.com, "lucida console", monospace;
+	font-family: Consolas, "andale mono", "monotype.com", "lucida console", monospace;
 	color: #000000;
 	background-color: #FFFFFF;
 }
