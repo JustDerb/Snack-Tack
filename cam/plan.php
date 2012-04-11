@@ -17,24 +17,23 @@
 		
 		<form id="eventForm" name="eventForm" method="post">
 			<ul>
-				<li>Basic Info</li>
-				<li class="info"><input type="text" placeholder="Event Name" name="eventName" id="eventName" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
-				<li class="info"><textarea placeholder="Event Description" name="eventDescription" id="eventDescription" rows="3" wrap="on"></textarea></li>
+				<li class="head">Basic Info</li>
+				<li><input type="text" placeholder="Event Name" name="eventName" id="eventName" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
+				<li><textarea placeholder="Event Description" name="eventDescription" id="eventDescription" rows="3" wrap="on"></textarea></li>
 			</ul>
 			
 			<ul>
-				<li>Food Options</li>
-				<li class="info"><input type="checkbox" name="foodOptions" id="pizza" value="pizza" /><label for="pizza">Pizza</label></li>
-				<li class="info"><input type="checkbox" name="foodOptions" id="ice cream" value="ice cream" /><label for="ice cream">Ice Cream</label></li>
-				<li class="info"><input type="checkbox" name="foodOptions" id="root beer floats" value="root beer floats" /><label for="root beer floats">Root Beer Floats</label></li>
-				<li class="info"><input type="checkbox" name="foodOptions" id="apparel" value="apparel" /><label for="apparel">Apparel</label></li>
-				<li class="info"><input type="checkbox" name="foodOptions" id="other" value="other"/><label for="other">Other</label></li>
+				<li class="head">Food Options</li>
+				<li><input type="checkbox" name="foodOptions" id="pizza" value="pizza" /><label for="pizza">Pizza</label></li>
+				<li><input type="checkbox" name="foodOptions" id="ice cream" value="ice cream" /><label for="ice cream">Ice Cream</label></li>
+				<li><input type="checkbox" name="foodOptions" id="root beer floats" value="root beer floats" /><label for="root beer floats">Root Beer Floats</label></li>
+				<li><input type="checkbox" name="foodOptions" id="apparel" value="apparel" /><label for="apparel">Apparel</label></li>
+				<li><input type="checkbox" name="foodOptions" id="other" value="other"/><label for="other">Other</label></li>
 			</ul>
 			
 			<ul>
-				<li>Day</li>
-				<li class="info">
-					
+				<li class="head">Day</li>
+				<li>
 					<select name="month">
 <?php 
 	$months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
@@ -57,9 +56,9 @@
 			</ul>
 			
 			<ul>
-				<li>Time</li>
-				<li class="info">
-					<label>Start&nbsp;&nbsp;</label>
+				<li class="head">Time</li>
+				<li>
+					Start
 					<select name="startHour">
 <?php
 	for ($i = 1; $i < 13; $i++)
@@ -81,16 +80,16 @@
 						<option>PM</option>
 					</select>
 				</li>
-				<li class="info">
-					<label>End&nbsp;&nbsp;&nbsp;</label>
-					<select name="startHour">
+				<li>
+					End&nbsp;
+					<select name="endHour">
 <?php
 	for ($i = 1; $i < 13; $i++)
 		echo "<option value=\"" . $i . "\">" . $i . "</option>";
 ?>
 					</select>
 					:
-					<select name="startMinute">
+					<select name="endMinute">
 						<option>00</option>
 						<option>10</option>
 						<option>15</option>
@@ -99,7 +98,7 @@
 						<option>50</option>
 					</select>
 					&nbsp;&nbsp;
-					<select name="startAMPM">
+					<select name="endAMPM">
 						<option>AM</option>
 						<option>PM</option>
 					</select>					
@@ -107,18 +106,18 @@
 			</ul>
 
 			<ul>
-				<li>Place</li>
-				<li class="info"><input type="text" placeholder="Event Location" name="location" id="location" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
+				<li class="head">Place</li>
+				<li><input type="text" placeholder="Event Location" name="location" id="location" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
 			</ul>
 
 			<ul>
-				<li>Facebook Event URL</li>
-				<li class="info"><input type="text" placeholder="(Optional)" name="fburl" id="fburl" autocapitalizer="off" autocorrect="off" autocomplete="off" /></li>
+				<li class="head">Facebook Event URL</li>
+				<li><input type="text" placeholder="(Optional)" name="fburl" id="fburl" autocapitalizer="off" autocorrect="off" autocomplete="off" /></li>
 			</ul>
 
 			<ul>
-				<li>Organization</li>
-				<li class="info"><input type="text" placeholder="Name of Organization" name="organization" id="organization" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
+				<li class="head">Organization</li>
+				<li><input type="text" placeholder="Name of Organization" name="organization" id="organization" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
 			</ul>
 			
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>

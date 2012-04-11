@@ -14,21 +14,21 @@
 		<div id="clear"></div>
 		</div>
 		<ul>
-			<li><a>Events</a></li>
+			<li class="head">Events</li>
 <?php if ($user): ?>
-			<li><a href="plan.php" class="link">Plan</a></li>
+			<li><a href="plan.php">Plan</a></li>
 <?php endif ?>
-			<li><a href="find.php" class="link">Find</a></li>
+			<li><a href="find.php">Find</a></li>
 <?php if ($user): ?>
-			<li><a href="promote.php" class="link">Promote</a></li>
+			<li><a href="promote.php">Promote</a></li>
 <?php endif ?>
 		</ul>
 	
 		<ul>
-			<li><a>Settings</a></li>
-			<li><a href="profile.php" class="link">Profile</a></li>
-			<li><a href="help.php" class="link">Help</a></li>
-			<li><a href="terms.php" class="link">Privacy, Terms</a></li>
+			<li class="head">Settings</li>
+			<li><a href="profile.php">Profile</a></li>
+			<li><a href="help.php">Help</a></li>
+			<li><a href="terms.php">Privacy, Terms</a></li>
 		</ul>
 
 	</body>

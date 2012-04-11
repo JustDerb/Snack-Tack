@@ -11,22 +11,22 @@
 <?php if ($user): ?>
 			<a href="profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
 <?php endif ?>
-		<div id="clear"></div>
+			<div id="clear"></div>
 		</div>
 
 		<form>
 			<ul>
-				<li>Search Options</li>
-				<li class="info"><input type="text" placeholder="Search Terms" name="searchTerms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" />
-				<li class="info"><input type="radio" name="searchOption" value="byFoodType" id="byFoodType" checked /><label for="byFoodType">By Food Type</label></li>
-				<li class="info"><input type="radio" name="searchOption" value="byOrganization" id="byOrganization" /><label for="byOrganization">By Organization</li>
+				<li class="head">Search Options</li>
+				<li><input type="text" placeholder="Search Terms" name="searchTerms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" />
+				<li><input type="radio" name="searchOption" value="byFoodType" id="byFoodType" checked /><label for="byFoodType">By Food Type</label></li>
+				<li><input type="radio" name="searchOption" value="byOrganization" id="byOrganization" /><label for="byOrganization">By Organization</li>
 				</li>
 			</ul>
 		</form>
 
 
 		<ul id="searchResults">
-			<li><a>Search Results</a></li>
+			<li class="head">Search Results</li>
 		</ul>
 
 		<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
