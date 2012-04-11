@@ -41,8 +41,10 @@ class st_mysql
 		global $db_user;
 		global $db_pass;
 		global $db_name;
-		$this->link = mysql_connect($db_host, $db_user, $db_pass) 
-			or die('<h1>Could not connect to the database</h1><h2>Please try again after a few moments.</h2>');	
+		$connection = mysql_connect($db_host, $db_user, $db_pass);
+		if (!$connection)
+			die('<h1>Could not connect to the database</h1><h2>Please try again after a few moments.</h2>');
+		$this->link = $connection;	
 		//Select our database
 		mysql_select_db($db_name, $this->link);
 	}
