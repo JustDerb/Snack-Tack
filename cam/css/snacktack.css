@@ -19,9 +19,27 @@ img {
 
 /* Header Title CSS */
 
-h1 {
-	margin: 10px;
+#header h1 {
+	color: #FFFFFF;
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 0;
 	text-align: center;
+	text-decoration: none;
+}
+
+
+#header h1 div {
+	display: block;
+	position: absolute;
+	right: -10px;
+	top: -10px;
+}
+
+h2 {
+	margin: 10px;
+	text-align: left;
 }
 
 /* Basic Button CSS */
@@ -40,7 +58,7 @@ ul li:first-child a {
 	color: white;
 	display: block;
 	margin-bottom: -1px;
-	text-align: center;
+	padding: 0px 10px;
 }
 
 ul li:last-child a {
@@ -87,8 +105,8 @@ form ul li:first-child {
 	border: 1px solid #999999;
 	color: white;
 	display: block;
+	padding: 0px 10px;
 	margin-bottom: -1px;
-	text-align: center;
 }
 
 form ul li:last-child {
@@ -101,7 +119,7 @@ form ul li input[type=text] {
 	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
 	overflow: hidden;
-	padding: 0px 2px;
+	padding: 0;
 	width: 100%;
 }
 
@@ -123,6 +141,7 @@ form ul li input[type=checkbox] {
 
 form ul li > select {
 	font-size: 17px;
+	margin: 0px -2px;
 }
 
 form div, div#back {

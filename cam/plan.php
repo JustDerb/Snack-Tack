@@ -8,8 +8,10 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />		
 	</head>
 	<body>
-		<img src="img/snacktack.png" />
-		<h1>Plan an Event!</h1>
+		<div id="header">
+			<h1>Snack Tack</h1>
+		</div>
+		
 		<form id="eventForm" name="eventForm" method="post">
 			<ul>
 				<li>Basic Info</li>
