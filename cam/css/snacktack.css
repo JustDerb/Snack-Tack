@@ -101,6 +101,7 @@ form ul li input[type=text] {
 	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
 	overflow: hidden;
+	padding: 0px 2px;
 	width: 100%;
 }
 
