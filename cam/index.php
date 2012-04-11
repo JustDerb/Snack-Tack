@@ -13,9 +13,21 @@
 <?php endif ?>
 		<div id="clear"></div>
 		</div>
-		
+
+<?php if ($user): ?>
+		<h2>Howdy, <?php echo $user_profile['first_name']; ?>!</h2>
+<?php endif ?>
+
 		<ul>
 			<li class="head">Events</li>
+			<li><a href="today.php">Today's Events</a></li>
+<?php if ($user): ?>
+			<li><a href="#">Your Tacked Events</a></li>
+<?php endif ?>
+		</ul>
+		
+		<ul>
+			<li class="head">Event Management</li>
 <?php if ($user): ?>
 			<li><a href="plan.php">Plan</a></li>
 <?php endif ?>
