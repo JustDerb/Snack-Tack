@@ -2,6 +2,7 @@
 	<head>
 		<title>Snack Tack</title>
 		<link rel="stylesheet" href="css/snacktack.css" type="text/css" media="screen" />
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
 	</head>
 	<body>
 		<img src="img/snacktack.png" />
