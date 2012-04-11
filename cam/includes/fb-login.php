@@ -49,7 +49,7 @@ if ($user) {
 if ($user) {
   $logoutUrl = "?logout=1";
 } else {
-  $loginUrl = $facebook->getLoginUrl(array("display" => "wap"));
+  $loginUrl = $facebook->getLoginUrl(array("display" => "touch"));
 }
 
 ?>
