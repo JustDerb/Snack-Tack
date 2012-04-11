@@ -5,7 +5,9 @@
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
 	</head>
 	<body>
-		<img src="img/snacktack.png" />
+		<div id="header">
+			<h1>Snack Tack</h1>
+		</div>
 
 		<ul>
 			<li><a>Events</a></li>
