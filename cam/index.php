@@ -13,6 +13,7 @@
 <?php endif ?>
 		<div id="clear"></div>
 		</div>
+		
 		<ul>
 			<li class="head">Events</li>
 <?php if ($user): ?>

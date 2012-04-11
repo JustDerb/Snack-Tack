@@ -64,17 +64,17 @@
 				<li class="head">Networks</li>
 <?php 
 	$gotone = false;
-	foreach ($networks as $element)
+	foreach ($networks as $network)
 	{
-		if ($element['type'] == 'college')
+		if ($network['type'] == 'college')
 		{
-			print('<li><input type="radio" name="networkOption" value="' . $element['nid'] . '" id="' . $element['nid'] . '" ');
-			if ($element['nid'] == $st_user->array['Network'])
+			print('<li><input type="radio" name="networkOption" value="' . $network['nid'] . '" id="' . $network['nid'] . '" ');
+			if ($network['nid'] == $st_user->array['Network'])
 			{
 				$gotone = true;
 				print('checked');
 			}
-			print(' /><label for="' . $element['nid'] . '">' . $element['name'] . '</label></li>');
+			print(' /><label for="' . $network['nid'] . '">' . $network['name'] . '</label></li>');
 		}
 	}
 ?>
@@ -89,10 +89,10 @@
 			</ul>
 			<input type="hidden" name="form" value="Profile" />
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>
+			<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
 		</form>
 <?php endif ?>
 		
-		<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
 <?php include "includes/labelfix.php"; ?>
 	</body>
 </html>
