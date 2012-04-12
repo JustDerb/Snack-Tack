@@ -25,7 +25,19 @@
 	else
 		foreach ($events as $event)
 		{
-			print('<li class="link"><a href="#"><strong>' . $event->array['Name'] . '</strong></a></li>');
+			print('
+			<li>
+				<a class="today" href="eventinfo.php?id=' . $event->array["ID"] . '">
+					<table>
+						<tr>
+							<td><div class="name">' . $event->array["Name"] . '</div></td>
+						</tr>
+						<tr>
+							<td><div class="description">' . $event->array["Description"] . '</div></td>
+						</tr>
+					</table>
+				</a>
+			</li>');
 		}
 ?>
 		</ul>
