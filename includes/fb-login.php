@@ -15,7 +15,7 @@
 * under the License.
 */
 
-require '../api/fbsdk/facebook.php';
+require 'api/fbsdk/facebook.php';
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(

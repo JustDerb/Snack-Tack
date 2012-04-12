@@ -1,6 +1,6 @@
 <?php
 	require "includes/fb-login.php"; 
-	require "../api/snacktack.php";
+	require "api/snacktack.php";
 ?>
 <html>
 	<head>
