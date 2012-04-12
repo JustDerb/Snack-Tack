@@ -34,7 +34,7 @@
 				'<li><div class="award">
 					<table>
 						<tr>
-							<td rowspan="4"><img src="../' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
+							<td rowspan="4" valign="top" width="50"><img src="../' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
 						</tr>
 						<tr>
 							<td><div class="name">' . $award['Name'] . '</div></td>
