@@ -55,7 +55,8 @@
 				array_push($form['msg']['error'],$result->array['Message']);
 			else
 			{
-				if (!empty(trim($result->array['Message'])))
+				$message = trim($result->array['Message']);
+				if (!empty($message))
 					array_push($form['msg']['success'],$result->array['Message']);
 			}
 		}
