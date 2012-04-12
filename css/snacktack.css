@@ -150,6 +150,8 @@ form ul li input[type=text] {
 }
 
 form ul li textarea {
+	font-family: 'Segoe UI', Tahoma, Helvetica;
+	font-size: 17px;
 	overflow: auto;
 	resize: none;
 }
@@ -162,6 +164,7 @@ form ul li input[type=text], form ul li textarea {
 }
 
 input {
+	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
 }
 
