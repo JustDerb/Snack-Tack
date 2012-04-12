@@ -64,7 +64,7 @@
 	$types = st_types_getList();
 	foreach($types as $type)
 	{
-		print('<li><input type="checkbox" name="foodOptions[]" id="'.$type->array['ID'].'" value="'.$type->array['ID'].'">');
+		print('<li><input type="checkbox" name="foodOptions" id="'.$type->array['ID'].'" value="'.$type->array['ID'].'">');
 		print($type->array['Category'].' - '.$type->array['Name']);
 		print('</label></li>');
 	}

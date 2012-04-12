@@ -23,21 +23,25 @@ function validateForm() {
 
 	// Check basic info
 	if (null == form['eventName'].value || "" == form['eventName'].value) {
-		alert("The event does not have a name!");
+		alert("You need to give the event a name!");
 		return false;
 	}
 	if (null == form['eventDescription'].value || "" == form['eventDescription'].value) {
-		alert("The event does not have a description!");
+		alert("You need to give the event a description!");
 		return false;
 	}
 	
 	// Check food options
-	/*
-	var select = form['foodOptions'];
-	if (!select[0].checked && !select[1].checked && !select[2].checked && !select[3].checked && !select[4].checked) {
-		alert("You need to select one food option!");
+	var foodOptions = form["foodOptions"];
+	var flag = false;
+	for (var i = 0; i < foodOptions.length; i++) {
+		if (foodOptions[i].checked)
+			flag = true;
+	}
+	if (!flag) {
+		alert("You need to select a food option!");
 		return false;
-	}*/
+	}
 	
 	form.submit();
 }
