@@ -82,7 +82,13 @@
 			<ul>
 				<li class="head">Phone</li>
 				<li>We use your phone to send you text messages when a Tacked event is about to start.</li>
-				<li><input type="text" name="phone" placeholder="555-555-5555" autocorrect="off" autocomplete="off" value="<?php print($st_user->array['Phone']); ?>"/></li>
+				<li><input type="text" name="phone" placeholder="555-555-5555" autocorrect="off" autocomplete="off" value="
+<?php 
+	if ($_POST['phone'])
+		print($_POST['phone']);
+	else
+		print($st_user->array['Phone']); 
+?>"/></li>
 <?php if ($form['verifyPhone']): ?>
 				<li><input type="text" name="phoneVerify" placeholder="Verification Code" autocorrect="off" autocomplete="off" value=""/></li>
 <?php endif ?>

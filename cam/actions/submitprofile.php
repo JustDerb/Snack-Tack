@@ -4,20 +4,65 @@
 	//$networks = st_user_getNetworks($user, $facebook);
 	if (isset($st_user) && isset($networks))
 	{
+		$form['msg'] = array();
+		$form['msg']['error'] = array();
+		$form['msg']['message'] = array();
+		$form['msg']['success'] = array();
+		$changed_user_info = false;
+		
 		if (array_key_exists('phone', $_POST))
 		{
 			//Set phone
-			if (array_key_exists('phoneVerify', $_POST))
+			$result = st_user_setPhone($st_user->array['fbID'], $_POST['phone']);
+			if ($result->array['Error'] == 1)
+				array_push($form['msg']['error'],$result->array['Message']);
+			else 
 			{
+				$changed_user_info = true;
+				if (trim($result->array['Message']) != "")
+					array_push($form['msg']['success'],$result->array['Message']);
+				//else
+				//	array_push($form['msg']['message'],"Phone number not changed.");
 			}
+			//if (array_key_exists('phoneVerify', $_POST))
+			//{
+			//}
 		}
 		
 		if (array_key_exists('networkOption', $_POST))
 		{
-			//Set network
+			//Check if network changed
+			if ($st_user->array['Network'] != $_POST['networkOption'])
+			{
+				//Set network
+				$isValid = false;
+				foreach ($networks as $network)
+				{
+					if ($network['type'] == 'college')
+					{
+						if ($network['nid'] == $_POST['networkOption'])
+						{
+							$isValid = true;
+							$result = st_user_setNetwork($st_user->array['fbID'], $_POST['networkOption']);
+						}
+					}
+				}
+				if (!$isValid)
+				{
+					array_push($form['msg']['error'],"Invalid network.");
+				}
+				else
+				{
+					$changed_user_info = true;
+					if (trim($result->array['Message']) != "")
+						array_push($form['msg']['success'],$result->array['Message']);
+				}
+			}
 		}
 		
-		$form['msg'] = array();
-		$form['msg']['message'][] = '<pre>'.print_r($_POST,true).'</pre>';
+		if ($changed_user_info)
+			$st_user = st_user_register($user_profile, true);
+			
+		//array_push($form['msg']['message'],'<pre>'.print_r($_POST,true).'</pre>');
 	}
 ?>
