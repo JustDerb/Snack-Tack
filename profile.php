@@ -98,7 +98,11 @@
 			</ul>
 			<input type="hidden" name="form" value="Profile" />
 			<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
+<?php if ($_GET['state']): ?>
+			<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
+<?php else: ?>
 			<div id="back" name="back" onclick="window.history.back();">Back</div>
+<?php endif ?>
 		</form>
 <?php endif ?>
 			
