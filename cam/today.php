@@ -16,6 +16,16 @@
 
 		<ul id="todaysEvents">
 			<li class="head">Today's Events</li>
+			<?php
+				$eventsToday = st_events_getEvents(1);
+				foreach ($eventsToday as $event)
+				{
+					print('<li class="link">');
+					print('<a href="#">');
+					print('<b>'.$event->array['Name'].'</b>');
+					print('</a></li>');
+				}
+			?>
 		</ul>
 
 		<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>

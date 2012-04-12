@@ -250,6 +250,16 @@ require_once 'includes/code_formatter.php';
 				printCode(st_events_lookupEvent($_POST['eventSearch'], $_POST['eventDays'], "date"),true);
 			}
 		?>
+		<h4>User</h4>
+		<form method="post">
+			<table>
+				<tr>
+					<td>Get user Events<input type="hidden" name="form" value="userAllEvent"/></td>
+					<td><input type="submit" name="submit" value="Search"/></td>
+				</tr>
+			</table>
+		</form>
+		<h5>Result</h5>
 		<h4>Delete Event</h4>
 		<form method="post">
 			<table>
