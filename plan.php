@@ -288,7 +288,7 @@
 			-->
 			<input type="hidden" name="form" value="plan" />
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>
-			<div id="cancel" name="cancel" onclick="window.location.replace('index.php')">Cancel</div>
+			<div id="cancel" name="cancel" onclick="window.history.back()">Cancel</div>
 		</form>
 <?php include "includes/labelfix.php"; ?>
 	</body>
