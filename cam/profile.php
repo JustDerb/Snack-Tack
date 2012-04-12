@@ -4,7 +4,7 @@
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
 	$networks = st_user_getNetworks($user, $facebook);
-	require 'actions/submitprofile.php';
+	require "actions/submitprofile.php";
 ?>
 <html>
 	<head>
@@ -18,7 +18,7 @@
 <?php if ($user): ?>
 			<a href="profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
 <?php endif ?>
-		<div id="clear"></div>
+			<div id="clear"></div>
 		</div>
 		
 		<h2>Profile</h2>

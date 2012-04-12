@@ -1,9 +1,9 @@
 <?php 
 	require "includes/fb-login.php"; 
-	require '../api/snacktack.php'; 
+	require "../api/snacktack.php"; 
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
-	require 'actions/submitplan.php';
+	require "actions/submitplan.php";
 ?>
 <html>
 	<head>
@@ -17,7 +17,7 @@
 <?php if ($user): ?>
 			<a href="profile.php"><img src="https://graph.facebook.com/<?php print($user); ?>/picture" alt="" id="fbPicture" /></a>
 <?php endif ?>
-		<div id="clear"></div>
+			<div id="clear"></div>
 		</div>
 		
 <?php if ($form['msg']): ?>
