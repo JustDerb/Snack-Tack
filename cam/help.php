@@ -1,5 +1,5 @@
 <?php require "includes/fb-login.php"; 
-	  require '../api/snacktack.php'; ?>
+	  require "../api/snacktack.php"; ?>
 <html>
 	<head>
 <?php require "includes/head.php"; ?>
@@ -11,7 +11,7 @@
 <?php if ($user): ?>
 			<a href="profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
 <?php endif ?>
-		<div id="clear"></div>
+			<div id="clear"></div>
 		</div>
 
 

@@ -1,6 +1,6 @@
 <?php 
 	require "includes/fb-login.php"; 
-	require '../api/snacktack.php'; 
+	require "../api/snacktack.php"; 
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
 ?>
