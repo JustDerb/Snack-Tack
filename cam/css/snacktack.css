@@ -1,11 +1,11 @@
 ﻿body {
-	/*background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #DBFFFF), color-stop(1, #00A3EF));*/
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d60000), color-stop(50%,#b20b00), color-stop(100%,#770000));
 	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 14px;
 	margin: 0;
 	padding: 0;
 }
+
 
 /* 
  * Header Title CSS
@@ -34,8 +34,9 @@ h2 {
 	text-align: left;
 }
 
+
 /*
- * User Messages
+ * User Messages and Errors
  */
 
 ul.message li:first-child {
@@ -94,13 +95,13 @@ ul li.success strong {
  * Basic Button CSS
  */
 
-ul, ul.form {
+ul {
 	list-style: none;
 	margin: 10px;
 	padding: 0;
 }
 
-ul li#connect a, ul li.head {
+ul li.head, ul li#connect a {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 }
@@ -114,13 +115,16 @@ ul li.head {
 	padding: 0px 10px;
 }
 
-ul li:last-child, ul li:last-child a, ul li div:last-child {
+ul li:last-child, ul li:last-child a, ul li div:last-child, ul li.empty {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
 }
 
 ul li a {
 	background: url(../img/chevron.png) right center no-repeat;
+}
+
+form ul li, ul li a, ul li.empty {
 	background-color: #EEEEEE;
 	border: 1px solid #999999;
 	color: #222222;
@@ -141,42 +145,27 @@ ul li a:hover {
  * Form CSS 
  */
 
-form ul li {
-	background-color: #EEEEEE;
-	border: 1px solid #999999;
-	color: #222222;
-	display: block;
-	font-size: 17px;
-	margin-bottom: -1px;
-	padding: 10px 10px;
-	text-decoration: none;
-}
-
 form ul li input[type=text] {
-	background-color: #EEEEEE;
-	border: solid 0px #E5E5E5;
-	font-family: 'Segoe UI', Tahoma, Helvetica;
-	font-size: 17px;
 	overflow: hidden;
-	padding: 0;
-	width: 100%;
 }
 
 form ul li textarea {
+	overflow: auto;
+	resize: none;
+}
+
+form ul li input[type=text], form ul li textarea {
 	background-color: #EEEEEE;
 	border: solid 0px #E5E5E5;
-	font-family: 'Segoe UI', Tahoma, Helvetica;
-	font-size: 17px;
-	overflow: auto;
 	padding: 0;
-	resize: none;
 	width: 100%;
 }
 
-form ul li input[type=checkbox], form ul li input[type=radio] {
-	display: block;
-	font-family: 'Segoe UI', Tahoma, Helvetica;
+input {
 	font-size: 17px;
+}
+
+form ul li input[type=checkbox], form ul li input[type=radio] {
 	float: left;
 	overflow: hidden;
 }
@@ -198,10 +187,9 @@ form div, div#back {
 	-webkit-border-bottom-right-radius: 8px;
 	border: solid 2px #000000;
 	display: block;
-	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
 	margin: 10px;
-	padding: 10px 10px;
+	padding: 12px 10px;
 	text-align: center;
 }
 
@@ -263,3 +251,8 @@ ul li div.award div.time {
 	font-style: italic;	
 	padding: 0 10px;	
 }
+
+
+/*
+ * Events CSS
+ */

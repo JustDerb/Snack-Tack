@@ -17,39 +17,40 @@
 <?php endif ?>
 			<div id="clear"></div>
 		</div>
-
+		
+		<h2>Awards</h2>
 		<ul>
-			<li class="head">Awards</li>
+			<li class="head">Currently Earned</li>
 <?php
 	$awards = st_award_getAll($st_user->array['ID']);
 	
 	if (empty($awards))
-		print('<li>You don\'t have any awards!</li>');
+		print('<li class="empty">You don\'t have any awards!</li>');
 	else
 		foreach ($awards as $award)
 		{
 			$award = $award->array;
 			print(
-			'<li><div class="award">
-				<table>
-					<tr>
-						<td rowspan="4"><img src="../' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
-					</tr>
-					<tr>
-						<td><div class="name">' . $award['Name'] . '</div></td>
-					</tr>
-					<tr>
-						<td><div class="description">' . $award['Description'] . '</div></td>
-					</tr>
-					<tr>
-						<td><div class="time">Received (' . $award['Received']->format('m/d/y') . ')</div></td>
-					</tr>
-				</table>
-			</div></li>');
-		}
+				'<li><div class="award">
+					<table>
+						<tr>
+							<td rowspan="4"><img src="../' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
+						</tr>
+						<tr>
+							<td><div class="name">' . $award['Name'] . '</div></td>
+						</tr>
+						<tr>
+							<td><div class="description">' . $award['Description'] . '</div></td>
+						</tr>
+						<tr>
+							<td><div class="time">Received (' . $award['Received']->format('m/d/y') . ')</div></td>
+						</tr>
+					</table>
+				</div></li>');
+			}
 ?>
 		</ul>
-		<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>		
+		<div id="back" name="back" onclick="window.location.replace('profile.php')">Back</div>		
 
 <?php include "includes/labelfix.php"; ?>
 	</body>
