@@ -164,11 +164,12 @@
 				<li class="head">Facebook Event URL</li>
 				<li><input type="text" placeholder="(Optional)" name="fburl" id="fburl" autocapitalizer="off" autocorrect="off" autocomplete="off" /></li>
 			</ul>
-
+			<!-- Put in later
 			<ul>
 				<li class="head">Organization</li>
 				<li><input type="text" placeholder="Name of Organization" name="organization" id="organization" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
 			</ul>
+			-->
 			
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>
 			<div id="cancel" name="cancel" onclick="window.location.replace('index.php')">Cancel</div>
