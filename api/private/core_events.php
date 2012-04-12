@@ -53,7 +53,7 @@ function st_events_getEvent($eventID)
 	$eventCreated = false;
 	while ($row = mysql_fetch_assoc($result)) {
 		//Each row carries a different type
-		array_push($alreadyAddedEvent->array['Type'], $row['typeid']);
+		array_push($event->array['Type'], $row['typeid']);
 		if (!$eventCreated)
 		{
 			$event->array['ID'] = $row['id'];
@@ -79,7 +79,7 @@ function st_events_getUsersEvents($internalID)
 	$events = array();
 
 	if(!is_numeric($internalID))
-		return $event;
+		return $events;
 		
 	global $st_sql;
 	
@@ -92,7 +92,7 @@ function st_events_getUsersEvents($internalID)
 		array_push($events, st_events_getEvent($row['id']));
 	}
 	
-	return $event;
+	return $events;
 
 }
 
@@ -252,7 +252,7 @@ EOT;
 
 	
 	if ($result && $result2)
-		return new st_arr_message(0, "Event: ".$event_arr->array['Name']." has been added.", "eventinfo.php?id=".$eventid."&home=1");	
+		return new st_arr_message(0, "Event: ".$event_arr->array['Name']." has been added.", "eventinfo.php?id=".$eventid."&created=1");	
 	else
 		return new st_arr_message(1, "MySQL Error: ".mysql_error($st_sql));	
 }
