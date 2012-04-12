@@ -252,7 +252,7 @@ EOT;
 
 	
 	if ($result && $result2)
-		return new st_arr_message(0, "Event: ".$event_arr->array['Name']." has been added.", "eventinfo.php?id=".$eventid."&created=1");	
+		return new st_arr_message(0, "Event: ".$event_arr->array['Name']." has been added.", "eventinfo.php?id=".$eventid."&home=1");	
 	else
 		return new st_arr_message(1, "MySQL Error: ".mysql_error($st_sql));	
 }
