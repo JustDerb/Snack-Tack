@@ -89,6 +89,7 @@ ul li.success strong {
 	font-weight: bold;
 }
 
+
 /* 
  * Basic Button CSS
  */
@@ -113,7 +114,7 @@ ul li.head {
 	padding: 0px 10px;
 }
 
-ul li:last-child, ul li:last-child a {
+ul li:last-child, ul li:last-child a, ul li div:last-child {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
 }
@@ -132,7 +133,7 @@ ul li a {
 
 ul li a:hover {
 	background-color: #CCCCCC;
-	color: #FFFFFF;
+	color: #000000;
 }
 
 
@@ -219,4 +220,46 @@ form div#cancel {
 
 form div#cancel:hover {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c70a07), color-stop(50%,#d41212), color-stop(51%,#ac0609), color-stop(71%,#ab0b0e), color-stop(100%,#a7131a));
+}
+
+
+/*
+ * Awards CSS
+ */
+ 
+ul li div.award {
+	background-color: #EEEEEE;
+	border: 1px solid #999999;
+	color: #222222;
+	display: block;
+	font-size: 17px;
+	margin-bottom: -1px;
+	padding: 0 10px;
+	text-decoration: none;
+}
+
+ul li div.award table {
+	empty-cells: hide;
+	border-collapse: collapse;
+}
+
+ul li div.award img {
+	vertical-align: middle;
+}
+
+ul li div.award div.name {
+	font-weight: bold;
+	padding: 0 10px;	
+}
+
+ul li div.award div.description {
+	font-size: .8em;
+	padding: 0 10px;	
+}
+
+ul li div.award div.time {
+	color: #222222;	
+	font-size: .6em;
+	font-style: italic;	
+	padding: 0 10px;	
 }

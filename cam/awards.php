@@ -22,7 +22,6 @@
 			<li class="head">Awards</li>
 <?php
 	$awards = st_award_getAll($st_user->array['ID']);
-	//$numAwards = 0;
 	
 	if (empty($awards))
 		print('<li>You don\'t have any awards!</li>');
@@ -30,13 +29,27 @@
 		foreach ($awards as $award)
 		{
 			$award = $award->array;
-			print('<li><div class="award"><img src="../' . $award['Icon'] . '" alt="' . $award['Name'] . '" /><strong>' . $award['Name'] . '</strong> ' . $award['Description'] . ' (' . $award['Received']->format('m/d/y') . ')</div></li>');
-			//$numAwards++;
+			print(
+			'<li><div class="award">
+				<table>
+					<tr>
+						<td rowspan="4"><img src="../' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
+					</tr>
+					<tr>
+						<td><div class="name">' . $award['Name'] . '</div></td>
+					</tr>
+					<tr>
+						<td><div class="description">' . $award['Description'] . '</div></td>
+					</tr>
+					<tr>
+						<td><div class="time">Received (' . $award['Received']->format('m/d/y') . ')</div></td>
+					</tr>
+				</table>
+			</div></li>');
 		}
-	//if ($numAwards == 0)
-	//	print('<li>You don\'t have any awards!</li>');
 ?>
 		</ul>
+		<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>		
 
 <?php include "includes/labelfix.php"; ?>
 	</body>
