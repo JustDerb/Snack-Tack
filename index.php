@@ -1,16 +1,50 @@
-<!DOCTYPE html>
+<?php
+	require "includes/fb-login.php"; 
+	require "../api/snacktack.php";
+?>
 <html>
+	<head>
+<?php require "includes/head.php"; ?>
+	</head>
+	<body>
+		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault(); } // ]]></script>
+		<div id="header">
+			<a href="index.php"><img src="img/logo_mini.png" id="logo" /></a>
+<?php if ($user): ?>
+			<a href="profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
+<?php endif ?>
+			<div id="clear"></div>
+		</div>
 
-<head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>Snack Tack | Home</title>
-</head>
+<?php if ($user): ?>
+		<h2>Howdy, <?php echo $user_profile['first_name']; ?>!</h2>
+<?php endif ?>
 
-<body style="text-align:center">
-	<h1>Snack Tack</h1>
-	<div style="font-size:x-large">
-		<p><a href="test/">API Testing</a></p>
-		<p><a href="cam/">Mobile Site</a></p>
-	</div>
-</body>
+		<ul>
+			<li class="head">Events</li>
+			<li><a href="today.php">Today's Events</a></li>
+<?php if ($user): ?>
+			<li><a href="#">Your Tacked Events</a></li>
+<?php endif ?>
+		</ul>
+		
+		<ul>
+			<li class="head">Event Management</li>
+<?php if ($user): ?>
+			<li><a href="plan.php">Plan</a></li>
+<?php endif ?>
+			<li><a href="find.php">Find</a></li>
+<?php if ($user): ?>
+			<li><a href="promote.php">Promote</a></li>
+<?php endif ?>
+		</ul>
+	
+		<ul>
+			<li class="head">Settings</li>
+			<li><a href="profile.php">Profile</a></li>
+			<li><a href="help.php">Help</a></li>
+			<li><a href="terms.php">Privacy, Terms</a></li>
+		</ul>
+
+	</body>
 </html>
