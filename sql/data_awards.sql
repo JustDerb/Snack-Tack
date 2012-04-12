@@ -1,0 +1,10 @@
+UPDATE `awards` SET `id` = 1,`name` = 'Newborn',`description` = 'User just registered and started using the site.',`icon` = 'img/awards/newborn.png' WHERE `awards`.`id` = 1;
+UPDATE `awards` SET `id` = 2,`name` = 'Let''s Make Money!',`description` = 'User created their first event.',`icon` = 'img/awards/money.png' WHERE `awards`.`id` = 2;
+UPDATE `awards` SET `id` = 3,`name` = 'Organizer',`description` = 'Created 10+ events.',`icon` = 'img/awards/sandwich.png' WHERE `awards`.`id` = 3;
+UPDATE `awards` SET `id` = 4,`name` = 'High Five!',`description` = 'User was rated 5 stars for an event.',`icon` = 'img/awards/highfive.png' WHERE `awards`.`id` = 4;
+UPDATE `awards` SET `id` = 5,`name` = 'Beta Tester',`description` = 'User tested the website while in beta.',`icon` = 'img/awards/beta.png' WHERE `awards`.`id` = 5;
+UPDATE `awards` SET `id` = 6,`name` = 'Ice Scream, You Scream',`description` = 'Rated an ice cream event.',`icon` = 'img/awards/icecream.png' WHERE `awards`.`id` = 6;
+UPDATE `awards` SET `id` = 7,`name` = 'Pizza, Pizza',`description` = 'Rated a pizza event.',`icon` = 'img/awards/pizza.png' WHERE `awards`.`id` = 7;
+UPDATE `awards` SET `id` = 8,`name` = 'Mobile Me',`description` = 'Subscribed to an event with SMS.',`icon` = 'img/awards/phone.png' WHERE `awards`.`id` = 8;
+UPDATE `awards` SET `id` = 9,`name` = 'Fan-Tack-Stic!',`description` = 'Tacked up an event to attend.',`icon` = 'img/awards/tack.png' WHERE `awards`.`id` = 9;
+UPDATE `awards` SET `id` = 10,`name` = 'Popular',`description` = 'Have 20+ people ‘tack’ your event.',`icon` = 'img/awards/people.png' WHERE `awards`.`id` = 10;
