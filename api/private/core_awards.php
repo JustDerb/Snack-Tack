@@ -38,7 +38,6 @@ function st_award_give($internalID, $awardID)
 	return $result;
 }
 
-// TODO: NOT DONE!
 function st_award_getAll($internalID)
 {
 	$awards = array();
