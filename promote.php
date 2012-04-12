@@ -16,7 +16,7 @@
 
 
 
-
+		<div id="back" name="back" onclick="window.history.back();">Back</div>	
 <?php include "includes/labelfix.php"; ?>
 	</body>
 </html>

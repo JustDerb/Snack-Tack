@@ -97,8 +97,8 @@
 <?php endif ?>
 			</ul>
 			<input type="hidden" name="form" value="Profile" />
-			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>
-			<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
+			<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
+			<div id="back" name="back" onclick="window.history.back();">Back</div>
 		</form>
 <?php endif ?>
 			

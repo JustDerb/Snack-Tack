@@ -50,7 +50,7 @@
 			}
 ?>
 		</ul>
-		<div id="back" name="back" onclick="window.location.replace('profile.php')">Back</div>		
+		<div id="back" name="back" onclick="window.history.back();">Back</div>		
 
 <?php include "includes/labelfix.php"; ?>
 	</body>

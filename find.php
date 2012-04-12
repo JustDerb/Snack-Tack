@@ -29,7 +29,7 @@
 			<li class="head">Search Results</li>
 		</ul>
 
-		<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
+		<div id="back" name="back" onclick="window.history.back();">Back</div>
 <?php include "includes/labelfix.php"; ?>
 	</body>
 </html>
