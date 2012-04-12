@@ -49,14 +49,34 @@ function st_events_getEvents($page, $numItems, $sorting = "date")
 //For searchs
 function st_events_lookupEvent($searchTerms, $page, $numItems, $sorting = "date")
 {
-	$events = array();
+	$awards = array();
 	
-	if ($days >= 0)
-	{
+	if ($page < 0)
+		$page = 0;
+	if ($numItems < 1)
+		$numitems = 1;
+		
+	global $st_sql;
 	
+	$searchTerms = mysql_real_escape_string($searchTerms,$st_sql);
+	
+	$sort = "";
+	
+	//Check for record
+	$query = "SELECT * FROM events u,awards a WHERE user='$internalID' and u.awardid=a.id ORDER BY u.received DESC";
+	$result = mysql_query($query, $st_sql);
+	
+	while ($row = mysql_fetch_assoc($result)) {
+		$award = new st_arr_award();
+		$award->array['ID'] = $row['awardid'];
+		$award->array['Name'] = $row['name'];
+		$award->array['Description'] = $row['description'];
+		$award->array['Icon'] = $row['icon'];
+		$award->array['Received'] = st_DateTime_MySQLtoPHP($row['received']);
+	    array_push($awards, $award);
 	}
-	
-	return $events;
+		
+	return $awards;
 }
 
 function st_events_createEvent($event_arr)
@@ -90,6 +110,8 @@ function st_events_createEvent($event_arr)
 		return new st_arr_message(1, "Invalid start date.");
 	if (!preg_match("/^[\d\w\s\,\(\)\-]{4,64}$/i", $event_arr->array['Location']))
 		return new st_arr_message(1, "Location must be 4 to 64 characters long and include alpha-numberic, whitespace, or ,()-");	
+	if (count($event_arr->array['Type']) == 0)
+		return new st_arr_message(1, "No event type specified.");
 	
 	if (!is_int($event_arr->array['Organization']))
 	{
@@ -119,7 +141,35 @@ function st_events_createEvent($event_arr)
 EOT;
 	$result = mysql_query($query, $st_sql);
 	
-	if ($result)
+	$eventidquery = <<<EOT
+	SELECT id FROM events WHERE  
+	owner='$creator' AND networkid='$networkID' AND name='$name' AND description='$description' AND dateStart='$start'
+	AND dateEnd='$end' AND locationstr='$location' AND organizationid='$orgID' AND fbEvent='$fburl'
+EOT;
+	$resultid = mysql_query($eventidquery, $st_sql);
+	$resultid_arr = mysql_fetch_array($resultid);
+	$eventid = $resultid_arr['id'];
+	
+	$values = "";
+	$types = $event_arr->array['Type'];
+	foreach ($types as $type)
+	{
+		$typeid = $location = mysql_real_escape_string($type,$st_sql);
+		$values = $values."('".$eventid."','".$typeid."'), ";
+	}
+	//Remove last to characters to make it valid SQL
+	$values = substr($values, 0, -2);
+	
+	$query2 = <<<EOT
+	INSERT INTO eventstypes 
+	(eventid,typeid) 
+	VALUES 
+	$values
+EOT;
+	$result2 = mysql_query($query2, $st_sql);
+
+	
+	if ($result && $result2)
 		return new st_arr_message(0, "Event: ".$event_arr->array['Name']." has been added.");	
 	else
 		return new st_arr_message(1, "MySQL Error: ".mysql_error($st_sql));	
