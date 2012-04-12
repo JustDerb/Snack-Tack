@@ -182,6 +182,8 @@ function st_events_createEvent($event_arr)
 	
 	
 	//Check for any errors
+	if (empty($event_arr->array['NetworkID']))
+		return new st_arr_message(1, "<a href=\"profile.php\">You need to specify a network in your profile before you can create events!</a>", "profile.php");
 	if (!preg_match("/^[\d\w\s\$\.\,\(\)\-]{8,64}$/i", $event_arr->array['Name']))
 		return new st_arr_message(1, "Name must be 8 to 64 characters long and include alpha-numberic, whitespace, or $.,()-");
 	if (!$event_arr->array['WhenStart'])
