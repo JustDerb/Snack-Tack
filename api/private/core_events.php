@@ -20,7 +20,21 @@ $dir = dirname(__FILE__);
 require_once $dir.'/../arrays.php';
 require_once $dir.'/sql_functions.php';
 
-
+/*
+Event Array
+	"ID" => "-1",
+	"NetworkID" => "-1",
+	"creatorID" => "-1",
+	"Name" => "",
+	"Description" => "",
+	"Type" => array(),
+	"WhenStart" => new DateTime(),
+	"WhenEnd" => new DateTime(),
+	"Location" => "", //Will be location array
+	"FacebookEvent" => "", 
+	"Organization" => "" //Will be organization array
+*/
+    
 //For individual page
 function st_events_getEvent($eventID)
 {
@@ -40,43 +54,72 @@ function st_events_getUsersTacked($internalID)
 }
 
 
-function st_events_getEvents($page, $numItems, $sorting = "date")
+function st_events_getEvents($daysAhead, $sorting = "date")
 {
-	return st_events_lookupEvent("", $page, $numItems, $sorting);
+	return st_events_lookupEvent("", $daysAhead, $sorting);
 }
 
 
 //For searchs
-function st_events_lookupEvent($searchTerms, $page, $numItems, $sorting = "date")
+function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date")
 {
-	$awards = array();
+	$events = array();
 	
-	if ($page < 0)
-		$page = 0;
-	if ($numItems < 1)
-		$numitems = 1;
+	//if ($page < 0 || !is_numeric($page))
+	//	$page = 0;
+	//if (!is_numeric($numItems))
+	//	$numitems = 10;
+	//if ($numItems < 1)
+	//	$numitems = 1;
+	if ($daysAhead < 0 || !is_numeric($daysAhead))
+		$daysAhead = 0;
 		
 	global $st_sql;
 	
 	$searchTerms = mysql_real_escape_string($searchTerms,$st_sql);
 	
-	$sort = "";
+	//if ($sorting == "date")
+		$sort = " ORDER BY e.dateStart ASC";
 	
 	//Check for record
-	$query = "SELECT * FROM events u,awards a WHERE user='$internalID' and u.awardid=a.id ORDER BY u.received DESC";
+	$query = "SELECT * FROM events e,eventstypes t WHERE ((name LIKE '%$searchTerms%')) AND e.id=t.eventid ";
+	$query = $query." AND (e.dateStart < DATE_ADD(NOW(),INTERVAL ".$daysAhead." DAY) AND (e.dateEnd > NOW())) ";
+	$query = $query.$sort;
 	$result = mysql_query($query, $st_sql);
+	if (!$result)
+		print($query);
 	
 	while ($row = mysql_fetch_assoc($result)) {
-		$award = new st_arr_award();
-		$award->array['ID'] = $row['awardid'];
-		$award->array['Name'] = $row['name'];
-		$award->array['Description'] = $row['description'];
-		$award->array['Icon'] = $row['icon'];
-		$award->array['Received'] = st_DateTime_MySQLtoPHP($row['received']);
-	    array_push($awards, $award);
+		$foundEvent = false;
+		//For loop to add the types into array (NOTE: need to figure out if SQL can do this)
+		foreach ($events as $alreadyAddedEvent)
+		{
+			if ($alreadyAddedEvent->array['ID'] == $row['id'])
+			{
+				$foundEvent = true;
+				array_push($alreadyAddedEvent->array['Type'], $row['typeid']);
+				break;
+			}
+		}
+		if (!$foundEvent)
+		{
+			$event = new st_arr_event();	
+			$event->array['ID'] = $row['id'];
+			$event->array['NetworkID'] = $row['networkid'];
+			$event->array['creatorID'] = $row['owner'];
+			$event->array['Name'] = $row['name'];
+			$event->array['Description'] = $row['description'];
+			array_push($event->array['Type'], $row['typeid']);
+			$event->array['WhenStart'] = st_DateTime_MySQLtoPHP($row['dateStart']);
+			$event->array['WhenEnd'] = st_DateTime_MySQLtoPHP($row['dateEnd']);
+			$event->array['Location'] = $row['locationstr'];
+			$event->array['FacebookEvent'] = $row['fbEvent'];
+			$event->array['Organization'] = $row['organizationid'];
+		    array_push($events, $event);
+	    }
 	}
 		
-	return $awards;
+	return $events;
 }
 
 function st_events_createEvent($event_arr)
@@ -86,24 +129,11 @@ function st_events_createEvent($event_arr)
 		return new st_arr_message(1, "[st_events_createEvent] $event_arr is not of type st_arr_message");
 	}
 	
-	/*
-		Event Array
-			"ID" => "-1",
-    		"NetworkID" => "-1",
-    		"creatorID" => "-1",
-    		"Name" => "",
-    		"Description" => "",
-    		"Type" => array(),
-    		"WhenStart" => new DateTime(),
-    		"WhenEnd" => new DateTime(),
-    		"Location" => "", //Will be location array
-    		"FacebookEvent" => "", 
-    		"Organization" => "" //Will be organization array
-    */
+	
 	
 	//Check for any errors
-	if (!preg_match("/^[\d\w\s\$\.]{8,64}$/i", $event_arr->array['Name']))
-		return new st_arr_message(1, "Name must be 8 to 64 characters long and include alpha-numberic, whitespace, or $ or .");
+	if (!preg_match("/^[\d\w\s\$\.\,\(\)\-]{8,64}$/i", $event_arr->array['Name']))
+		return new st_arr_message(1, "Name must be 8 to 64 characters long and include alpha-numberic, whitespace, or $.,()-");
 	if (!$event_arr->array['WhenStart'])
 		return new st_arr_message(1, "Invalid start date.");
 	if (!$event_arr->array['WhenEnd'])

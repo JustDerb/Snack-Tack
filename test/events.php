@@ -231,7 +231,11 @@ require_once 'includes/code_formatter.php';
 				</tr>
 				<tr>
 					<td>Search:</td>
-					<td><input type="text" name="eventSearch"/></td>
+					<td><input type="text" name="eventSearch" value="<?php if($_POST['eventSearch']) print $_POST['eventSearch'];?>"/></td>
+				</tr>
+				<tr>
+					<td>Days Ahead: (NUMBER)</td>
+					<td><input type="text" name="eventDays" value="<?php if($_POST['eventDays']) print $_POST['eventDays']; else print 0; ?>"/></td>
 				</tr>
 				<tr>
 					<td><input type="hidden" name="form" value="searchEvent"/></td>
@@ -243,7 +247,7 @@ require_once 'includes/code_formatter.php';
 		<?php
 			if ($_POST['form'] == 'searchEvent')
 			{
-				printCode(st_events_lookupEvent($_POST['eventSearch'], 0, 25, "date"),true);
+				printCode(st_events_lookupEvent($_POST['eventSearch'], $_POST['eventDays'], "date"),true);
 			}
 		?>
 		<h4>Delete Event</h4>
