@@ -136,8 +136,8 @@ function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date")
 	$query = $query." AND (e.dateStart < DATE_ADD(NOW(),INTERVAL ".$daysAhead." DAY) AND (e.dateEnd > NOW())) ";
 	$query = $query.$sort;
 	$result = mysql_query($query, $st_sql);
-	if (!$result)
-		print($query);
+	//if (!$result)
+	//	print($query);
 	
 	while ($row = mysql_fetch_assoc($result)) {
 		$foundEvent = false;
