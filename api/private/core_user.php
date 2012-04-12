@@ -111,6 +111,9 @@ function st_user_getNetworks($fbID, $facebookObj)
 
 function st_user_register($facebookProfile, $check = false)
 {
+	if (empty($facebookProfile['id']))
+		return NULL;
+
 	if ($check)
 	{
 		if (st_user_isRegistered($facebookProfile['id']))
