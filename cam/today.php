@@ -17,12 +17,13 @@
 		<ul id="todaysEvents">
 			<li class="head">Today's Events</li>
 			<?php
-				$eventsToday = st_events_getEvents(0);
+				$eventsToday = st_events_getEvents(1);
 				foreach ($eventsToday as $event)
 				{
-					print('<li>');
-					print('Event Here');
-					print('</li>');
+					print('<li class="link">');
+					print('<a href="#">');
+					print('<b>'.$event->array['Name'].'</b>');
+					print('</a></li>');
 				}
 			?>
 		</ul>
