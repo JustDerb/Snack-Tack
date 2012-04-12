@@ -147,21 +147,24 @@ ul li a:hover {
 
 form ul li input[type=text] {
 	overflow: hidden;
+	padding: 0 4px;
 }
 
 form ul li textarea {
+	font-family: 'Segoe UI', Tahoma, Helvetica;
+	font-size: 17px;
 	overflow: auto;
 	resize: none;
 }
 
 form ul li input[type=text], form ul li textarea {
 	background-color: #EEEEEE;
-	border: solid 0px #E5E5E5;
-	padding: 0;
+	border: solid 1px #E5E5E5;
 	width: 100%;
 }
 
 input {
+	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
 }
 

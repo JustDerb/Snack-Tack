@@ -30,9 +30,9 @@ function validateForm() {
 		alert("You need to give the event a description!");
 		return false;
 	}
-	
+
 	// Check food options
-	var foodOptions = form["foodOptions"];
+	var foodOptions = form["foodOptions[]"];
 	var flag = false;
 	for (var i = 0; i < foodOptions.length; i++) {
 		if (foodOptions[i].checked)
