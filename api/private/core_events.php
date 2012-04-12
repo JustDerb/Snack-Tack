@@ -38,12 +38,61 @@ Event Array
 //For individual page
 function st_events_getEvent($eventID)
 {
+	$event = new st_arr_event();
+
+	if(!is_numeric($eventID))
+		return $event;
+		
+	global $st_sql;
 	
+	$eventID = mysql_real_escape_string($eventID,$st_sql);
+	
+	$query = "SELECT * FROM events e,eventstypes t WHERE id='$eventID' AND e.id=t.eventid";
+	$result = mysql_query($query, $st_sql);	
+	
+	$eventCreated = false;
+	while ($row = mysql_fetch_assoc($result)) {
+		//Each row carries a different type
+		array_push($alreadyAddedEvent->array['Type'], $row['typeid']);
+		if (!$eventCreated)
+		{
+			$event->array['ID'] = $row['id'];
+			$event->array['NetworkID'] = $row['networkid'];
+			$event->array['creatorID'] = $row['owner'];
+			$event->array['Name'] = $row['name'];
+			$event->array['Description'] = $row['description'];
+			$event->array['WhenStart'] = st_DateTime_MySQLtoPHP($row['dateStart']);
+			$event->array['WhenEnd'] = st_DateTime_MySQLtoPHP($row['dateEnd']);
+			$event->array['Location'] = $row['locationstr'];
+			$event->array['FacebookEvent'] = $row['fbEvent'];
+			$event->array['Organization'] = $row['organizationid'];
+		    $eventCreated = true;
+	    }
+	}
+	
+	return $event;
 }
 
 //For users page
 function st_events_getUsersEvents($internalID)
 {
+	$events = array();
+
+	if(!is_numeric($internalID))
+		return $event;
+		
+	global $st_sql;
+	
+	$internalID = mysql_real_escape_string($internalID,$st_sql);
+	
+	$query = "SELECT * FROM events e WHERE owner='$internalID'";
+	$result = mysql_query($query, $st_sql);	
+
+	while ($row = mysql_fetch_assoc($result)) {
+		array_push($events, st_events_getEvent($row['id']));
+	}
+	
+	return $event;
 
 }
 
@@ -54,7 +103,7 @@ function st_events_getUsersTacked($internalID)
 }
 
 
-function st_events_getEvents($daysAhead, $sorting = "date")
+function st_events_getEvents($daysAhead = 0, $sorting = "date")
 {
 	return st_events_lookupEvent("", $daysAhead, $sorting);
 }
@@ -77,6 +126,7 @@ function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date")
 	global $st_sql;
 	
 	$searchTerms = mysql_real_escape_string($searchTerms,$st_sql);
+	$daysAhead = mysql_real_escape_string($daysAhead,$st_sql);
 	
 	//if ($sorting == "date")
 		$sort = " ORDER BY e.dateStart ASC";
