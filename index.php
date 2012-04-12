@@ -46,5 +46,6 @@
 			<li><a href="terms.php">Privacy, Terms</a></li>
 		</ul>
 
+<?php include "includes/labelfix.php"; ?>
 	</body>
 </html>
