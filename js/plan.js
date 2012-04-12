@@ -1,22 +1,6 @@
 $(document).ready(function() {
-	onloadChangeDate();
 	
 });
-
-function onloadChangeDate() {
-	var form = document.forms["eventForm"];
-	var fullDate = new Date();
-	
-	// Change all the default select options to today's date
-	var month = form['month'];
-	$(month[fullDate.getMonth()]).attr('selected', 'true');
-	
-	var date = form['date'];
-	$(date[fullDate.getDate() - 1]).attr('selected', 'true');
-	
-	var year = form['year'];
-	$(year[fullDate.getFullYear()]).attr('selected', 'true');
-}
 
 function validateForm() {
 	var form = document.forms["eventForm"];
