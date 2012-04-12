@@ -50,6 +50,9 @@ if ($user) {
   $loginUrl = $facebook->getLoginUrl();
 }
 
+
+require_once 'includes/code_formatter.php';
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -236,6 +239,13 @@ if ($user) {
 				</tr>
 			</table>
 		</form>
+		<h5>Results</h5>
+		<?php
+			if ($_POST['form'] == 'searchEvent')
+			{
+				printCode(st_events_lookupEvent($_POST['eventSearch'], 0, 25, "date"),true);
+			}
+		?>
 		<h4>Delete Event</h4>
 		<form method="post">
 			<table>
