@@ -1,5 +1,10 @@
-<?php require "includes/fb-login.php"; 
-	  require '../api/snacktack.php'; ?>
+<?php 
+	require "includes/fb-login.php"; 
+	require '../api/snacktack.php'; 
+	//Grab our data before we include our form PHP code
+	$st_user = st_user_register($user_profile, true);
+	require 'actions/submitplan.php';
+?>
 <html>
 	<head>
 <?php require "includes/head.php"; ?>	
@@ -10,25 +15,60 @@
 		<div id="header">
 			<a href="index.php"><img src="img/logo_mini.png" id="logo" /></a>
 <?php if ($user): ?>
-			<a href="profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
+			<a href="profile.php"><img src="https://graph.facebook.com/<?php print($user); ?>/picture" alt="" id="fbPicture" /></a>
 <?php endif ?>
 		<div id="clear"></div>
 		</div>
 		
+<?php if ($form['msg']): ?>
+		<ul class="message">
+			<?php
+				if (is_array($form['msg']['error']))
+				{
+					foreach ($form['msg']['error'] as $msg)
+					{
+						print('<li class="error">'.$msg.'</li>');
+					}
+				}
+				if (is_array($form['msg']['success']))
+				{
+					foreach ($form['msg']['success'] as $msg)
+					{
+						print('<li class="success">'.$msg.'</li>');
+					}
+				}
+				if (is_array($form['msg']['message']))
+				{
+					foreach ($form['msg']['message'] as $msg)
+					{
+						print('<li class="message">'.$msg.'</li>');
+					}
+				}
+			?>
+		</ul>
+<?php endif ?>
+
+		
 		<form id="eventForm" name="eventForm" method="post">
 			<ul>
 				<li class="head">Basic Info</li>
-				<li><input type="text" placeholder="Event Name" name="eventName" id="eventName" autocapitalizer="on" autocorrect="off" autocomplete="off" /></li>
-				<li><textarea placeholder="Event Description" name="eventDescription" id="eventDescription" rows="3" wrap="on"></textarea></li>
+				<li><input type="text" placeholder="Event Name" name="eventName" id="eventName" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_POST['eventName']) print($_POST['eventName']); ?>"/></li>
+				<li>
+					<textarea placeholder="Event Description" name="eventDescription" id="eventDescription" rows="3" wrap="on"><?php if ($_POST['eventDescription']) print($_POST['eventDescription']); ?></textarea>
+				</li>
 			</ul>
 			
 			<ul>
 				<li class="head">Food Options</li>
-				<li><input type="checkbox" name="foodOptions" id="pizza" value="pizza" /><label for="pizza">Pizza</label></li>
-				<li><input type="checkbox" name="foodOptions" id="ice cream" value="ice cream" /><label for="ice cream">Ice Cream</label></li>
-				<li><input type="checkbox" name="foodOptions" id="root beer floats" value="root beer floats" /><label for="root beer floats">Root Beer Floats</label></li>
-				<li><input type="checkbox" name="foodOptions" id="apparel" value="apparel" /><label for="apparel">Apparel</label></li>
-				<li><input type="checkbox" name="foodOptions" id="other" value="other"/><label for="other">Other</label></li>
+<?php
+	$types = st_types_getList();
+	foreach($types as $type)
+	{
+		print('<li><input type="checkbox" name="foodOptions[]" id="'.$type->array['ID'].'" value="'.$type->array['ID'].'">');
+		print($type->array['Category'].' - '.$type->array['Name']);
+		print('</label></li>');
+	}
+?>
 			</ul>
 			
 			<ul>
@@ -38,14 +78,14 @@
 <?php 
 	$months = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 	foreach ($months as $month)
-		echo "<option value=\"" . $month . "\">" . $month . "</option>";
+		print("<option value=\"" . $month . "\">" . $month . "</option>");
 ?>
 					</select>
 					
 					<select name="date">
 <?php
 	for ($i = 1; $i < 32; $i++)
-		echo "<option value=\"" . $i . "\">" . $i . "</option>";
+		print("<option value=\"" . $i . "\">" . $i . "</option>");
 ?>
 					</select>
 					
@@ -62,7 +102,12 @@
 					<select name="startHour">
 <?php
 	for ($i = 1; $i < 13; $i++)
-		echo "<option value=\"" . $i . "\">" . $i . "</option>";
+	{
+		print("<option value=\"" . $i . "\"");
+		if ($i == 12)
+			print(" selected=\"selected\"");
+		print(">" . $i . "</option>");
+	}
 ?>
 					</select>
 					:
@@ -77,7 +122,7 @@
 					&nbsp;&nbsp;
 					<select name="startAMPM">
 						<option>AM</option>
-						<option>PM</option>
+						<option selected="selected">PM</option>
 					</select>
 				</li>
 				<li>
@@ -85,7 +130,12 @@
 					<select name="endHour">
 <?php
 	for ($i = 1; $i < 13; $i++)
-		echo "<option value=\"" . $i . "\">" . $i . "</option>";
+	{
+		print("<option value=\"" . $i . "\"");
+		if ($i == 12)
+			print(" selected=\"selected\"");
+		print(">" . $i . "</option>");
+	}
 ?>
 					</select>
 					:
@@ -100,7 +150,7 @@
 					&nbsp;&nbsp;
 					<select name="endAMPM">
 						<option>AM</option>
-						<option>PM</option>
+						<option selected="selected">PM</option>
 					</select>					
 				</li>
 			</ul>
