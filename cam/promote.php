@@ -11,7 +11,7 @@
 <?php if ($user): ?>
 			<a href="profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
 <?php endif ?>
-		<div id="clear"></div>
+			<div id="clear"></div>
 		</div>
 
 

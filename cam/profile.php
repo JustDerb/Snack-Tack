@@ -1,6 +1,6 @@
 <?php 
 	require "includes/fb-login.php"; 
-	require '../api/snacktack.php'; 
+	require "../api/snacktack.php"; 
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
 	$networks = st_user_getNetworks($user, $facebook);
@@ -25,6 +25,10 @@
 		<ul>
 <?php if ($user): ?>
 			<li id="connect"><a href="<?php echo $logoutUrl; ?>">Logout of Snack Tack</a></li>
+		</ul>
+		<ul>
+			<li class="head">Awards</li>
+			<li><a href="awards.php">View Your Awards</a></li>
 <?php else: ?>
 			<li id="connect"><a href="<?php echo $loginUrl; ?>">Connect with Facebook</a></li>
 <?php endif ?>
@@ -82,8 +86,7 @@
 			<ul>
 				<li class="head">Phone</li>
 				<li>We use your phone to send you text messages when a Tacked event is about to start.</li>
-				<li><input type="text" name="phone" placeholder="555-555-5555" autocorrect="off" autocomplete="off" value="
-<?php 
+				<li><input type="text" name="phone" placeholder="555-555-5555" autocorrect="off" autocomplete="off" value="<?php 
 	if ($_POST['phone'])
 		print($_POST['phone']);
 	else
@@ -97,25 +100,8 @@
 			<div id="submit" name="submit" onclick="return validateForm()">Submit</div>
 			<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
 		</form>
-		
-		<ul class="message">
-			<li class="head">Awards</li>
-<?php
-	$awards_arr = st_award_getAll($st_user->array['ID']);
-	$numAwards = 0;
-	
-	foreach ($awards_arr as $award)
-	{
-		$award = $award->array;
-		print('<li><img src="../'.$award['Icon'].'" alt="'.$award['Name'].'" /> <strong>'.$award['Name'].'</strong> '.$award['Description'].' ('.$award['Received']->format('m/d/y h:ia').')</li>');
-		$numAwards++;
-	}
-	if ($numAwards == 0)
-		print('<li>You don\'t have any awards!</li>');
-?>
-		</ul>
 <?php endif ?>
-		
+			
 <?php include "includes/labelfix.php"; ?>
 	</body>
 </html>
