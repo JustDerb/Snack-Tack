@@ -64,6 +64,11 @@ function st_user_setPhone($fbID, $number)
 {
 	global $st_sql;
 	
+	//Error checking
+	if (!preg_match("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i", $number))
+		return new st_arr_message(1, "Invalid phone number.");
+	$number = str_replace(array(' ','.','-','(',')'), "", $number);
+	
 	$fbID = mysql_real_escape_string($fbID,$st_sql);	
 	$number = mysql_real_escape_string($number,$st_sql);
 	
@@ -71,7 +76,10 @@ function st_user_setPhone($fbID, $number)
 	$query = "UPDATE users SET phone='$number' WHERE fbid='$fbID'";
 	$result = mysql_query($query, $st_sql);
 	
-	return $result;
+	if (mysql_affected_rows($st_sql) == 0)
+		return new st_arr_message(0, "");
+	else
+		return new st_arr_message(0, "Phone number updated.");
 }
 
 function st_user_setNetwork($fbID, $networkid)
@@ -85,7 +93,10 @@ function st_user_setNetwork($fbID, $networkid)
 	$query = "UPDATE users SET networkid='$networkid' WHERE fbid='$fbID'";
 	$result = mysql_query($query, $st_sql);
 	
-	return $result;
+	if (mysql_affected_rows($st_sql) == 0)
+		return new st_arr_message(0, "");
+	else
+		return new st_arr_message(0, "Primary network updated.");
 }
 
 function st_user_getNetworks($fbID, $facebookObj)
