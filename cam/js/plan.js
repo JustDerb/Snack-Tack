@@ -32,11 +32,12 @@ function validateForm() {
 	}
 	
 	// Check food options
+	/*
 	var select = form['foodOptions'];
 	if (!select[0].checked && !select[1].checked && !select[2].checked && !select[3].checked && !select[4].checked) {
 		alert("You need to select one food option!");
 		return false;
-	}
+	}*/
 	
 	form.submit();
 }
