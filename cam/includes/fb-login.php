@@ -23,7 +23,7 @@ $facebook = new Facebook(array(
   'secret' => '9367c3a6f4bfd318cf405d014841ea41',
 ));
 
-if ($_GET['logout'])
+if (isset($_GET['logout']))
     $facebook->destroySession(); 
 
 // Get User ID
