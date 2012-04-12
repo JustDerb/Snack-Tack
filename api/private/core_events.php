@@ -138,6 +138,8 @@ function st_events_createEvent($event_arr)
 		return new st_arr_message(1, "Invalid start date.");
 	if (!$event_arr->array['WhenEnd'])
 		return new st_arr_message(1, "Invalid start date.");
+	if ($event_arr->array['WhenStart'] > $event_arr->array['WhenEnd'])
+		return new st_arr_message(1, "Invalid date range. Start date is after it ends.");
 	if (!preg_match("/^[\d\w\s\,\(\)\-]{4,64}$/i", $event_arr->array['Location']))
 		return new st_arr_message(1, "Location must be 4 to 64 characters long and include alpha-numberic, whitespace, or ,()-");	
 	if (count($event_arr->array['Type']) == 0)
