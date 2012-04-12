@@ -28,7 +28,7 @@ function st_types_getList()
 	$types = array();
 	
 	//Check for record
-	$query = "SELECT t.id,c.id AS 'categoryid',c.name AS 'category',c.description AS 'categorydesc',t.name,t.description FROM `eventcategory` c, `eventtypes` t WHERE c.id=t.category";
+	$query = "SELECT t.id,c.id AS 'categoryid',c.name AS 'category',c.description AS 'categorydesc',t.name,t.description FROM `eventcategory` c, `eventtypes` t WHERE c.id=t.category ORDER BY c.id ASC";
 	$result = mysql_query($query, $st_sql);
 	
 	while ($row = mysql_fetch_assoc($result)) {
