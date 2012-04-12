@@ -24,7 +24,7 @@ require_once $dir.'/sql_functions.php';
 //For individual page
 function st_events_getEvent($eventID)
 {
-
+	
 }
 
 //For users page
@@ -67,7 +67,8 @@ function st_events_createEvent($event_arr)
 	}
 	
 	/*
-	"ID" => "-1",
+		Event Array
+			"ID" => "-1",
     		"NetworkID" => "-1",
     		"creatorID" => "-1",
     		"Name" => "",
@@ -77,8 +78,8 @@ function st_events_createEvent($event_arr)
     		"WhenEnd" => new DateTime(),
     		"Location" => "", //Will be location array
     		"FacebookEvent" => "", 
-    		"Organization" => "" //Will 
-    	*/
+    		"Organization" => "" //Will be organization array
+    */
 	
 	//Check for any errors
 	if (!preg_match("/^[\d\w\s\$\.]{8,64}$/i", $event_arr->array['Name']))
