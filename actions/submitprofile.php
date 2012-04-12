@@ -54,7 +54,7 @@
 				else
 				{
 					$changed_user_info = true;
-					if (trim($result->array['Message']) != "")
+					if (!empty(trim($result->array['Message'])))
 						array_push($form['msg']['success'],$result->array['Message']);
 				}
 			}
