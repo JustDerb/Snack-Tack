@@ -14,14 +14,7 @@
 		<script type="text/javascript" src="js/find.js"></script>
 	</head>
 	<body>
-		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault(); } // ]]></script>
-		<div id="header">
-			<a href="index.php"><img src="img/logo_mini.png" id="logo" /></a>
-<?php if ($user): ?>
-			<a href="profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
-<?php endif ?>
-			<div id="clear"></div>
-		</div>
+<?php include "includes/header.php"; ?>
 
 <?php if (array_key_exists('terms', $_GET) && empty($events)): ?>
 		<ul class="message">

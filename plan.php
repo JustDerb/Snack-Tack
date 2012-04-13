@@ -11,14 +11,7 @@
 		<script type="text/javascript" src="js/plan.js"></script>
 	</head>
 	<body>
-		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault(); } // ]]></script>
-		<div id="header">
-			<a href="index.php"><img src="img/logo_mini.png" id="logo" /></a>
-<?php if ($user): ?>
-			<a href="profile.php"><img src="https://graph.facebook.com/<?php print($user); ?>/picture" alt="" id="fbPicture" /></a>
-<?php endif ?>
-			<div id="clear"></div>
-		</div>
+<?php include "includes/header.php"; ?>
 		
 <?php if ($form['msg']): ?>
 		<ul class="message">
