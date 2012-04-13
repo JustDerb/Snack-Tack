@@ -28,8 +28,8 @@ function st_award_give($internalID, $awardID)
 		
 	global $st_sql;
 	
-	$internalID = mysql_real_escape_string($internalID,$st_sql);
-	$awardID =    mysql_real_escape_string($awardID,$st_sql);		
+	$internalID = st_mysql_encode($internalID,$st_sql);
+	$awardID =    st_mysql_encode($awardID,$st_sql);		
 	
 	//Check for record
 	$query = "INSERT INTO userawards(user,awardid,received) VALUES ('$internalID','$awardID',NOW())";
@@ -47,7 +47,7 @@ function st_award_getAll($internalID)
 		
 	global $st_sql;
 	
-	$internalID = mysql_real_escape_string($internalID,$st_sql);	
+	$internalID = st_mysql_encode($internalID,$st_sql);	
 	
 	//Check for record
 	$query = "SELECT * FROM userawards u,awards a WHERE user='$internalID' and u.awardid=a.id ORDER BY u.received DESC";

@@ -51,6 +51,8 @@ function st_types_getType($typeid)
 	$type = new st_arr_types();
 	
 	global $st_sql;
+	
+	$typeid = st_mysql_encode($typeid,$st_sql);
 		
 	//Check for record
 	$query = "SELECT t.id,t.icon,c.id AS 'categoryid',c.name AS 'category',c.description AS 'categorydesc',t.name,t.description FROM `category` c, `types` t WHERE c.id=t.category AND t.id='$typeid'";

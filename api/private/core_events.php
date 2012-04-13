@@ -45,7 +45,7 @@ function st_events_getEvent($eventID)
 		
 	global $st_sql;
 	
-	$eventID = mysql_real_escape_string($eventID,$st_sql);
+	$eventID = st_mysql_encode($eventID,$st_sql);
 	
 	$query = "SELECT * FROM events e,eventstypes t WHERE id='$eventID' AND e.id=t.eventid";
 	$result = mysql_query($query, $st_sql);	
@@ -83,7 +83,7 @@ function st_events_getUsersEvents($internalID)
 		
 	global $st_sql;
 	
-	$internalID = mysql_real_escape_string($internalID,$st_sql);
+	$internalID = st_mysql_encode($internalID,$st_sql);
 	
 	$query = "SELECT * FROM events e WHERE owner='$internalID'";
 	$result = mysql_query($query, $st_sql);	
@@ -125,8 +125,8 @@ function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date")
 		
 	global $st_sql;
 	
-	$searchTerms = mysql_real_escape_string($searchTerms,$st_sql);
-	$daysAhead = mysql_real_escape_string($daysAhead,$st_sql);
+	$searchTerms = st_mysql_encode($searchTerms,$st_sql);
+	$daysAhead = st_mysql_encode($daysAhead,$st_sql);
 	
 	//if ($sorting == "date")
 		$sort = " ORDER BY e.dateStart ASC";
@@ -206,15 +206,16 @@ function st_events_createEvent($event_arr)
 	global $st_sql;
 	
 	//Escape all our data
-	$creator = mysql_real_escape_string($event_arr->array['creatorID'],$st_sql);
-	$networkID = mysql_real_escape_string($event_arr->array['NetworkID'],$st_sql);	
-	$name = mysql_real_escape_string($event_arr->array['Name'],$st_sql);	
-	$description = mysql_real_escape_string($event_arr->array['Description'],$st_sql);	
-	$start = mysql_real_escape_string(st_DateTime_PHPtoMySQL($event_arr->array['WhenStart']),$st_sql);	
-	$end = mysql_real_escape_string(st_DateTime_PHPtoMySQL($event_arr->array['WhenEnd']),$st_sql);	
-	$location = mysql_real_escape_string($event_arr->array['Location'],$st_sql);	
-	$fburl = mysql_real_escape_string($event_arr->array['FacebookEvent'],$st_sql);	
-	$orgID = mysql_real_escape_string($event_arr->array['Organization'],$st_sql);		
+	$creator = st_mysql_encode($event_arr->array['creatorID'],$st_sql);
+	$networkID = st_mysql_encode($event_arr->array['NetworkID'],$st_sql);	
+	$name = st_mysql_encode($event_arr->array['Name'],$st_sql);	
+	$db = $event_arr->array['Description'];
+	$description = st_mysql_encode($event_arr->array['Description'],$st_sql);	
+	$start = st_mysql_encode(st_DateTime_PHPtoMySQL($event_arr->array['WhenStart']),$st_sql);	
+	$end = st_mysql_encode(st_DateTime_PHPtoMySQL($event_arr->array['WhenEnd']),$st_sql);	
+	$location = st_mysql_encode($event_arr->array['Location'],$st_sql);	
+	$fburl = st_mysql_encode($event_arr->array['FacebookEvent'],$st_sql);	
+	$orgID = st_mysql_encode($event_arr->array['Organization'],$st_sql);		
 	
 	//Check for record
 	$query = <<<EOT
@@ -238,7 +239,7 @@ EOT;
 	$types = $event_arr->array['Type'];
 	foreach ($types as $type)
 	{
-		$typeid = $location = mysql_real_escape_string($type,$st_sql);
+		$typeid = $location = st_mysql_encode($type,$st_sql);
 		$values = $values."('".$eventid."','".$typeid."'), ";
 	}
 	//Remove last to characters to make it valid SQL
