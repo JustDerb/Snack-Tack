@@ -278,16 +278,19 @@ ul.message li a {
 	text-decoration: none;	
 }
 
+ul.message li.error,
 ul.message li.error a {
 	background-color: #FF9900;
 	color: #000000;
 }
 
+ul.message li.message,
 ul.message li.message a {
 	background: #FFFF00;
 	color: #000000;
 }
 
+ul.message li.success,
 ul.message li.success a {
 	background: #00CC00;
 	color: #000000;
