@@ -222,31 +222,19 @@ table {
 	border-collapse: collapse;
 }
 
-div.award div.name {
+table div.name, table div.description, table div.time {
 	padding: 0 10px;
 }
 
-table span.name, table span.time {
-	padding: 0;
-}
-
-div.award div.name, table span.name {
+table div.name, table div.name {
 	font-weight: bold;
 }
 
-div.award div.description {
-	padding: 0 10px;
-}
-
 table div.description {
-	padding: 0;
-}
-
-div.award div.description, table div.description {
 	font-size: .8em;
 }
 
-div.award div.time {
+table span.time {
 	color: #222222;	
 	font-size: .6em;
 	font-style: italic;	

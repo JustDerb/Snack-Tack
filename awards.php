@@ -31,7 +31,7 @@
 		{
 			$award = $award->array;
 			print(
-				'<li><div class="award">
+				'<li><div class="table">
 					<table>
 						<tr>
 							<td rowspan="4" valign="top" width="50"><img src="' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
@@ -43,7 +43,7 @@
 							<td><div class="description">' . $award['Description'] . '</div></td>
 						</tr>
 						<tr>
-							<td><div class="time">Received (' . $award['Received']->format('m/d/y') . ')</div></td>
+							<td><span class="time">Received (' . $award['Received']->format('m/d/y') . ')</span></td>
 						</tr>
 					</table>
 				</div></li>');
