@@ -3,32 +3,35 @@
 	require "api/snacktack.php"; 
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
-	$networks = st_user_getNetworks($user, $facebook);
-	require "actions/submitprofile.php";
-	
-	$networks_string = "";
-	$gotone = false;
-	foreach ($networks as $network)
+	if ($user)
 	{
-		if ($network['type'] == 'college')
+		$networks = st_user_getNetworks($user, $facebook);
+		require "actions/submitprofile.php";
+		
+		$networks_string = "";
+		$gotone = false;
+		foreach ($networks as $network)
 		{
-			$networks_string = $networks_string.'<li><input type="radio" name="networkOption" value="' . $network['nid'] . '" id="' . $network['nid'] . '" ';
-			if ($network['nid'] == $st_user->array['Network'])
+			if ($network['type'] == 'college')
 			{
-				$gotone = true;
-				$networks_string = $networks_string.'checked';
+				$networks_string = $networks_string.'<li><input type="radio" name="networkOption" value="' . $network['nid'] . '" id="' . $network['nid'] . '" ';
+				if ($network['nid'] == $st_user->array['Network'])
+				{
+					$gotone = true;
+					$networks_string = $networks_string.'checked';
+				}
+				$networks_string = $networks_string.' /><label for="' . $network['nid'] . '">' . $network['name'] . '</label></li>';
 			}
-			$networks_string = $networks_string.' /><label for="' . $network['nid'] . '">' . $network['name'] . '</label></li>';
 		}
-	}
-	if (!$gotone || array_key_exists('nocollege', $_GET))
-	{
-		array_push($form['msg']['error'],"Uh-oh! You need to be in a college network to be able to use this site!");
-	}
-	if (!$gotone)
-	{
-		$networks_string = $networks_string.'<li><strong>You are not in any college networks!</strong></li>';
-		array_push($form['msg']['error'],"Please log into Facebook and check to make sure you are accepted into a college network.");
+		if (!$gotone || array_key_exists('nocollege', $_GET))
+		{
+			array_push($form['msg']['error'],"Uh-oh! You need to be in a college network to be able to use this site!");
+		}
+		if (!$gotone)
+		{
+			$networks_string = $networks_string.'<li><strong>You are not in any college networks!</strong></li>';
+			array_push($form['msg']['error'],"Please log into Facebook and check to make sure you are accepted into a college network.");
+		}
 	}
 ?>
 <html>
