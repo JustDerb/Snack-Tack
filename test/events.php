@@ -254,12 +254,22 @@ require_once 'includes/code_formatter.php';
 		<form method="post">
 			<table>
 				<tr>
-					<td>Get user Events<input type="hidden" name="form" value="userAllEvent"/></td>
+					<td>Get user Events (ID):</td>
+					<td><input type="text" name="eventUser" value="<?php if ($_POST['eventUser']) print($_POST['eventUser']); else print($st_user->array['ID']);?>"/></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="form" value="userAllEvent"/></td>
 					<td><input type="submit" name="submit" value="Search"/></td>
 				</tr>
 			</table>
 		</form>
 		<h5>Result</h5>
+		<?php
+			if ($_POST['form'] == 'userAllEvent')
+			{
+				printCode(st_events_getUsersEvents($_POST['eventUser']),true);
+			}
+		?>
 		<h4>Delete Event</h4>
 		<form method="post">
 			<table>

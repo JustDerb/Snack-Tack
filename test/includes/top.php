@@ -11,7 +11,10 @@
 				else
 				{
 					$st_user = st_user_register($user_profile); 
-					print("Congratulations! You have been registered!");
+					if ($st_user == NULL)
+						$user = NULL;
+					else
+						print("Congratulations! You have been registered!");
 				}
 			?></p>
 			<a href="<?php echo $logoutUrl; ?>">Logout</a>
