@@ -21,10 +21,14 @@
 			$networks_string = $networks_string.' /><label for="' . $network['nid'] . '">' . $network['name'] . '</label></li>';
 		}
 	}
+	if (!$gotone || array_key_exists('nocollege', $_GET))
+	{
+		array_push($form['msg']['error'],"Uh-oh! You need to be in a college network to be able to use this site!");
+	}
 	if (!$gotone)
 	{
 		$networks_string = $networks_string.'<li><strong>You are not in any college networks!</strong></li>';
-		array_push($form['msg']['error'],"Uh-oh! You need to be in a college network to be able to use this site! Please log into Facebook and check to make sure you are accepted into a college network.");
+		array_push($form['msg']['error'],"Please log into Facebook and check to make sure you are accepted into a college network.");
 	}
 ?>
 <html>
