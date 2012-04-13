@@ -61,9 +61,13 @@
 <?php
 		foreach($events as $event)
 		{
+			$multipleTypes = false;
 			$types = $event->array['Type'];
+			if (count($types) > 1)
+				$multipleTypes = true;
+				
 			$type = st_types_getType($types[0]);
-			printEventAwardInfo($type->array['Icon'], $type->array['Name'], $event->array['Name'], $event->array['Description'], $event->array['WhenStart'], "eventinfo.php?id=" . $event->array['ID'], true);		
+			printEventAwardInfo($type->array['Icon'], $type->array['Name'], $event->array['Name'], $event->array['Description'], $event->array['WhenStart'], "eventinfo.php?id=" . $event->array['ID'], true, $multipleTypes);		
 		}
 ?>
 		</ul>
