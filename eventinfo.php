@@ -1,5 +1,7 @@
-<?php require "includes/fb-login.php"; 
-	  require "api/snacktack.php"; 
+<?php
+	require "includes/fb-login.php"; 
+	require "api/snacktack.php";
+	include "includes/displayEventAwardInfo.php";
 	  
 	$event = NULL;
 	if ($_GET['id'])
@@ -40,24 +42,7 @@
 	foreach ($types as $typeid)
 	{
 		$type = st_types_getType($typeid);
-		print(
-			'<li><div class="award">
-				<table>
-					<tr>
-						<td rowspan="4" valign="top" width="50"><img src="' . $type->array['Icon'] . '" alt="' . $type->array['Name'] . '" /></td>
-					</tr>
-					<tr>
-						<td><div class="name">' . $type->array['Name'] . '</div></td>
-					</tr>
-					<tr>
-						<td><div class="description">' . $type->array['Description'] . '</div></td>
-					</tr>
-					<tr>
-						<td><div class="time">' . $type->array['Category'] . '</div></td>
-					</tr>
-				</table>
-			</div></li>');
-		//print('<li>'.($type->array['Name']).' ('.$type->array['Description'].')</li>');
+		printEventAwardInfo($type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false);
 	}
 ?>
 		</ul>

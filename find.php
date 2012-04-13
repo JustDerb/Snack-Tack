@@ -1,5 +1,8 @@
-<?php require "includes/fb-login.php"; 
-	  require "api/snacktack.php"; 
+<?php 
+	require "includes/fb-login.php"; 
+	require "api/snacktack.php";
+	include "includes/displayEventAwardInfo.php";
+	
 	if (array_key_exists('terms', $_GET))
 	{
 		$events = st_events_lookupEvent($_GET['terms'], 7, "date");
@@ -65,25 +68,15 @@
 <?php
 		foreach($events as $event)
 		{
-			print('
-				<li>
-					<a class="today" href="eventinfo.php?id=' . $event->array["ID"] . '">
-						<table>
-							<tr>
-								<td><div class="name">' . $event->array["Name"] . '</div></td>
-							</tr>
-							<tr>
-								<td><div class="description">' . $event->array["Description"] . '</div></td>
-							</tr>
-						</table>
-					</a>
-				</li>');
+			$types = $event->array['Type'];
+			$type = st_types_getType($types[0]);
+			printEventAwardInfo($type->array['Icon'], $type->array['Name'], $event->array['Name'], $event->array['Description'], $event->array['WhenStart'], "eventinfo.php?id=" . $event->array['ID'], true);		
 		}
 ?>
 		</ul>
 <?php endif ?>
 		<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
-		<div id="back" name="back" onclick="window.history.back();">Back</div>
+		<div id="back" name="back" onclick="window.location.replace('index.php');">Back</div>
 <?php include "includes/labelfix.php"; ?>
 	</body>
 </html>

@@ -222,23 +222,37 @@ table {
 	border-collapse: collapse;
 }
 
-table div.name, table div.description, table div.time {
+table p.nameNormal, 
+table p.nameShort,
+table p.descriptionNormal, 
+table p.descriptionShort,
+table p.timeNormal, 
+table p.timeSmall {
 	padding: 0 10px;
 }
 
-table div.name, table div.name {
+table p.nameShort, table p.descriptionShort {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 260px;
+}
+
+table p.nameNormal, table p.nameShort {
 	font-weight: bold;
 }
 
-table div.description {
+table p.description, table p.descriptionShort {
 	font-size: .8em;
 }
 
-table span.time {
-	color: #222222;	
+table p.timeSmall {	
 	font-size: .6em;
-	font-style: italic;	
-	padding: 0 10px;	
+}
+
+table p.timeNormal, table p.timeSmall {
+	color: #222222;
+	font-style: italic;
 }
 
 
