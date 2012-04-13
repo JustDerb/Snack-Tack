@@ -39,6 +39,7 @@ function st_types_getList()
 		$type->array['CategoryID'] = $row['categoryid'];
 		$type->array['Category'] = $row['category'];
 		$type->array['CategoryDescription'] = $row['categorydesc'];
+		$type->array['Icon'] = $row['icon'];
 	    array_push($types, $type);
 	}
 	
@@ -52,7 +53,7 @@ function st_types_getType($typeid)
 	global $st_sql;
 		
 	//Check for record
-	$query = "SELECT t.id,c.id AS 'categoryid',c.name AS 'category',c.description AS 'categorydesc',t.name,t.description FROM `category` c, `types` t WHERE c.id=t.category AND t.id='$typeid'";
+	$query = "SELECT t.id,t.icon,c.id AS 'categoryid',c.name AS 'category',c.description AS 'categorydesc',t.name,t.description FROM `category` c, `types` t WHERE c.id=t.category AND t.id='$typeid'";
 	$result = mysql_query($query, $st_sql);
 	
 	$row = mysql_fetch_assoc($result);
@@ -62,6 +63,7 @@ function st_types_getType($typeid)
 	$type->array['CategoryID'] = $row['categoryid'];
 	$type->array['Category'] = $row['category'];
 	$type->array['CategoryDescription'] = $row['categorydesc'];
+	$type->array['Icon'] = $row['icon'];
 	
 	return $type;
 }

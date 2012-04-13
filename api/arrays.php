@@ -152,7 +152,8 @@ class st_arr_types extends st_a_array {
 			"Description" => "",
 			"CategoryID" => "-1",
 			"Category" => "",
-			"CategoryDescription" => ""
+			"CategoryDescription" => "",
+			"Icon" => ""
        	);
     }
 
