@@ -59,4 +59,11 @@ class st_mysql
 $st_sql_d = new st_mysql(); 
 //Simplify the resources connection
 $st_sql = $st_sql_d->link;
+
+function st_mysql_encode($string,$st_sql)
+{
+	$string = stripslashes($string);
+	$html = htmlentities($string, (ENT_COMPAT | ENT_HTML401), 'UTF-8', false);
+	return mysql_real_escape_string($html,$st_sql);
+}
 ?>
