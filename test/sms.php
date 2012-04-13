@@ -83,11 +83,11 @@ require '../api/google/googlevoice.php';
 				<table>
 					<tr>
 						<td>Phone Number:</td>
-						<td><input type="text" id="smsnumber" value="<?php print($_POST['smsnumber']); ?>"/></td>
+						<td><input type="text" name="smsnumber" value="<?php print($_POST['smsnumber']); ?>"/></td>
 					</tr>
 					<tr>
 						<td>Message:</td>
-						<td><input type="text" id="smsmessage" value="<?php print($_POST['smsmessage']); ?>"/></td>
+						<td><input type="text" name="smsmessage" value="<?php print($_POST['smsmessage']); ?>"/></td>
 					</tr>
 					<tr>
 						<td><input type="hidden" name="form" value="sendsms"/></td>
