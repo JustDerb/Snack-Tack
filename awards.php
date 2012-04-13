@@ -19,8 +19,8 @@
 		</div>
 		
 		<h2>Awards</h2>
-		<ul>
-			<li class="head">Currently Earned</li>
+		<ul class="info">
+			<li>Currently Earned</li>
 <?php
 	$awards = st_award_getAll($st_user->array['ID']);
 	
@@ -34,7 +34,7 @@
 				'<li><div class="award">
 					<table>
 						<tr>
-							<td rowspan="4" valign="top" width="50"><img src="../' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
+							<td rowspan="4" valign="top" width="50"><img src="' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
 						</tr>
 						<tr>
 							<td><div class="name">' . $award['Name'] . '</div></td>

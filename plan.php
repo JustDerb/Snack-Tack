@@ -19,6 +19,10 @@
 <?php endif ?>
 			<div id="clear"></div>
 		</div>
+
+		<ul class="message">
+			<li class="error"><a href="#">Error</a></li>
+		</ul>
 		
 <?php if ($form['msg']): ?>
 		<ul class="message">
@@ -50,16 +54,16 @@
 
 		
 		<form id="eventForm" name="eventForm" method="post">
-			<ul>
-				<li class="head">Basic Info</li>
+			<ul class="form">
+				<li>Basic Info</li>
 				<li><input type="text" placeholder="Event Name" name="eventName" id="eventName" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_POST['eventName']) print($_POST['eventName']); ?>"/></li>
 				<li>
 					<textarea placeholder="Event Description" name="eventDescription" id="eventDescription" rows="3" wrap="on"><?php if ($_POST['eventDescription']) print($_POST['eventDescription']); ?></textarea>
 				</li>
 			</ul>
 			
-			<ul>
-				<li class="head">Food Options</li>
+			<ul class="form">
+				<li>Food Options</li>
 <?php
 	$types = st_types_getList();
 	foreach($types as $type)
@@ -81,8 +85,8 @@
 ?>
 			</ul>
 			
-			<ul>
-				<li class="head">Day</li>
+			<ul class="form">
+				<li>Day</li>
 				<li>
 					<select name="month">
 <?php 
@@ -145,8 +149,8 @@
 				</li>
 			</ul>
 			
-			<ul>
-				<li class="head">Time</li>
+			<ul class="form">
+				<li>Time</li>
 				<li>
 					Start
 					<select name="startHour">
@@ -271,13 +275,13 @@
 				</li>
 			</ul>
 
-			<ul>
-				<li class="head">Place</li>
+			<ul class="form">
+				<li>Place</li>
 				<li><input type="text" placeholder="Event Location" name="location" id="location" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_POST['location']) print($_POST['location']); ?>" /></li>
 			</ul>
 
-			<ul>
-				<li class="head">Facebook Event URL</li>
+			<ul class="form">
+				<li>Facebook Event URL</li>
 				<li><input type="text" placeholder="(Optional)" name="fburl" id="fburl" autocapitalizer="off" autocorrect="off" autocomplete="off" value="<?php if ($_POST['fburl']) print($_POST['fburl']); ?>" /></li>
 			</ul>
 			<!-- Put in later

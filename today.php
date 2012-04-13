@@ -15,13 +15,13 @@
 		</div>
 
 		<h2>Events</h2>
-		<ul>
-			<li class="head">Today</li>
+		<ul class="link">
+			<li>Today</li>
 <?php
 	$events = st_events_getEvents(1);
 	
 	if (empty($events))
-		print('<li class="empty">There are no events today!</li>');
+		print('<li>There are no events today!</li>');
 	else
 		foreach ($events as $event)
 		{

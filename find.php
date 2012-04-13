@@ -15,8 +15,8 @@
 		</div>
 
 		<form>
-			<ul>
-				<li class="head">Search Options</li>
+			<ul class="form">
+				<li>Search Options</li>
 				<li><input type="text" placeholder="Search Terms" name="searchTerms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" />
 				<li><input type="radio" name="searchOption" value="byFoodType" id="byFoodType" checked /><label for="byFoodType">By Food Type</label></li>
 				<li><input type="radio" name="searchOption" value="byOrganization" id="byOrganization" /><label for="byOrganization">By Organization</li>
@@ -25,8 +25,8 @@
 		</form>
 
 
-		<ul id="searchResults">
-			<li class="head">Search Results</li>
+		<ul class="link"id="searchResults">
+			<li>Search Results</li>
 		</ul>
 
 		<div id="back" name="back" onclick="window.history.back();">Back</div>
