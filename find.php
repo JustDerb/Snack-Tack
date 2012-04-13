@@ -1,5 +1,10 @@
 <?php require "includes/fb-login.php"; 
-	  require "api/snacktack.php"; ?>
+	  require "api/snacktack.php"; 
+	if (array_key_exists('terms', $_GET))
+	{
+		$events = st_events_lookupEvent($_GET['terms'], 7, "date");
+	}
+?>
 <html>
 	<head>
 <?php require "includes/head.php"; ?>
@@ -15,10 +20,38 @@
 			<div id="clear"></div>
 		</div>
 
+<?php if (array_key_exists('terms', $_GET) && empty($events)): ?>
+		<ul class="message">
+			<li class="error">No events found. Try broadening your search criteria.</li>
+		</ul>
+<?php endif ?>
+
 		<form method="get" id="findForm">
 			<ul class="form">
 				<li>Search Options</li>
 				<li><input type="text" placeholder="Search Terms" name="terms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_GET['terms']) print($_GET['terms']); ?>"/>
+			</ul>
+			<ul class="form">
+				<li>Food Options</li>
+<?php
+	$types = st_types_getList();
+	foreach($types as $type)
+	{
+		print('<li><input type="checkbox" name="fo[]" id="'.$type->array['ID'].'" value="'.$type->array['ID'].'"');
+		if ($_GET['fo'])
+		{
+    		$types = $_GET['fo'];
+    		foreach ($types as $key => $value)
+    		{
+    			if ($value == $type->array['ID'])
+    				print('checked');
+    		}
+		}
+		print('>');
+		print($type->array['Category'].' - '.$type->array['Name']);
+		print('</label></li>');
+	}
+?>
 				<!--
 				<li><input type="radio" name="searchOption" value="byFoodType" id="byFoodType" checked /><label for="byFoodType">By Food Type</label></li>
 				<li><input type="radio" name="searchOption" value="byOrganization" id="byOrganization" /><label for="byOrganization">By Organization</label></li>
@@ -26,27 +59,26 @@
 			</ul>
 		</form>
 
-<?php if($_GET['terms']): ?>
+<?php if(array_key_exists('terms', $_GET) && !empty($events)): ?>
 		<ul class="link" id="searchResults">
 			<li>Search Results</li>
 <?php
-	$events = st_events_lookupEvent($_GET['terms'], 7, "date");
-	foreach($events as $event)
-	{
-		print('
-			<li>
-				<a class="today" href="eventinfo.php?id=' . $event->array["ID"] . '">
-					<table>
-						<tr>
-							<td><div class="name">' . $event->array["Name"] . '</div></td>
-						</tr>
-						<tr>
-							<td><div class="description">' . $event->array["Description"] . '</div></td>
-						</tr>
-					</table>
-				</a>
-			</li>');
-	}
+		foreach($events as $event)
+		{
+			print('
+				<li>
+					<a class="today" href="eventinfo.php?id=' . $event->array["ID"] . '">
+						<table>
+							<tr>
+								<td><div class="name">' . $event->array["Name"] . '</div></td>
+							</tr>
+							<tr>
+								<td><div class="description">' . $event->array["Description"] . '</div></td>
+							</tr>
+						</table>
+					</a>
+				</li>');
+		}
 ?>
 		</ul>
 <?php endif ?>
