@@ -31,6 +31,26 @@ function st_user_isRegistered($fbID)
 		return true;
 }
 
+function st_user_isValidUser($st_user, $facebookObj)
+{
+	if (empty($st_user->array['fbID']))
+		return new st_arr_message(1, "Invalid Facebook ID.");
+		
+	$networks = st_user_getNetworks($st_user->array['fbID'], $facebookObj);
+	foreach ($networks as $network)
+	{
+		if ($network['type'] == 'college')
+		{
+			if ($network['nid'] == $st_user->array['Network'])
+			{
+				return new st_arr_message(0, $network['nid']);
+			}
+		}
+	}
+	
+	return new st_arr_message(1, "Invalid Facebook network.");
+}
+
 
 function st_user_getData($fbID)
 {
