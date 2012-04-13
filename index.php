@@ -20,16 +20,16 @@
 		<h2>Howdy, <?php echo $user_profile['first_name']; ?>!</h2>
 <?php endif ?>
 
-		<ul>
-			<li class="head">Events</li>
+		<ul class="link">
+			<li>Events</li>
 			<li><a href="today.php">Today's Events</a></li>
 <?php if ($user): ?>
 			<li><a href="#">Your Tacked Events</a></li>
 <?php endif ?>
 		</ul>
 		
-		<ul>
-			<li class="head">Event Management</li>
+		<ul class="link">
+			<li>Event Management</li>
 <?php if ($user): ?>
 			<li><a href="plan.php">Plan</a></li>
 <?php endif ?>
@@ -39,8 +39,8 @@
 <?php endif ?>
 		</ul>
 	
-		<ul>
-			<li class="head">Settings</li>
+		<ul class="link">
+			<li>Settings</li>
 			<li><a href="profile.php">Profile</a></li>
 			<li><a href="help.php">Help</a></li>
 			<li><a href="terms.php">Privacy, Terms</a></li>

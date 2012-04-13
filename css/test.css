@@ -16,6 +16,17 @@ ul {
 	padding: 0;
 }
 
+ul li {
+	background-color: #EEEEEE;
+	border: 1px solid #999999;
+	color: #222222;
+	display: block;
+	font-size: 17px;
+	margin-bottom: -1px;
+	padding: 12px 10px;
+	text-decoration: none;
+}
+
 /* 
  * Header Title CSS
  */
@@ -43,44 +54,18 @@ h2 {
 	text-align: left;
 }
 
-/*
- * Button CSS
- */
-
-ul#connect li a {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
-	background: url(../img/chevron.png) right center no-repeat;
-	background-color: #EEEEEE;
-	border: solid 1px #999999;	
-	color: #000000;
-	display: block;
-	font-size: 17px;
-	padding: 12px 10px;
-	text-decoration: none;
-}
-
-ul#connect li a:hover {
-	background-color: #CCCCCC;
-	color: #000000;
-}
-
 
 /* 
- * Link and Info CSS
+ * Page Link CSS
  */
- 
-ul.link li:first-child,
-ul.info li:first-child {
+
+ul.link li:first-child a {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 	background-color: #000000;
 	border: 1px solid #999999;
 	color: white;
 	display: block;
-	font-size: 14px;
 	margin-bottom: -1px;
 	padding: 0px 10px;
 }
@@ -89,24 +74,12 @@ ul.link li a {
 	background: url(../img/chevron.png) right center no-repeat;
 }
 
-ul.link li a, ul.info li {
-	background-color: #EEEEEE;
-	border: 1px solid #999999;
-	color: #222222;
-	display: block;
-	font-size: 17px;
-	margin-bottom: -1px;
-	padding: 12px 10px;
-	text-decoration: none;	
-}
-
 ul.link li a:hover {
 	background-color: #CCCCCC;
 	color: #000000;
 }
 
-ul.link li:last-child a,
-ul.info li:last-child {
+ul.link li:last-child a {
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;	
 }
@@ -117,18 +90,6 @@ ul.info li:last-child {
  */
 
 ul.form li:first-child {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	background-color: #000000;
-	border: 1px solid #999999;
-	color: #FFFFFF;
-	display: block;
-	font-size: 14px;
-	margin-bottom: -1px;
-	padding: 0px 10px;
-}
-
-ul.form li {
 	background-color: #EEEEEE;
 	border: 1px solid #999999;
 	color: #222222;
@@ -136,7 +97,7 @@ ul.form li {
 	font-size: 17px;
 	margin-bottom: -1px;
 	padding: 12px 10px;
-	text-decoration: none;	
+	text-decoration: none;
 }
 
 ul.form li input[type=text] {
@@ -151,9 +112,9 @@ ul.form li textarea {
 	resize: none;
 }
 
-ul.form li input[type=text], ul.form li textarea {
+ul.form li input[type=text], form ul li textarea {
 	background-color: #EEEEEE;
-	border: solid 0px #E5E5E5;
+	border: solid 1px #E5E5E5;
 	width: 100%;
 }
 
@@ -162,7 +123,7 @@ input {
 	font-size: 17px;
 }
 
-ul.form li input[type=checkbox], ul.form li input[type=radio] {
+ul.form li input[type=checkbox], form ul li input[type=radio] {
 	float: left;
 	overflow: hidden;
 }
@@ -182,12 +143,12 @@ ul.form li:last-child {
 	-webkit-border-bottom-right-radius: 8px;	
 }
 
-#back, #cancel, #submit {
+ul.form div, div#back {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
-	border: solid 2px #000000;	
+	border: solid 2px #000000;
 	display: block;
 	font-size: 17px;
 	margin: 10px;
@@ -216,6 +177,17 @@ div#cancel:hover {
 /*
  * Table CSS (Awards, Events)
  */
+
+div.award {
+	background-color: #EEEEEE;
+	border: 1px solid #999999;
+	color: #222222;
+	display: block;
+	font-size: 17px;
+	margin-bottom: -1px;
+	padding: 12px 10px;
+	text-decoration: none;
+}
 
 div.award table, a.today table {
 	empty-cells: hide;
@@ -258,31 +230,43 @@ div.award div.time {
  * User Messages and Errors
  */
 
-ul.message li a {
+ul.message li {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
-	background: url(../img/chevron.png) right center no-repeat;
+	background-color: #EEEEEE;
 	border: 1px solid #999999;
 	color: #222222;
 	display: block;
 	font-size: 17px;
-	padding: 12px 10px;
+	margin-bottom: -1px;
 	text-decoration: none;
 }
 
+ul.message li.error {
+	background:#FF9900;
+	color:#000000;
+}
+
 ul.message li.error a {
-	background-color: #FF9900;
-	color: #000000;
+	background: url(../img/chevron.png) right center no-repeat;
+}
+
+ul.message li.message {
+	background:#FFFF00;
+	color:#000000;
 }
 
 ul.message li.message a {
-	background: #FFFF00;
-	color: #000000;
+	background: url(../img/chevron.png) right center no-repeat;
+}
+
+ul.message li.success {
+	background:#00CC00;
+	color:#000000;
 }
 
 ul.message li.success a {
-	background: #00CC00;
-	color: #000000;
+	background: url(../img/chevron.png) right center no-repeat;
 }

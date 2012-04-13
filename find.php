@@ -15,9 +15,13 @@
 			<div id="clear"></div>
 		</div>
 
+		<form>
+			<ul class="form">
+				<li>Search Options</li>
+				<li><input type="text" placeholder="Search Terms" name="searchTerms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" />
 		<form method="get" id="findForm">
-			<ul>
-				<li class="head">Search Options</li>
+			<ul class="form">
+				<li>Search Options</li>
 				<li><input type="text" placeholder="Search Terms" name="terms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_GET['terms']) print($_GET['terms']); ?>"/>
 				<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
 				<!--
@@ -28,8 +32,8 @@
 		</form>
 
 <?php if($_GET['terms']): ?>
-		<ul id="searchResults">
-			<li class="head">Search Results</li>
+		<ul class="link" id="searchResults">
+			<li>Search Results</li>
 <?php
 	$events = st_events_lookupEvent($_GET['terms'], 7, "date");
 	foreach($events as $event)

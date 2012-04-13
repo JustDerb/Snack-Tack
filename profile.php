@@ -22,15 +22,15 @@
 		</div>
 		
 		<h2>Profile</h2>
-		<ul>
+		<ul id="connect">
 <?php if ($user): ?>
-			<li id="connect"><a href="<?php echo $logoutUrl; ?>">Logout of Snack Tack</a></li>
+			<li><a href="<?php echo $logoutUrl; ?>">Logout of Snack Tack</a></li>
 		</ul>
-		<ul>
-			<li class="head">Awards</li>
+		<ul class="link">
+			<li>Awards</li>
 			<li><a href="awards.php">View Your Awards</a></li>
 <?php else: ?>
-			<li id="connect"><a href="<?php echo $loginUrl; ?>">Connect with Facebook</a></li>
+			<li><a href="<?php echo $loginUrl; ?>">Connect with Facebook</a></li>
 <?php endif ?>
 		</ul>
 		
@@ -64,8 +64,8 @@
 
 <?php if ($user): ?>
 		<form method="post" id="profileForm" name="profileForm">
-			<ul>
-				<li class="head">Networks</li>
+			<ul class="form">
+				<li>Networks</li>
 <?php 
 	$gotone = false;
 	foreach ($networks as $network)
@@ -83,8 +83,8 @@
 	}
 ?>
 			</ul>
-			<ul>
-				<li class="head">Phone</li>
+			<ul class="form">
+				<li>Phone</li>
 				<li>We use your phone to send you text messages when a Tacked event is about to start.</li>
 				<li><input type="text" name="phone" placeholder="555-555-5555" autocorrect="off" autocomplete="off" value="<?php 
 	if ($_POST['phone'])

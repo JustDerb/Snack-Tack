@@ -1,7 +1,3 @@
-/*
- * Base CSS
- */
-
 body {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d60000), color-stop(50%,#b20b00), color-stop(100%,#770000));
 	font-family: 'Segoe UI', Tahoma, Helvetica;
@@ -10,11 +6,6 @@ body {
 	padding: 0;
 }
 
-ul {
-	list-style: none;
-	margin: 10px;
-	padding: 0;
-}
 
 /* 
  * Header Title CSS
@@ -43,117 +34,141 @@ h2 {
 	text-align: left;
 }
 
+
 /*
- * Button CSS
+ * User Messages and Errors
  */
 
-ul#connect li a {
+ul.message li {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
-	background: url(../img/chevron.png) right center no-repeat;
 	background-color: #EEEEEE;
-	border: solid 1px #999999;	
-	color: #000000;
+	border: 1px solid #999999;
+	color: #222222;
 	display: block;
 	font-size: 17px;
+	margin-bottom: -1px;
+	text-decoration: none;
+}
+
+li.error {
+	background:#FF9900;
+	color:#000000;
+}
+
+li.error a {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+li.error a:hover {
+
+}
+
+li.message {
+	background:#FFFF00;
+	color:#000000;
+}
+
+li.message a {
+	color:#000000;
+	font-weight: bold;
+}
+
+li.success {
+	background:#00CC00;
+	color:#000000;
+}
+
+li.success a {
+	color:#000000;
+	font-weight: bold;
+}
+
+
+/* 
+ * Basic Button CSS
+ */
+
+ul {
+	list-style: none;
+	margin: 10px;
+	padding: 0;
+}
+
+ul li.head, 
+ul li#connect a {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+ul li.head {
+	background-color: #000000;
+	border: 1px solid #999999;
+	color: white;
+	display: block;
+	margin-bottom: -1px;
+	padding: 0px 10px;
+}
+
+ul li:last-child, 
+ul li:last-child a, 
+ul li:last-child div, 
+ul.info li,
+ul li.empty {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+}
+
+ul li a, 
+ul li a.today,
+ul.message li a {
+	background: url(../img/chevron.png) right center no-repeat;
+}
+
+form ul li, 
+ul li a, 
+ul li a.today, 
+ul.info li,
+ul li.empty {
+	background-color: #EEEEEE;
+	border: 1px solid #999999;
+	color: #222222;
+	display: block;
+	font-size: 17px;
+	margin-bottom: -1px;
 	padding: 12px 10px;
 	text-decoration: none;
 }
 
-ul#connect li a:hover {
+ul li a:hover, 
+ul li a.today:hover {
 	background-color: #CCCCCC;
 	color: #000000;
 }
 
 
 /* 
- * Link and Info CSS
- */
- 
-ul.link li:first-child,
-ul.info li:first-child {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	background-color: #000000;
-	border: 1px solid #999999;
-	color: white;
-	display: block;
-	font-size: 14px;
-	margin-bottom: -1px;
-	padding: 0px 10px;
-}
-
-ul.link li a {
-	background: url(../img/chevron.png) right center no-repeat;
-}
-
-ul.link li a, ul.info li {
-	background-color: #EEEEEE;
-	border: 1px solid #999999;
-	color: #222222;
-	display: block;
-	font-size: 17px;
-	margin-bottom: -1px;
-	padding: 12px 10px;
-	text-decoration: none;	
-}
-
-ul.link li a:hover {
-	background-color: #CCCCCC;
-	color: #000000;
-}
-
-ul.link li:last-child a,
-ul.info li:last-child {
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;	
-}
-
-
-/*
- * Form CSS
+ * Form CSS 
  */
 
-ul.form li:first-child {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	background-color: #000000;
-	border: 1px solid #999999;
-	color: #FFFFFF;
-	display: block;
-	font-size: 14px;
-	margin-bottom: -1px;
-	padding: 0px 10px;
-}
-
-ul.form li {
-	background-color: #EEEEEE;
-	border: 1px solid #999999;
-	color: #222222;
-	display: block;
-	font-size: 17px;
-	margin-bottom: -1px;
-	padding: 12px 10px;
-	text-decoration: none;	
-}
-
-ul.form li input[type=text] {
+form ul li input[type=text] {
 	overflow: hidden;
 	padding: 0 4px;
 }
 
-ul.form li textarea {
+form ul li textarea {
 	font-family: 'Segoe UI', Tahoma, Helvetica;
 	font-size: 17px;
 	overflow: auto;
 	resize: none;
 }
 
-ul.form li input[type=text], ul.form li textarea {
+form ul li input[type=text], form ul li textarea {
 	background-color: #EEEEEE;
-	border: solid 0px #E5E5E5;
+	border: solid 1px #E5E5E5;
 	width: 100%;
 }
 
@@ -162,12 +177,12 @@ input {
 	font-size: 17px;
 }
 
-ul.form li input[type=checkbox], ul.form li input[type=radio] {
+form ul li input[type=checkbox], form ul li input[type=radio] {
 	float: left;
 	overflow: hidden;
 }
 
-ul.form li > select {
+form ul li > select {
 	font-size: 17px;
 	margin: 0;
 }
@@ -177,17 +192,12 @@ label {
 	overflow: ellipsis;
 }
 
-ul.form li:last-child {
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;	
-}
-
-#back, #cancel, #submit {
+form div, div#back {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-bottom-left-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
-	border: solid 2px #000000;	
+	border: solid 2px #000000;
 	display: block;
 	font-size: 17px;
 	margin: 10px;
@@ -195,20 +205,20 @@ ul.form li:last-child {
 	text-align: center;
 }
 
-div#submit, div#back {
+form div#submit, div#back {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(40%,#dedede), color-stop(100%,#b6b6b6));
 }
 
-div#submit:hover, div#back:hover {
+form div#submit:hover, div#back:hover {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c8c8c8), color-stop(40%,#b1b1b1), color-stop(100%,#919191));
 }
 
-div#cancel {
+form div#cancel {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2f2b), color-stop(50%,#ff4f4f), color-stop(51%,#ff0307), color-stop(71%,#ff090d), color-stop(100%,#ff0f1b));
 	color: #FFFFFF;
 }
 
-div#cancel:hover {
+form div#cancel:hover {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c70a07), color-stop(50%,#d41212), color-stop(51%,#ac0609), color-stop(71%,#ab0b0e), color-stop(100%,#a7131a));
 }
 
@@ -217,36 +227,47 @@ div#cancel:hover {
  * Table CSS (Awards, Events)
  */
 
-div.award table, a.today table {
+ul li div.award {
+	background-color: #EEEEEE;
+	border: 1px solid #999999;
+	color: #222222;
+	display: block;
+	font-size: 17px;
+	margin-bottom: -1px;
+	padding: 12px 10px;
+	text-decoration: none;
+}
+
+ul li div.award table, ul li a.today table {
 	empty-cells: hide;
 	border-collapse: collapse;
 }
 
-div.award div.name {
+ul li div.award div.name {
 	padding: 0 10px;
 }
 
-a.today div.name {
+ul li a.today div.name {
 	padding: 0;
 }
 
-div.award div.name, a.today div.name {
+ul li div.award div.name, ul li a.today div.name {
 	font-weight: bold;
 }
 
-div.award div.description {
+ul li div.award div.description {
 	padding: 0 10px;
 }
 
-a.today div.description {
+ul li a.today div.description {
 	padding: 0;
 }
 
-div.award div.description, a.today div.description {
+ul li div.award div.description, ul li a.today div.description {
 	font-size: .8em;
 }
 
-div.award div.time {
+ul li div.award div.time {
 	color: #222222;	
 	font-size: .6em;
 	font-style: italic;	
@@ -254,35 +275,6 @@ div.award div.time {
 }
 
 
-/*
- * User Messages and Errors
- */
 
-ul.message li a {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
-	background: url(../img/chevron.png) right center no-repeat;
-	border: 1px solid #999999;
-	color: #222222;
-	display: block;
-	font-size: 17px;
-	padding: 12px 10px;
-	text-decoration: none;
-}
 
-ul.message li.error a {
-	background-color: #FF9900;
-	color: #000000;
-}
 
-ul.message li.message a {
-	background: #FFFF00;
-	color: #000000;
-}
-
-ul.message li.success a {
-	background: #00CC00;
-	color: #000000;
-}
