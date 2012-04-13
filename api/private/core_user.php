@@ -48,7 +48,7 @@ function st_user_isValidUser($st_user, $facebookObj)
 		}
 	}
 	
-	return new st_arr_message(1, "Invalid Facebook network.");
+	return new st_arr_message(1, "Invalid Facebook network.", "profile?nonetwork=1");
 }
 
 
@@ -156,7 +156,7 @@ function st_user_register($facebookProfile, $check = false)
 	//Give user award
 	if (!st_award_registered($user->array['ID']))
 		print mysql_error($st_sql); // TODO: REMOVE
-		
+				
 	return $user;
 }
 ?>
