@@ -9,7 +9,7 @@
 			<div id="clear"></div>
 		</div>
 		
-		<form method="">
+		<form>
 		<h2>
 			Web Site Terms and Conditions of Use
 		</h2>
