@@ -15,29 +15,32 @@
 		</div>
 
 		<h2>Events</h2>
-		<ul class="link">
-			<li>Today</li>
 <?php
 	$events = st_events_getEvents(1);
 	
 	if (empty($events))
-		print('<li>There are no events today!</li>');
+		print('
+			<ul class="info">
+				<li>Today</li>
+				<li>There are no events today!</li>');
 	else
 		foreach ($events as $event)
 		{
 			print('
-			<li>
-				<a class="today" href="eventinfo.php?id=' . $event->array["ID"] . '">
-					<table>
-						<tr>
-							<td><div class="name">' . $event->array["Name"] . '</div></td>
-						</tr>
-						<tr>
-							<td><div class="description">' . $event->array["Description"] . '</div></td>
-						</tr>
-					</table>
-				</a>
-			</li>');
+			<ul class="link">
+				<li>Today</li>
+				<li>
+					<a href="eventinfo.php?id=' . $event->array["ID"] . '">
+						<table>
+							<tr>
+								<td><div class="name">' . $event->array["Name"] . ' @ ' . $event->array["WhenStart"]->format("h:i A") . '</div></td>
+							</tr>
+							<tr>
+								<td><div class="description">' . $event->array["Description"] . '</div></td>
+							</tr>
+						</table>
+					</a>
+				</li>');
 		}
 ?>
 		</ul>
