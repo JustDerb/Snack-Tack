@@ -81,6 +81,10 @@
 			print(' /><label for="' . $network['nid'] . '">' . $network['name'] . '</label></li>');
 		}
 	}
+	if (!$gotone)
+	{
+		print('<li><strong>You are not in any college networks!</strong></li>');
+	}
 ?>
 			</ul>
 			<ul class="form">
