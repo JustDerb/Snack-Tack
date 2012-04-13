@@ -31,19 +31,25 @@
 		');
 		foreach ($events as $event)
 		{
+			$types = $event->array['Type'];
+			$type = st_types_getType($types[0]);
 			print('
-				<li>
-					<a href="eventinfo.php?id=' . $event->array["ID"] . '">
-						<table>
-							<tr>
-								<td><span class="name">' . $event->array["Name"] . '</span><span class="time"> @ ' . $event->array["WhenStart"]->format("h:ia") . '</span></td>
-							</tr>
-							<tr>
-								<td><div class="description">' . $event->array["Description"] . '</div></td>
-							</tr>
-						</table>
-					</a>
-				</li>');
+				<li><div class="table"><a href="eventinfo.php?id=' . $event->array["ID"] . '">
+					<table>
+						<tr>
+							<td rowspan="4" valign="top" width="50"><img src="' . $type->array['Icon'] . '" alt="' . $type->array['Name'] . '" /></td>
+						</tr>
+						<tr>
+							<td><div class="name">' . $event->array["Name"] . '</div></td>
+						</tr>
+						<tr>
+							<td><div class="time">@ ' . $event->array["WhenStart"]->format("h:ia") . '</div></td>
+						</tr>
+						<tr>
+							<td><div class="description">' . $event->array["Description"] . '</div></td>
+						</tr>
+					</table>
+				</a></div></li>');
 		}
 	}
 ?>
