@@ -89,7 +89,8 @@ ul.link li a {
 	background: url(../img/chevron.png) right center no-repeat;
 }
 
-ul.link li a, ul.info li {
+ul.link li a, 
+ul.info li {
 	background-color: #EEEEEE;
 	border: 1px solid #999999;
 	color: #222222;
@@ -151,7 +152,8 @@ ul.form li textarea {
 	resize: none;
 }
 
-ul.form li input[type=text], ul.form li textarea {
+ul.form li input[type=text], 
+ul.form li textarea {
 	background-color: #EEEEEE;
 	border: solid 0px #E5E5E5;
 	width: 100%;
@@ -162,7 +164,8 @@ input {
 	font-size: 17px;
 }
 
-ul.form li input[type=checkbox], ul.form li input[type=radio] {
+ul.form li input[type=checkbox], 
+ul.form li input[type=radio] {
 	float: left;
 	overflow: hidden;
 }
@@ -182,7 +185,9 @@ ul.form li:last-child {
 	-webkit-border-bottom-right-radius: 8px;	
 }
 
-#back, #cancel, #submit {
+#back, 
+#cancel, 
+#submit {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-bottom-left-radius: 8px;
@@ -195,11 +200,13 @@ ul.form li:last-child {
 	text-align: center;
 }
 
-div#submit, div#back {
+div#submit, 
+div#back {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(40%,#dedede), color-stop(100%,#b6b6b6));
 }
 
-div#submit:hover, div#back:hover {
+div#submit:hover, 
+div#back:hover {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c8c8c8), color-stop(40%,#b1b1b1), color-stop(100%,#919191));
 }
 
@@ -231,18 +238,21 @@ table p.timeSmall {
 	padding: 0 10px;
 }
 
-table p.nameShort, table p.descriptionShort {
+table p.nameShort, 
+table p.descriptionShort {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 260px;
+	width: 200px;
 }
 
-table p.nameNormal, table p.nameShort {
+table p.nameNormal, 
+table p.nameShort {
 	font-weight: bold;
 }
 
-table p.description, table p.descriptionShort {
+table p.description, 
+table p.descriptionShort {
 	font-size: .8em;
 }
 
@@ -250,7 +260,8 @@ table p.timeSmall {
 	font-size: .6em;
 }
 
-table p.timeNormal, table p.timeSmall {
+table p.timeNormal, 
+table p.timeSmall {
 	color: #222222;
 	font-style: italic;
 }
@@ -293,7 +304,7 @@ ul.message li a {
 
 ul.message li.error {
 	background-color: #FF9900;
-	padding: 12px 10px;;
+	padding: 12px 10px;
 	color: #000000;
 }
 
@@ -308,3 +319,31 @@ ul.message li.success {
 	padding: 12px 10px;
 	color: #000000;
 }
+
+
+/*
+ * Image Overlay CSS
+ */
+
+div.imgcontainer {
+	background-image: url('../img/types/box.png');
+	height: 50px;
+	position: relative;
+	width: 50px;
+}
+
+div.imgcontainer span.more {
+	bottom: 2px;
+	position: absolute;
+	right: 2px;
+	z-index: 3;
+}
+
+/* For validity check
+div.imgContainer span.check,
+div.imgcontainer span.poop {
+	bottom: 2px;
+	position: absolute;
+	right: 17px;
+	z-index: 3;
+}*/
