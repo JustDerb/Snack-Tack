@@ -45,6 +45,27 @@ function st_types_getList()
 	return $types;
 }
 
+function st_types_getType($typeid)
+{
+	$type = new st_arr_types();
+	
+	global $st_sql;
+		
+	//Check for record
+	$query = "SELECT t.id,c.id AS 'categoryid',c.name AS 'category',c.description AS 'categorydesc',t.name,t.description FROM `category` c, `types` t WHERE c.id=t.category AND t.id='$typeid'";
+	$result = mysql_query($query, $st_sql);
+	
+	$row = mysql_fetch_assoc($result);
+	$type->array['ID'] = $row['id'];
+	$type->array['Name'] = $row['name'];
+	$type->array['Description'] = $row['description'];
+	$type->array['CategoryID'] = $row['categoryid'];
+	$type->array['Category'] = $row['category'];
+	$type->array['CategoryDescription'] = $row['categorydesc'];
+	
+	return $type;
+}
+
 function st_types_search($name)
 {
 
