@@ -1,4 +1,8 @@
 <?PHP
+
+$dir = dirname(__FILE__);
+require_once($dir.'/../private/pass/voice.php');
+
 /*
 Version     0.2
 License     This code is released under the MIT Open Source License. Feel free to do whatever you want with it.
