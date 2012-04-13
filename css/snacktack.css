@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Base CSS
  */
 
@@ -258,42 +258,50 @@ div.award div.time {
  * User Messages and Errors
  */
 
-ul.message li,
-ul.message li a {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
+ul.message li {
 	border: 1px solid #999999;
 	color: #222222;
 	display: block;
 	font-size: 17px;
 	margin: 0;
 	padding: 0;
+	margin-bottom:-1px;
+}
+
+ul.message li:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	margin-bottom:-1px;
+}
+
+ul.message li:last-child {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
 }
 
 ul.message li a {
 	background: url(../img/chevron.png) right center no-repeat;
-	padding: 12px 10px;
-	text-decoration: none;	
+	/*padding: 12px 10px;*/
+	text-decoration: none;
+	color: #222222;
+	display: block;
+	margin: 0;
+	padding: 0;	
 }
 
-ul.message li.error,
-ul.message li.error a {
+ul.message li.error {
 	background-color: #FF9900;
 	padding: 12px 10px;;
 	color: #000000;
 }
 
-ul.message li.message,
-ul.message li.message a {
+ul.message li.message {
 	background: #FFFF00;
 	padding: 12px 10px;
 	color: #000000;
 }
 
-ul.message li.success,
-ul.message li.success a {
+ul.message li.success {
 	background: #00CC00;
 	padding: 12px 10px;
 	color: #000000;
