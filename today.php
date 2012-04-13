@@ -33,7 +33,7 @@
 					<a href="eventinfo.php?id=' . $event->array["ID"] . '">
 						<table>
 							<tr>
-								<td><div class="name">' . $event->array["Name"] . ' @ ' . $event->array["WhenStart"]->format("h:i A") . '</div></td>
+								<td><span class="name">' . $event->array["Name"] . '</span><span class="time"> @ ' . $event->array["WhenStart"]->format("h:ia") . '</span></td>
 							</tr>
 							<tr>
 								<td><div class="description">' . $event->array["Description"] . '</div></td>

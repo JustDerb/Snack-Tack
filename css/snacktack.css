@@ -226,11 +226,11 @@ div.award div.name {
 	padding: 0 10px;
 }
 
-table div.name {
+table span.name, table span.time {
 	padding: 0;
 }
 
-div.award div.name, table div.name {
+div.award div.name, table span.name {
 	font-weight: bold;
 }
 
