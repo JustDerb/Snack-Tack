@@ -24,11 +24,14 @@
 				<li>Today</li>
 				<li>There are no events today!</li>');
 	else
+	{
+		print('
+			<ul class="link">
+			<li>Today</li>
+		');
 		foreach ($events as $event)
 		{
 			print('
-			<ul class="link">
-				<li>Today</li>
 				<li>
 					<a href="eventinfo.php?id=' . $event->array["ID"] . '">
 						<table>
@@ -42,6 +45,7 @@
 					</a>
 				</li>');
 		}
+	}
 ?>
 		</ul>
 
