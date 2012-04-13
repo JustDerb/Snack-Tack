@@ -4,10 +4,6 @@
 	//$networks = st_user_getNetworks($user, $facebook);
 	if (isset($st_user) && isset($networks))
 	{
-		$form['msg'] = array();
-		$form['msg']['error'] = array();
-		$form['msg']['message'] = array();
-		$form['msg']['success'] = array();
 		$changed_user_info = false;
 		
 		if (array_key_exists('phone', $_POST))
@@ -44,6 +40,7 @@
 						{
 							$isValid = true;
 							$result = st_user_setNetwork($st_user->array['fbID'], $_POST['networkOption']);
+							break;
 						}
 					}
 				}
