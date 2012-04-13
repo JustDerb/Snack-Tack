@@ -31,6 +31,26 @@ function st_user_isRegistered($fbID)
 		return true;
 }
 
+function st_user_isValidUser($st_user, $facebookObj)
+{
+	if (empty($st_user->array['fbID']))
+		return new st_arr_message(1, "Invalid Facebook ID.");
+		
+	$networks = st_user_getNetworks($st_user->array['fbID'], $facebookObj);
+	foreach ($networks as $network)
+	{
+		if ($network['type'] == 'college')
+		{
+			if ($network['nid'] == $st_user->array['Network'])
+			{
+				return new st_arr_message(0, $network['nid']);
+			}
+		}
+	}
+	
+	return new st_arr_message(1, "Invalid Facebook network.", "profile?nonetwork=1");
+}
+
 
 function st_user_getData($fbID)
 {
@@ -136,7 +156,7 @@ function st_user_register($facebookProfile, $check = false)
 	//Give user award
 	if (!st_award_registered($user->array['ID']))
 		print mysql_error($st_sql); // TODO: REMOVE
-		
+				
 	return $user;
 }
 ?>

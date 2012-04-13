@@ -5,6 +5,31 @@
 	$st_user = st_user_register($user_profile, true);
 	$networks = st_user_getNetworks($user, $facebook);
 	require "actions/submitprofile.php";
+	
+	$networks_string = "";
+	$gotone = false;
+	foreach ($networks as $network)
+	{
+		if ($network['type'] == 'college')
+		{
+			$networks_string = $networks_string.'<li><input type="radio" name="networkOption" value="' . $network['nid'] . '" id="' . $network['nid'] . '" ';
+			if ($network['nid'] == $st_user->array['Network'])
+			{
+				$gotone = true;
+				$networks_string = $networks_string.'checked';
+			}
+			$networks_string = $networks_string.' /><label for="' . $network['nid'] . '">' . $network['name'] . '</label></li>';
+		}
+	}
+	if (!$gotone || array_key_exists('nocollege', $_GET))
+	{
+		array_push($form['msg']['error'],"Uh-oh! You need to be in a college network to be able to use this site!");
+	}
+	if (!$gotone)
+	{
+		$networks_string = $networks_string.'<li><strong>You are not in any college networks!</strong></li>';
+		array_push($form['msg']['error'],"Please log into Facebook and check to make sure you are accepted into a college network.");
+	}
 ?>
 <html>
 	<head>
@@ -67,20 +92,7 @@
 			<ul class="form">
 				<li>Networks</li>
 <?php 
-	$gotone = false;
-	foreach ($networks as $network)
-	{
-		if ($network['type'] == 'college')
-		{
-			print('<li><input type="radio" name="networkOption" value="' . $network['nid'] . '" id="' . $network['nid'] . '" ');
-			if ($network['nid'] == $st_user->array['Network'])
-			{
-				$gotone = true;
-				print('checked');
-			}
-			print(' /><label for="' . $network['nid'] . '">' . $network['name'] . '</label></li>');
-		}
-	}
+	print($networks_string);
 ?>
 			</ul>
 			<ul class="form">
