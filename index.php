@@ -17,7 +17,7 @@
 			<li>Events</li>
 			<li><a href="today.php">Today's Events</a></li>
 <?php if ($user): ?>
-			<li><a href="#">Your Tacked Events</a></li>
+			<li><a href="tacked.php">Your Tacked Events</a></li>
 <?php endif ?>
 		</ul>
 		
