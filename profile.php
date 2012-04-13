@@ -7,6 +7,10 @@
 	$form['msg']['error'] = array();
 	$form['msg']['message'] = array();
 	$form['msg']['success'] = array();
+	
+	if (array_key_exists('nologin', $_GET))
+		array_push($form['msg']['error'],"You need to login to access that page!");
+	
 	if ($user)
 	{
 		$networks = st_user_getNetworks($user, $facebook);
