@@ -5,6 +5,7 @@
 	
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
+	st_loginonly_check($st_user, $facebook, "profile.php?nologin=1&url=awards.php");
 ?>
 <html>
 	<head>

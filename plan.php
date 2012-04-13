@@ -3,6 +3,7 @@
 	require "api/snacktack.php"; 
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
+	st_loginonly_check($st_user, $facebook, "profile.php?nologin=1&url=plan.php");
 	require "actions/submitplan.php";
 ?>
 <html>
