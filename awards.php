@@ -1,6 +1,8 @@
 <?php 
 	require "includes/fb-login.php"; 
 	require "api/snacktack.php"; 
+	include "includes/displayEventAwardInfo.php";
+	
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
 ?>
@@ -30,23 +32,24 @@
 		foreach ($awards as $award)
 		{
 			$award = $award->array;
-			print(
-				'<li><div class="table">
+			printEventAwardInfo($award['Icon'], $award['Name'], $award['Name'], $award['Description'], $award['Received'], "", false);	
+			/*print(
+				'<li><div>
 					<table>
 						<tr>
 							<td rowspan="4" valign="top" width="50"><img src="' . $award['Icon'] . '" alt="' . $award['Name'] . '" /></td>
 						</tr>
 						<tr>
-							<td><div class="name">' . $award['Name'] . '</div></td>
+							<td><p class="nameNormal">' . $award['Name'] . '</p></td>
 						</tr>
 						<tr>
-							<td><div class="description">' . $award['Description'] . '</div></td>
+							<td><p class="descriptionNormal">' . $award['Description'] . '</p></td>
 						</tr>
 						<tr>
-							<td><span class="time">Received (' . $award['Received']->format('m/d/y') . ')</span></td>
+							<td><p class="timeSmall">Received (' . $award['Received']->format('m/d/y') . ')</p></td>
 						</tr>
 					</table>
-				</div></li>');
+				</div></li>');*/
 			}
 ?>
 		</ul>
