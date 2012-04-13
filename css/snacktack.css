@@ -274,24 +274,27 @@ ul.message li a {
 
 ul.message li a {
 	background: url(../img/chevron.png) right center no-repeat;
-	padding: 10px;
+	padding: 12px 10px;
 	text-decoration: none;	
 }
 
 ul.message li.error,
 ul.message li.error a {
 	background-color: #FF9900;
+	padding: 12px 10px;;
 	color: #000000;
 }
 
 ul.message li.message,
 ul.message li.message a {
 	background: #FFFF00;
+	padding: 12px 10px;
 	color: #000000;
 }
 
 ul.message li.success,
 ul.message li.success a {
 	background: #00CC00;
+	padding: 12px 10px;
 	color: #000000;
 }
