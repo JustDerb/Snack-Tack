@@ -19,16 +19,6 @@
 <?php endif ?>
 			<div id="clear"></div>
 		</div>
-
-		<ul class="message">
-			<li class="error"><a href="#">Error Link</a></li>
-			<li class="error">Error</li>
-			<li class="success"><a href="#">Error Link</a></li>
-			<li class="success">Error</li>
-			<li class="message"><a href="#">Error Link</a></li>
-			<li class="message">Error</li>
-		</ul>
-
 		
 <?php if ($form['msg']): ?>
 		<ul class="message">
