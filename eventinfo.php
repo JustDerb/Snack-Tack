@@ -79,8 +79,8 @@
 		</ul>
 <?php endif ?>
 		
-<?php if (isset($_GET['home'])): ?>
-		<div id="back" name="back" onclick="index.php">Home</div>
+<?php if (isset($_GET['created'])): ?>
+		<div id="back" name="back" onclick="window.location.replace('index.php')">Home</div>
 <?php else: ?>
 		<div id="back" name="back" onclick="window.history.back();">Back</div>		
 <?php endif ?>
