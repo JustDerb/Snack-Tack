@@ -119,6 +119,43 @@ function st_user_setNetwork($fbID, $networkid)
 		return new st_arr_message(0, "Primary network updated.");
 }
 
+function st_user_generatePhoneToken($st_user)
+{
+	global $st_sql;
+	
+	$internalID = mysql_real_escape_string($st_user->array['ID'],$st_sql);	
+	$token = rand(1000,9999);
+			
+	//Update record
+	$query = "UPDATE users SET numberpin='$token' WHERE id='$internalID'";
+	$result = mysql_query($query, $st_sql);
+	
+	if (mysql_affected_rows($st_sql) == 0)
+		return new st_arr_message(1, "Error setting number verification token.");
+	else
+		return new st_arr_message(0, "Phone verification token updated.", $token);
+}
+
+function st_user_getPhoneToken($st_user)
+{
+	global $st_sql;
+	
+	$internalID = mysql_real_escape_string($st_user->array['ID'],$st_sql);	
+			
+	//Update record
+	$query = "SELECT numberpin FROM users WHERE id='$internalID'";
+	$result = mysql_query($query, $st_sql);
+	
+	$array = mysql_fetch_assoc($result);
+	
+	if (!$array)
+		return new st_arr_message(1, "Error getting number verification token.");
+	else
+		return new st_arr_message(0, "", $array['numberpin']);	
+}
+
+
+
 function st_user_getNetworks($fbID, $facebookObj)
 {
 	$fql = 'SELECT affiliations FROM user WHERE uid='.$fbID;
