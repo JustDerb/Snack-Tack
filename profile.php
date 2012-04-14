@@ -10,6 +10,8 @@
 	
 	if (array_key_exists('nologin', $_GET))
 		array_push($form['msg']['error'],"You need to login to access that page!");
+	if (array_key_exists('newphone', $_GET))
+		array_push($form['msg']['success'],"Phone updated!");
 	
 	if ($user)
 	{
@@ -123,6 +125,7 @@
 <?php endif ?>
 
 <?php if ($user): ?>
+		<h2>Settings</h2>
 		<form method="post" id="profileForm" name="profileForm">
 			<ul class="form">
 				<li>Networks</li>
@@ -130,21 +133,13 @@
 	print($networks_string);
 ?>
 			</ul>
-			<ul class="form">
+			<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
+			<ul class="link">
 				<li>Phone</li>
-				<li>We use your phone to send you text messages when a Tacked event is about to start.</li>
-				<li><input type="text" name="phone" placeholder="555-555-5555" autocorrect="off" autocomplete="off" value="<?php 
-	if ($_POST['phone'])
-		print($_POST['phone']);
-	else
-		print($st_user->array['Phone']); 
-?>"/></li>
-<?php if ($form['verifyPhone']): ?>
-				<li><input type="text" name="phoneVerify" placeholder="Verification Code" autocorrect="off" autocomplete="off" value=""/></li>
-<?php endif ?>
+				<li><a href="phone.php">Update Number (<?php if (!empty($st_user->array['Phone'])) print($st_user->array['Phone']); else print('Not Set'); ?>)</a></li>
 			</ul>
 			<input type="hidden" name="form" value="Profile" />
-			<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
+			
 <?php if ($_GET['state']): ?>
 			<div id="back" name="back" onclick="window.location.replace('index.php')">Back</div>
 <?php else: ?>
