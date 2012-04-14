@@ -20,7 +20,7 @@
 <?php require "includes/head.php"; ?>
 		<script type="text/javascript" src="js/phone.js"></script>
 	</head>
-	<body>	
+	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">	
 		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault(); } // ]]></script>
 		<div id="header">
 			<a href="index.php"><img src="img/logo_mini.png" id="logo" /></a>

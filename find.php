@@ -13,7 +13,7 @@
 <?php require "includes/head.php"; ?>
 		<script type="text/javascript" src="js/find.js"></script>
 	</head>
-	<body>
+	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
 
 <?php if (array_key_exists('terms', $_GET) && empty($events)): ?>

@@ -6,7 +6,7 @@
 	<head>
 <?php require "includes/head.php"; ?>
 	</head>
-	<body>
+	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
 		
 		<h2>Web Site Terms and Conditions of Use</h2>

@@ -11,7 +11,7 @@
 	<head>
 <?php require "includes/head.php"; ?>
 	</head>
-	<body>
+	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
 		
 		<h2>Awards</h2>
