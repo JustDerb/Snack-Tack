@@ -1,3 +1,7 @@
+<?php
+	require "includes/fb-login.php"; 
+	require "api/snacktack.php";
+?>
 <html>
 	<head>
 <?php require "includes/head.php"; ?>
@@ -5,13 +9,10 @@
 	<body>
 <?php include "includes/header.php"; ?>
 		
-		<form>
-		<h2>
-			Web Site Terms and Conditions of Use
-		</h2>
+		<h2>Web Site Terms and Conditions of Use</h2>
 		
-		<ul>
-			<li class="head">1. Terms</li>
+		<ul class="terms info">
+			<li>1. Terms</li>
 			<li>
 				By accessing this web site, you are agreeing to be bound by these 
 				web site Terms and Conditions of Use, all applicable laws and regulations, 
@@ -22,52 +23,41 @@
 			</li>
 		</ul>
 
-		<ul>
-			<li class="head">2. Use License</li>
+		<ul class="info terms">
+			<li>2. Use License</li>
 			<li>
-				<ol type="a">
-					<li>
-						Permission is granted to temporarily download one copy of the materials 
-						(information or software) on DBA Derby Legleiter Corporation's web site for personal, 
-						non-commercial transitory viewing only. This is the grant of a license, 
-						not a transfer of title, and under this license you may not:
-						
-						<ol type="i">
-							<li>modify or copy the materials;</li>
-							<li>use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
-							<li>attempt to decompile or reverse engineer any software contained on DBA Derby Legleiter Corporation's web site;</li>
-							<li>remove any copyright or other proprietary notations from the materials; or</li>
-							<li>transfer the materials to another person or "mirror" the materials on any other server.</li>
-						</ol>
-					</li>
-					<li>
-						This license shall automatically terminate if you violate any of these restrictions and may be terminated by DBA Derby Legleiter Corporation at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
-					</li>
-				</ol>
+				Permission is granted to temporarily download one copy of the materials 
+				(information or software) on DBA Derby Legleiter Corporation's web site for personal, 
+				non-commercial transitory viewing only. This is the grant of a license, 
+				not a transfer of title, and under this license you may not:
+					<br />
+					<div class="indent">- modify or copy the materials;</div>
+					<div class="indent">- use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</div>
+					<div class="indent">- attempt to decompile or reverse engineer any software contained on DBA Derby Legleiter Corporation's web site;</div>
+					<div class="indent">- remove any copyright or other proprietary notations from the materials; or</div>
+					<div class="indent">- transfer the materials to another person or "mirror" the materials on any other server.</div>
+					<br />
+				This license shall automatically terminate if you violate any of these restrictions and may be terminated by DBA Derby Legleiter Corporation at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
 			</li>
 		</ul>
 		
-		<ul>
-			<li class="head">3. Disclaimer</li>
+		<ul class="info terms">
+			<li>3. Disclaimer</li>
 			<li>
-				<ol type="a">
-					<li>
-						The materials on DBA Derby Legleiter Corporation's web site are provided 
-						"as is". DBA Derby Legleiter Corporation makes no warranties, expressed or 
-						implied, and hereby disclaims and negates all other warranties, including 
-						without limitation, implied warranties or conditions of merchantability, 
-						fitness for a particular purpose, or non-infringement of intellectual property 
-						or other violation of rights. Further, DBA Derby Legleiter Corporation does 
-						not warrant or make any representations concerning the accuracy, likely results, 
-						or reliability of the use of the materials on its Internet web site or 
-						otherwise relating to such materials or on any sites linked to this site.
-					</li>
-				</ol>
+				The materials on DBA Derby Legleiter Corporation's web site are provided 
+				"as is". DBA Derby Legleiter Corporation makes no warranties, expressed or 
+				implied, and hereby disclaims and negates all other warranties, including 
+				without limitation, implied warranties or conditions of merchantability, 
+				fitness for a particular purpose, or non-infringement of intellectual property 
+				or other violation of rights. Further, DBA Derby Legleiter Corporation does 
+				not warrant or make any representations concerning the accuracy, likely results, 
+				or reliability of the use of the materials on its Internet web site or 
+				otherwise relating to such materials or on any sites linked to this site.
 			</li>
 		</ul>
 		
-		<ul>
-			<li class="head">4. Limitations</li>
+		<ul class="info terms">
+			<li>4. Limitations</li>
 			<li>
 				In no event shall DBA Derby Legleiter Corporation or its suppliers be liable for any 
 				damages (including, without limitation, damages for loss of data or profit, or due 
@@ -80,8 +70,8 @@
 			</li>
 		</ul>
 		
-		<ul>
-			<li class="head">5. Revisions and Errata</li>
+		<ul class="info terms">
+			<li>5. Revisions and Errata</li>
 			<li>
 				The materials appearing on DBA Derby Legleiter Corporation's web site could include 
 				technical, typographical, or photographic errors. DBA Derby Legleiter Corporation 
@@ -92,8 +82,8 @@
 			</li>
 		</ul>
 		
-		<ul>
-			<li class="head">6. Links</li>
+		<ul class="info terms">
+			<li>6. Links</li>
 			<li>
 				DBA Derby Legleiter Corporation has not reviewed all of the sites linked to its 
 				Internet web site and is not responsible for the contents of any such linked site. 
@@ -102,8 +92,8 @@
 			</li>
 		</ul>
 		
-		<ul>
-			<li class="head">7. Site Terms of Use Modifications</li>
+		<ul class="info terms">
+			<li>7. Site Terms of Use Modifications</li>
 			<li>
 				DBA Derby Legleiter Corporation may revise these terms of use for its web site at any time 
 				without notice. By using this web site you are agreeing to be bound by the then current version 
@@ -111,16 +101,16 @@
 			</li>
 		</ul>
 			
-		<ul>
-			<li class="head">8. Governing Law</li>
+		<ul class="info terms">
+			<li>8. Governing Law</li>
 			<li>
 				Any claim relating to DBA Derby Legleiter Corporation's web site shall be governed by 
 				the laws of the State of Iowa without regard to its conflict of law provisions.
 			</li>
 		</ul>
 		
-		<ul>
-			<li class="head">Note</li>
+		<ul class="info terms">
+			<li>Note</li>
 			<li>
 				General Terms and Conditions applicable to Use of a Web Site.
 			</li>
@@ -131,8 +121,8 @@
 		</h2>
 
 
-		<ul>
-			<li class="head">General</li>
+		<ul class="info">
+			<li>General</li>
 			<li>
 				Your privacy is very important to us. Accordingly, we have developed this Policy 
 				in order for you to understand how we collect, use, communicate and disclose and 
@@ -169,14 +159,13 @@
 			</li>
 		</ul>
 		
-		<ul>
-			<li class="head">Please note</li>
+		<ul class="info">
+			<li>Please note</li>
 			<li>
 				We are committed to conducting our business in accordance with these principles in order 
 				to ensure that the confidentiality of personal information is protected and maintained. 
 			</li>
 		</ul>
-		</form>
 
 		<div id="back" name="back" onclick="window.history.back();">Back</div>
 <?php include "includes/labelfix.php"; ?>

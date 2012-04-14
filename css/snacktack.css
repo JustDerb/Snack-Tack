@@ -67,6 +67,40 @@ ul#connect li a:hover {
 	color: #000000;
 }
 
+#back, 
+#cancel, 
+#submit {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border: solid 2px #000000;	
+	display: block;
+	font-size: 17px;
+	margin: 10px;
+	padding: 12px 10px;
+	text-align: center;
+}
+
+div#submit, 
+div#back {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(40%,#dedede), color-stop(100%,#b6b6b6));
+}
+
+div#submit:hover, 
+div#back:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c8c8c8), color-stop(40%,#b1b1b1), color-stop(100%,#919191));
+}
+
+div#cancel {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2f2b), color-stop(50%,#ff4f4f), color-stop(51%,#ff0307), color-stop(71%,#ff090d), color-stop(100%,#ff0f1b));
+	color: #FFFFFF;
+}
+
+div#cancel:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c70a07), color-stop(50%,#d41212), color-stop(51%,#ac0609), color-stop(71%,#ab0b0e), color-stop(100%,#a7131a));
+}
+
 
 /* 
  * Link and Info CSS
@@ -185,40 +219,6 @@ ul.form li:last-child {
 	-webkit-border-bottom-right-radius: 8px;	
 }
 
-#back, 
-#cancel, 
-#submit {
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	-webkit-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
-	border: solid 2px #000000;	
-	display: block;
-	font-size: 17px;
-	margin: 10px;
-	padding: 12px 10px;
-	text-align: center;
-}
-
-div#submit, 
-div#back {
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(40%,#dedede), color-stop(100%,#b6b6b6));
-}
-
-div#submit:hover, 
-div#back:hover {
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c8c8c8), color-stop(40%,#b1b1b1), color-stop(100%,#919191));
-}
-
-div#cancel {
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff2f2b), color-stop(50%,#ff4f4f), color-stop(51%,#ff0307), color-stop(71%,#ff090d), color-stop(100%,#ff0f1b));
-	color: #FFFFFF;
-}
-
-div#cancel:hover {
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c70a07), color-stop(50%,#d41212), color-stop(51%,#ac0609), color-stop(71%,#ab0b0e), color-stop(100%,#a7131a));
-}
-
 
 /*
  * Table CSS (Awards, Events)
@@ -294,7 +294,6 @@ ul.message li:last-child {
 
 ul.message li a {
 	background: url(../img/chevron.png) right center no-repeat;
-	/*padding: 12px 10px;*/
 	text-decoration: none;
 	color: #222222;
 	display: block;
@@ -318,6 +317,20 @@ ul.message li.success {
 	background: #00CC00;
 	padding: 12px 10px;
 	color: #000000;
+}
+
+
+/*
+ * Terms and Conditions CSS
+ */
+
+div.indent {
+	display: block;
+	margin-left: 10px;
+}
+
+ul.terms li {
+	font-size: 12px;
 }
 
 
