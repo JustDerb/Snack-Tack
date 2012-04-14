@@ -1,6 +1,8 @@
 <?php 
 	require "includes/fb-login.php"; 
 	require "api/snacktack.php"; 
+	include "includes/displayEventAwardInfo.php";
+
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
 	st_loginonly_check($st_user, $facebook, "profile.php?nologin=1&url=plan.php");
@@ -68,8 +70,9 @@
     				print('checked');
     		}
 		}
-		print('>');
-		print($type->array['Category'].' - '.$type->array['Name']);
+		print('><label for="'.$type->array['ID'].'">');
+		printEventAwardInfo($type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false,false);//,false);
+		//print($type->array['Category'].' - '.$type->array['Name']);
 		print('</label></li>');
 	}
 ?>
