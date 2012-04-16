@@ -80,7 +80,7 @@ function st_user_getData($fbID)
 	}
 }
 
-function st_user_setPhone($fbID, $number)
+function st_user_setPhone($fbID, $number, $cleartoken = false)
 {
 	global $st_sql;
 	
@@ -92,8 +92,14 @@ function st_user_setPhone($fbID, $number)
 	$fbID = mysql_real_escape_string($fbID,$st_sql);	
 	$number = mysql_real_escape_string($number,$st_sql);
 	
+	//Reset their PIN
+	if ($cleartoken)
+		$clear = ", numberpin='-9999'";
+	else
+		$clear = "";
+	
 	//Update record
-	$query = "UPDATE users SET phone='$number' WHERE fbid='$fbID'";
+	$query = "UPDATE users SET phone='$number'".$clear." WHERE fbid='$fbID'";
 	$result = mysql_query($query, $st_sql);
 	
 	if (mysql_affected_rows($st_sql) == 0)

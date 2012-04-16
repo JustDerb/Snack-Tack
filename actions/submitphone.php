@@ -43,9 +43,9 @@
 			$token = st_user_getPhoneToken($st_user);
 			if ($token->array['Error'] == 0)
 			{
-				if (strcmp($token->array['URL'],$_POST['phoneVerify']) == 0)
+				if (strcmp($token->array['URL'],$_POST['phoneVerify']) == 0 && $token->array['URL'] > 0)
 				{
-					$message = st_user_setPhone($st_user->array['fbID'], $_POST['phone']);
+					$message = st_user_setPhone($st_user->array['fbID'], $_POST['phone'], true);
 					if ($message->array['Error'] == 0)
 					{
 						//Redirect to profile
