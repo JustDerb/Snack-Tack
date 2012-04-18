@@ -21,6 +21,7 @@ require 'api/fbsdk/facebook.php';
 $facebook = new Facebook(array(
   'appId' => '116798491783875',
   'secret' => '9367c3a6f4bfd318cf405d014841ea41',
+  'cookie' => true
 ));
 
 if (isset($_GET['logout']))
