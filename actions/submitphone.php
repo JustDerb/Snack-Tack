@@ -4,9 +4,15 @@
 
 	if($_POST['form'] == 'phoneset')
 	{
+		$characters = array("-", ".", " ", "(", ")");
 		//Error checking
 		if (!preg_match("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i", $_POST['phone']))
 			array_push($form['msg']['error'],'Invalid phone number.');
+		else if (strcasecmp(str_replace($characters, "", $st_user->array['Phone']),str_replace($characters, "", $_POST['phone'])) == 0)
+		{
+			array_push($form['msg']['message'],'You already have verified this number.');
+			$showPhone = true;
+		}
 		else
 		{
 			require 'api/google/googlevoice.php';
@@ -18,7 +24,10 @@
 			if ($token->array['Error'] == 0)
 			{
 				$gv->sms($_POST['phone'], 'Your verification code is: '.$token->array['URL']);
-				array_push($form['msg']['message'],'Verification number sent.');
+				if ($gv->info['http_code'] != 200)
+					array_push($form['msg']['error'],'Error sending verification code. ('.$gv->info['http_code'].')');
+				else
+					array_push($form['msg']['message'],'Verification number sent.');
 				$showPhone = false;
 			}
 			else
