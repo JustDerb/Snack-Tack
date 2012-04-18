@@ -82,6 +82,7 @@ require '../api/google/googlevoice.php';
 				$gv = new GoogleVoice($googlevoice_email, $googlevoice_password);
 				$gv->sms($_POST['smsnumber'], $_POST['smsmessage']);
 				print ('<h2>'.$gv->status.'</h2>');
+				print ('<pre>'.print_r($gv->info,true).'</pre>');
 			}
 		?>
 		<h2>Testing Features</h2>

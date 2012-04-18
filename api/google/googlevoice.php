@@ -14,9 +14,10 @@ class GoogleVoice
     public $username;
     public $password;
     public $status;
+    public $info;
     private $lastURL;
     private $login_auth;
-    private $inboxURL = 'https://www.google.com/voice/m/';
+    private $inboxURL = 'https://www.google.com/voice/b/0/m/';
     private $loginURL = 'https://www.google.com/accounts/ClientLogin';
     private $smsURL = 'https://www.google.com/voice/m/sendsms';
 
@@ -40,6 +41,7 @@ class GoogleVoice
         curl_setopt($ch, CURLOPT_POSTFIELDS, $login_param);
         $html = curl_exec($ch);
         $this->lastURL = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        $this->info = curl_getinfo($ch);
         curl_close($ch);
         $this->login_auth = $this->match('/Auth=([A-z0-9_-]+)/', $html, 1);
         return $this->login_auth;
@@ -56,6 +58,7 @@ class GoogleVoice
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         $html = curl_exec($ch);
         $this->lastURL = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        $this->info = curl_getinfo($ch);
         curl_close($ch);
         $_rnr_se = $this->match('!<input.*?name="_rnr_se".*?value="(.*?)"!ms', $html, 1);
         return $_rnr_se;
@@ -76,6 +79,7 @@ class GoogleVoice
         curl_setopt($ch, CURLOPT_POSTFIELDS, $sms_param);      
         $this->status = curl_exec($ch);
         $this->lastURL = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+        $this->info = curl_getinfo($ch);
         curl_close($ch);
         return $this->status;
     }
