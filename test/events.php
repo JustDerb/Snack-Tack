@@ -15,13 +15,21 @@
 * under the License.
 */
 
-require '../api/fbsdk/facebook.php';
-require '../api/snacktack.php';
+require_once '../api/fbsdk/facebook.php';
+require_once '../api/snacktack.php';
+
+//start the session if necessary
+if( session_id() ) {
+
+} else {
+	session_start();
+}
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
   'appId' => '116798491783875',
   'secret' => '9367c3a6f4bfd318cf405d014841ea41',
+  'cookie' => true
 ));
 
 // Get User ID

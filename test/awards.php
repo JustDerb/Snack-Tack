@@ -15,9 +15,16 @@
 * under the License.
 */
 
-require '../api/fbsdk/facebook.php';
-require '../api/snacktack.php';
-require 'includes/code_formatter.php';
+require_once '../api/fbsdk/facebook.php';
+require_once '../api/snacktack.php';
+require_once 'includes/code_formatter.php';
+
+//start the session if necessary
+if( session_id() ) {
+
+} else {
+	session_start();
+}
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
