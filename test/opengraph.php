@@ -65,7 +65,7 @@ if ($_POST['form'] == "createEvent")
 ?>
   <meta property="fb:app_id"      content="116798491783875" /> 
   <meta property="og:type"        content="snacktack:event" /> 
-  <meta property="og:url"         content="http://www.wadsworthit.com/snacktack/" /> 
+  <meta property="og:url"         content="http://www.wadsworthit.com/snacktack/test/opengraph.php" /> 
   <meta property="og:title"       content="Sample Event" /> 
   <meta property="og:description" content="Some Description String" /> 
   <meta property="og:image"       content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" /> 
