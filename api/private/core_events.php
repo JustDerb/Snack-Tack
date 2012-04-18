@@ -110,7 +110,7 @@ function st_events_getEvents($daysAhead = 0, $sorting = "date")
 
 
 //For searchs
-function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date")
+function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date", $foodIDs = NULL)
 {
 	$events = array();
 	
@@ -127,6 +127,22 @@ function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date")
 	
 	$searchTerms = st_mysql_encode($searchTerms,$st_sql);
 	$daysAhead = st_mysql_encode($daysAhead,$st_sql);
+	$foodOptions = '';
+	if (!empty($foodIDs) && is_array($foodIDs))
+	{
+		$foodOptions = $foodOptions." AND (";
+		$first = true;
+		foreach($foodIDs as $foodID)
+		{
+			// Don't print OR on the first one
+			if ($first)
+				$first = false;
+			else
+				$foodOptions = $foodOptions." OR";
+			$foodOptions = $foodOptions." t.typeid='".st_mysql_encode($foodID,$st_sql)."' ";
+		}
+		$foodOptions = $foodOptions.") ";
+	}
 	
 	//if ($sorting == "date")
 		$sort = " ORDER BY e.dateStart ASC";
@@ -134,6 +150,7 @@ function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date")
 	//Check for record
 	$query = "SELECT * FROM events e,eventstypes t WHERE ((name LIKE '%$searchTerms%')) AND e.id=t.eventid ";
 	$query = $query." AND (e.dateStart < DATE_ADD(NOW(),INTERVAL ".$daysAhead." DAY) AND (e.dateEnd > NOW())) ";
+	$query = $query.$foodOptions;
 	$query = $query.$sort;
 	$result = mysql_query($query, $st_sql);
 	//if (!$result)

@@ -5,7 +5,7 @@
 	
 	if (array_key_exists('terms', $_GET))
 	{
-		$events = st_events_lookupEvent($_GET['terms'], 7, "date");
+		$events = st_events_lookupEvent($_GET['terms'], 7, "date", $_GET['fo']);
 	}
 ?>
 <html>
