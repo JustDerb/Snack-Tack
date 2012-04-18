@@ -53,7 +53,7 @@ if ($user) {
 
 if ($_POST['form'] == "createEvent")
 {
-	$facebook->api('https://graph.facebook.com/me/yellowheart:read?event=http://www.wadsworthit.com/snacktack/test/opengraph.php','POST');
+	$facebook->api('https://graph.facebook.com/me/snacktack:create?event=http://www.wadsworthit.com/snacktack/test/opengraph.php','POST');
 }
 
 ?>
