@@ -3,10 +3,7 @@
 	//$st_user = st_user_register($user_profile, true);
 	if (isset($st_user))
 	{
-		$form['msg'] = array();
-		$form['msg']['error'] = array();
-		$form['msg']['message'] = array();
-		$form['msg']['success'] = array();
+		$form['msg'] = array('error' => array(), 'message' => array(), 'success' => array());
 		//$changed_user_info = false;
 		
 		if (array_key_exists('form', $_POST))
