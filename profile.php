@@ -3,15 +3,15 @@
 	require "api/snacktack.php"; 
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
-	$form['msg'] = array();
-	$form['msg']['error'] = array();
-	$form['msg']['message'] = array();
-	$form['msg']['success'] = array();
+	$msg = array();
+	$msg['error'] = array();
+	$msg['message'] = array();
+	$msg['success'] = array();
 	
 	if (array_key_exists('nologin', $_GET))
-		array_push($form['msg']['error'],"You need to login to access that page!");
+		array_push($msg['error'],"You need to login to access that page!");
 	if (array_key_exists('newphone', $_GET))
-		array_push($form['msg']['success'],"Phone updated!");
+		array_push($msg['success'],"Phone updated!");
 	
 	if ($user)
 	{
@@ -36,14 +36,14 @@
 			{
 				$result = st_user_setNetwork($st_user->array['fbID'], $last_network['nid']);
 				if ($result->array['Error'] == 1)
-					array_push($form['msg']['error'],$result->array['Message']);
+					array_push($msg['error'],$result->array['Message']);
 				else
 				{
 					
 					$st_user->array['Network'] = $last_network['nid'];
 					$message = trim($result->array['Message']);
 					if (!empty($message))
-						array_push($form['msg']['success'],$result->array['Message']);
+						array_push($msg['success'],$result->array['Message']);
 				}
 			}
 			
@@ -66,12 +66,12 @@
 		}
 		if ($num_networks == 0 || array_key_exists('nocollege', $_GET))
 		{
-			array_push($form['msg']['error'],"Uh-oh! You need to be in a college network to be able to use this site!");
+			array_push($msg['error'],"Uh-oh! You need to be in a college network to be able to use this site!");
 		}
 		if ($num_networks == 0)
 		{
 			$networks_string = $networks_string.'<li><strong>You are not in any college networks!</strong></li>';
-			array_push($form['msg']['error'],"Please log into Facebook and check to make sure you are accepted into a college network.");
+			array_push($msg['error'],"Please log into Facebook and check to make sure you are accepted into a college network.");
 		}
 	}
 ?>
@@ -97,26 +97,26 @@
 <?php endif ?>
 		</ul>
 		
-<?php if ($form['msg']): ?>
+<?php if ($msg): ?>
 		<ul class="message">
 			<?php
-				if (is_array($form['msg']['error']))
+				if (is_array($msg['error']))
 				{
-					foreach ($form['msg']['error'] as $msg)
+					foreach ($msg['error'] as $msg)
 					{
 						print('<li class="error">'.$msg.'</li>');
 					}
 				}
-				if (is_array($form['msg']['success']))
+				if (is_array($msg['success']))
 				{
-					foreach ($form['msg']['success'] as $msg)
+					foreach ($msg['success'] as $msg)
 					{
 						print('<li class="success">'.$msg.'</li>');
 					}
 				}
-				if (is_array($form['msg']['message']))
+				if (is_array($msg['message']))
 				{
-					foreach ($form['msg']['message'] as $msg)
+					foreach ($msg['message'] as $msg)
 					{
 						print('<li class="message">'.$msg.'</li>');
 					}

@@ -11,14 +11,14 @@
 			//Set phone
 			$result = st_user_setPhone($st_user->array['fbID'], $_POST['phone']);
 			if ($result->array['Error'] == 1)
-				array_push($form['msg']['error'],$result->array['Message']);
+				array_push($msg['error'],$result->array['Message']);
 			else 
 			{
 				$changed_user_info = true;
 				if (trim($result->array['Message']) != "")
-					array_push($form['msg']['success'],$result->array['Message']);
+					array_push($msg['success'],$result->array['Message']);
 				//else
-				//	array_push($form['msg']['message'],"Phone number not changed.");
+				//	array_push($msg['message'],"Phone number not changed.");
 			}
 			//if (array_key_exists('phoneVerify', $_POST))
 			//{
@@ -46,14 +46,14 @@
 				}
 				if (!$isValid)
 				{
-					array_push($form['msg']['error'],"Invalid network.");
+					array_push($msg['error'],"Invalid network.");
 				}
 				else
 				{
 					$changed_user_info = true;
 					$message = trim($result->array['Message']);
 					if (!empty($message))
-						array_push($form['msg']['success'],$result->array['Message']);
+						array_push($msg['success'],$result->array['Message']);
 				}
 			}
 		}
@@ -61,6 +61,6 @@
 		if ($changed_user_info)
 			$st_user = st_user_register($user_profile, true);
 			
-		//array_push($form['msg']['message'],'<pre>'.print_r($_POST,true).'</pre>');
+		//array_push($msg['message'],'<pre>'.print_r($_POST,true).'</pre>');
 	}
 ?>

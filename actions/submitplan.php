@@ -3,7 +3,7 @@
 	//$st_user = st_user_register($user_profile, true);
 	if (isset($st_user))
 	{
-		$form['msg'] = array('error' => array(), 'message' => array(), 'success' => array());
+		$msg = array('error' => array(), 'message' => array(), 'success' => array());
 		//$changed_user_info = false;
 		
 		if (array_key_exists('form', $_POST))
@@ -24,7 +24,7 @@
 				!array_key_exists('fburl', $_POST))// ||
 				//!array_key_exists('organization', $_POST))
 			{
-				array_push($form['msg']['error'],'Missing some data to create event.  Please try again.');
+				$msg['error'][] = 'Missing some data to create event.  Please try again.';
 			}
 			else
 			{
@@ -50,12 +50,16 @@
 				$result = st_events_createEvent($event);
 				
 				if ($result->array['Error'] == 1)
-					array_push($form['msg']['error'],$result->array['Message']);
+				{
+					$msg['error'][] = 'blah';
+				}
 				else
 				{
 					$message = trim($result->array['Message']);
 					if (!empty($message))
-						array_push($form['msg']['success'],$result->array['Message']);
+					{
+						$msg['success'][] = $result->array['Message'];
+					}
 					$redirect = trim($result->array['URL']);
 					if (!empty($redirect))
 						header( 'Location: '.$redirect ) ;
@@ -64,6 +68,6 @@
 		}
 		
 		//For debugging purposes				
-		//array_push($form['msg']['message'],'<pre>'.print_r($_POST,true).'</pre>');
+		//array_push($msg['message'],'<pre>'.print_r($_POST,true).'</pre>');
 	}
 ?>

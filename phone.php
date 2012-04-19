@@ -6,10 +6,10 @@
 	$st_user = st_user_register($user_profile, true);
 	st_loginonly_check($st_user, $facebook, "profile.php?nologin=1&url=phone.php");
 	
-	$form['msg'] = array();
-	$form['msg']['error'] = array();
-	$form['msg']['message'] = array();
-	$form['msg']['success'] = array();
+	$msg = array();
+	$msg['error'] = array();
+	$msg['message'] = array();
+	$msg['success'] = array();
 			
 	$showPhone = true;
 	
@@ -32,26 +32,26 @@
 		</div>
 		
 		<h2>Set Phone Number</h2>		
-<?php if ($form['msg']): ?>
+<?php if ($msg): ?>
 		<ul class="message">
 			<?php
-				if (is_array($form['msg']['error']))
+				if (is_array($msg['error']))
 				{
-					foreach ($form['msg']['error'] as $msg)
+					foreach ($msg['error'] as $msg)
 					{
 						print('<li class="error">'.$msg.'</li>');
 					}
 				}
-				if (is_array($form['msg']['success']))
+				if (is_array($msg['success']))
 				{
-					foreach ($form['msg']['success'] as $msg)
+					foreach ($msg['success'] as $msg)
 					{
 						print('<li class="success">'.$msg.'</li>');
 					}
 				}
-				if (is_array($form['msg']['message']))
+				if (is_array($msg['message']))
 				{
-					foreach ($form['msg']['message'] as $msg)
+					foreach ($msg['message'] as $msg)
 					{
 						print('<li class="message">'.$msg.'</li>');
 					}

@@ -7,10 +7,10 @@
 		$characters = array("-", ".", " ", "(", ")");
 		//Error checking
 		if (!preg_match("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i", $_POST['phone']))
-			array_push($form['msg']['error'],'Invalid phone number.');
+			array_push($msg['error'],'Invalid phone number.');
 		else if (strcasecmp(str_replace($characters, "", $st_user->array['Phone']),str_replace($characters, "", $_POST['phone'])) == 0)
 		{
-			array_push($form['msg']['message'],'You already have verified this number.');
+			array_push($msg['message'],'You already have verified this number.');
 			$showPhone = true;
 		}
 		else
@@ -25,14 +25,14 @@
 			{
 				$gv->sms($_POST['phone'], 'Your verification code is: '.$token->array['URL']);
 				if ($gv->info['http_code'] != 200)
-					array_push($form['msg']['error'],'Error sending verification code. ('.$gv->info['http_code'].')');
+					array_push($msg['error'],'Error sending verification code. ('.$gv->info['http_code'].')');
 				else
-					array_push($form['msg']['message'],'Verification number sent.');
+					array_push($msg['message'],'Verification number sent.');
 				$showPhone = false;
 			}
 			else
 			{
-				array_push($form['msg']['error'],$token->array['Message']);
+				array_push($msg['error'],$token->array['Message']);
 			}
 		}
 	}
@@ -42,7 +42,7 @@
 		//Error checking
 		if (!preg_match("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i", $_POST['phone']))
 		{
-			array_push($form['msg']['error'],'Invalid phone number.');
+			array_push($msg['error'],'Invalid phone number.');
 			$showPhone = true;
 		}
 		else
@@ -63,16 +63,16 @@
 					}
 					else
 					{
-						array_push($form['msg']['error'],$token->array['Message']);
+						array_push($msg['error'],$token->array['Message']);
 						$showPhone = true;
 					}
 				}
 				else
-					array_push($form['msg']['error'],'Invalid verification code. Try again.');
+					array_push($msg['error'],'Invalid verification code. Try again.');
 			}
 			else
 			{
-				array_push($form['msg']['error'],$token->array['Message']);
+				array_push($msg['error'],$token->array['Message']);
 				$showPhone = true;
 			}
 		}

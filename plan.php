@@ -17,28 +17,28 @@
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
 		
-<?php if ($form['msg']): ?>
+<?php if ($msg): ?>
 		<ul class="message">
 			<?php
-				if (is_array($form['msg']['error']))
+				if (is_array($msg['error']))
 				{
-					foreach ($form['msg']['error'] as $msg)
+					foreach ($msg['error'] as $message)
 					{
-						print('<li class="error">'.$msg.'</li>');
+						print('<li class="error">'.$message.'</li>');
 					}
 				}
-				if (is_array($form['msg']['success']))
+				if (is_array($msg['success']))
 				{
-					foreach ($form['msg']['success'] as $msg)
+					foreach ($msg['success'] as $message)
 					{
-						print('<li class="success">'.$msg.'</li>');
+						print('<li class="success">'.$message.'</li>');
 					}
 				}
-				if (is_array($form['msg']['message']))
+				if (is_array($msg['message']))
 				{
-					foreach ($form['msg']['message'] as $msg)
+					foreach ($msg['message'] as $message)
 					{
-						print('<li class="message">'.$msg.'</li>');
+						print('<li class="message">'.$message.'</li>');
 					}
 				}
 			?>
