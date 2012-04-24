@@ -51,7 +51,7 @@
 				
 				if ($result->array['Error'] == 1)
 				{
-					$msg['error'][] = 'blah';
+					$msg['error'][] = $result->array['Message'];
 				}
 				else
 				{
