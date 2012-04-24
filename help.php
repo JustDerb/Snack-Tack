@@ -15,7 +15,7 @@
 	$about_array = array(
 		"What is this website about?" => "This website was created from a discussion that stemmed from the ISU Engineering Facebook group about how it was hard to find, and keep track of a lot of pizza sales on campus.",
 		"Can I help you guys?" => "Sure! But the only way we need help right now is for you to plan, or promote events on your campus to get the word out!",
-		"Where can I send suggestions?" => "We will have a form set up sometime in the near future. You can also leave comments on the ISU Engineering Facebook group page."
+		"Where can I send suggestions?" => "We will have a form set up sometime in the near future. For now, please send an email to admin(at)snacktack.com."
 		);
 
 	foreach ($about_array as $question => $answer)
