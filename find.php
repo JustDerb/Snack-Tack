@@ -35,17 +35,18 @@
 	foreach($types as $type)
 	{
 		print('<li><input type="checkbox" name="fo[]" id="'.$type->array['ID'].'" value="'.$type->array['ID'].'"');
-		if ($_GET['fo'])
+		if ($_POST['fo'])
 		{
-    		$types = $_GET['fo'];
+    		$types = $_POST['fo'];
     		foreach ($types as $key => $value)
     		{
     			if ($value == $type->array['ID'])
     				print('checked');
     		}
 		}
-		print('>');
-		print($type->array['Category'].' - '.$type->array['Name']);
+		print('><label for="'.$type->array['ID'].'">');
+		printEventAwardInfo($type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false,false,false);
+		//print($type->array['Category'].' - '.$type->array['Name']);
 		print('</label></li>');
 	}
 ?>
