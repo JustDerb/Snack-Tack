@@ -1,0 +1,10 @@
+<?php
+//Scan for SQL entries, than send message.
+//
+//http://stackoverflow.com/questions/9160710/sending-sms-using-cron-job-and-php
+//
+//Scan SQL database table (named 'smstacks'?) and send any that are within 15 minutes of an event.  
+// Delete them from the table.  If there are any that are WAY before the current time, just delete them.  
+// Do not send a text.
+//
+?>
