@@ -1,10 +1,12 @@
 <?php
 
-function printEventAwardInfo($typeIcon, $typeName, $eventName, $eventDescription, $eventDate, $url = "", $short = false, $multipleTypes = false)
+function printEventAwardInfo($typeIcon, $typeName, $eventName, $eventDescription, $eventDate, $url = "", $short = false, $multipleTypes = false, $printli = true)
 {
 	if ($short)
 	{
-		print('<li><div>');
+		if ($printli)
+			print('<li>');
+		print('<div>');
 		if ($url != "")
 		{
 			print('<a href="' . $url . '">');
@@ -45,12 +47,15 @@ function printEventAwardInfo($typeIcon, $typeName, $eventName, $eventDescription
 						<td><p class="descriptionShort">' . $eventDescription . '</p></td>
 					</tr>
 				</table>
-			</a></div></li>
-		');
+			</a></div>');
+		if ($printli)
+			print('</li>');
 	}
 	else
 	{
-		print('<li><div>');
+		if ($printli)
+			print('<li>');
+		print('<div>');
 		if ($url != "")
 		{
 			print('<a href="' . $url . '">');
@@ -80,8 +85,9 @@ function printEventAwardInfo($typeIcon, $typeName, $eventName, $eventDescription
 		print('
 					</tr>
 				</table>
-			</div></li>
-		');
+			</div>');
+		if ($printli)
+			pritn('</li>');
 	}
 }
 ?>

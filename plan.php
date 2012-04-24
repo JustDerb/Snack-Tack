@@ -72,7 +72,7 @@
     		}
 		}
 		print('><label for="'.$type->array['ID'].'">');
-		printEventAwardInfo($type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false,false);//,false);
+		printEventAwardInfo($type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false,false,false);
 		//print($type->array['Category'].' - '.$type->array['Name']);
 		print('</label></li>');
 	}
