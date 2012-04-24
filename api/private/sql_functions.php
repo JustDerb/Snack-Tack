@@ -55,15 +55,17 @@ class st_mysql
     }
 } 
 
-//Different variable to keep it in scopt so it doesn't get destroyed early
+//Different variable to keep it in scope so it doesn't get destroyed early
 $st_sql_d = new st_mysql(); 
 //Simplify the resources connection
 $st_sql = $st_sql_d->link;
 
-function st_mysql_encode($string,$st_sql)
+function st_mysql_encode($string,$st_sql,$brNewLines=true)
 {
 	$string = stripslashes($string);
 	$html = htmlentities($string, (ENT_COMPAT | ENT_HTML401), 'UTF-8', false);
+	if ($brNewLines)
+		$html = nl2br($html);
 	return mysql_real_escape_string($html,$st_sql);
 }
 ?>
