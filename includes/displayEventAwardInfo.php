@@ -87,7 +87,7 @@ function printEventAwardInfo($typeIcon, $typeName, $eventName, $eventDescription
 				</table>
 			</div>');
 		if ($printli)
-			pritn('</li>');
+			print('</li>');
 	}
 }
 ?>
