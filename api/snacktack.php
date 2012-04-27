@@ -39,6 +39,19 @@ function st_DateTime_getDateTime($year, $month, $day, $hour, $minute, $am = true
 		$hour = $hour - 24;
 	return new DateTime($year.'-'.$month.'-'.$day.' '.$hour.':'.$minute.':00');
 }
+
+function st_getCurrentPage($includeParams = true)
+{
+	$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https';
+	$host     = $_SERVER['HTTP_HOST'];
+	$script   = $_SERVER['SCRIPT_NAME'];
+	$params   = $_SERVER['QUERY_STRING'];
+	
+	$currentUrl = $protocol . '://' . $host . $script;
+	if ($includeParams)
+		$currentUrl = $currentUrl . '?' . $params;
+	return $currentUrl;
+}
  
 /*
  * Include library
