@@ -19,7 +19,7 @@
 $dir = dirname(__FILE__);
 require_once $dir.'/../fbsdk/facebook.php';
 
-function st_opengraph_submitAction($action, $object, $url)
+function st_opengraph_submitAction($facebook, $action, $object, $url)
 {
 	//if (!isArray($object))
 	//	throw new Exception('st_opengraph_submitAction($action, $object) - $object needs to be an array.');

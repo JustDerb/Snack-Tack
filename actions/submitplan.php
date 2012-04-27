@@ -66,7 +66,7 @@
 					{
 						header( 'Location: '.$redirect );
 						//Publish to facebook
-						st_opengraph_submitAction('create', 'event', 'http://www.snacktack.com/'.$redirect);
+						st_opengraph_submitAction($facebook, 'create', 'event', 'http://www.snacktack.com/'.$redirect);
 					}
 				}
 			}
