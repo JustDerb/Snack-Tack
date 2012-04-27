@@ -80,7 +80,7 @@ if ($_POST['form'] == "createEvent")
 </head>
 <body>
 <?php
-	$title = 'Awards';
+	$title = 'Open Graph';
 	include 'includes/top.php';
 	include 'includes/left.php';
 ?>
