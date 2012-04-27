@@ -57,7 +57,10 @@ if ($user) {
 if ($user) {
   $logoutUrl = "?logout=1";
 } else {
-  $loginUrl = $facebook->getLoginUrl(array("display" => "touch"));
+  $loginUrl = $facebook->getLoginUrl(array(
+  	"display" => "touch",
+  	"scope" => "publish_actions"
+  ));
 }
 
 ?>
