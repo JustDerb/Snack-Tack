@@ -11,6 +11,25 @@
 		if ($event->array['ID'] < 0)
 			$event = NULL;
 	}
+	
+	$st_user = st_user_register($user_profile, true);
+	
+	//Show any messages we need
+	$msg = array('error' => array(), 'message' => array(), 'success' => array());
+	if (array_key_exists('msg', $_GET))
+	{
+		if (array_key_exists('type', $_GET))
+		{
+			if (strcasecmp($_GET['type'], "error") == 0)
+				$msg['error'][] = htmlentities($_GET['msg']);
+			else if (strcasecmp($_GET['type'], "success") == 0)
+				$msg['success'][] = htmlentities($_GET['msg']);
+			else 
+				$msg['message'][] = htmlentities($_GET['msg']);
+		}
+		else
+			$msg['message'][] = htmlentities($_GET['msg']);
+	}
 ?>
 <html>
 	<head>
@@ -19,6 +38,34 @@
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
+
+<?php if ($msg): ?>
+		<ul class="message">
+			<?php
+				if (is_array($msg['error']))
+				{
+					foreach ($msg['error'] as $message)
+					{
+						print('<li class="error">'.$message.'</li>');
+					}
+				}
+				if (is_array($msg['success']))
+				{
+					foreach ($msg['success'] as $message)
+					{
+						print('<li class="success">'.$message.'</li>');
+					}
+				}
+				if (is_array($msg['message']))
+				{
+					foreach ($msg['message'] as $message)
+					{
+						print('<li class="message">'.$message.'</li>');
+					}
+				}
+			?>
+		</ul>
+<?php endif ?>
 
 		<h2>Event Information</h2>
 <?php if ($event): ?>
@@ -67,6 +114,20 @@
 			<li><a href="<?php print($event->array['FacebookEvent']); ?>">To the Facebook!</a></li>
 		</ul>
 <?php endif ?>		
+
+<?php if ($st_user): ?>
+<?php
+	if(st_tack_isTacked($event->array['ID'], $st_user->array['ID']) == true)
+		$tack = "Untack";
+	else
+		$tack = "Tack";
+?>
+
+		<ul class="link">
+			<li><?php print($tack); ?></li>
+			<li><a href="tackevent.php?id=<?php print($_GET['id']); ?>"><img src="img/types/default.png" alt="Tack" /><strong><?php print($tack); ?></strong> this event</a></li>
+		</ul>
+<?php endif ?>	
 
 <?php else: ?>
 		<ul class="info">
