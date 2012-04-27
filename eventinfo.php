@@ -13,9 +13,17 @@
 	}
 ?>
 <html>
-	<head>
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# snacktack: http://ogp.me/ns/fb/snacktack#">
 <?php require "includes/head.php"; ?>
 <?php require "includes/analytics.php"; ?>
+<?php if ($event): ?>
+  <meta property="fb:app_id" content="116798491783875" /> 
+  <meta property="og:type"   content="snacktack:event" /> 
+  <meta property="og:url"    content="<?php print(st_getCurrentPage(true)); ?>" /> 
+  <meta property="og:title"  content="<?php print($event->array['Name']); ?>" /> 
+  <meta property="og:description"  content="<?php print($event->array['Description']); ?>" /> 
+  <meta property="og:image"  content="" /> 
+<?php endif ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
