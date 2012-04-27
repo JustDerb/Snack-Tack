@@ -16,11 +16,12 @@
  */
 
 $dir = dirname(__FILE__);
+include_once($dir.'/sql_functions.php');
 include_once($dir.'/core_user.php');
 include_once($dir.'/core_awards.php');
 include_once($dir.'/core_types.php');
 include_once($dir.'/core_events.php');
-include_once($dir.'/sql_functions.php');
+include_once($dir.'/core_tack.php');
 include_once($dir.'/login_only.php');
 
 ?>
