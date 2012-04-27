@@ -70,7 +70,7 @@ require '../api/google/googlevoice.php';
 </head>
 <body>
 <?php
-	$title = 'User';
+	$title = 'SMS';
 	include 'includes/top.php';
 	include 'includes/left.php';
 ?>

@@ -61,13 +61,13 @@ if ($user) {
 
 if ($_POST['form'] == "createEvent")
 {
-try {
-    // Proceed knowing you have a logged in user who's authenticated.
-    $fbresult = $facebook->api(array('/me/snacktack:create?event='.urlencode("http://www.wadsworthit.com/snacktack/test/opengraph.php"),'POST'));
-  } catch (FacebookApiException $e) {
-    $fbresult = $e;
-   }
-
+	try {
+		// Proceed knowing you have a logged in user who's authenticated.
+		$params = array('event' => 'http://www.snacktack.com/test/opengraph.php');
+		$fbresult = $facebook->api('/me/snacktack:create','POST',$params);
+	} catch (Exception $e) {
+		$fbresult = $e->getMessage();
+	}
 	
 }
 
