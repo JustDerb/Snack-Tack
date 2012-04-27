@@ -14,14 +14,26 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
+ 
+ 
 $dir = dirname(__FILE__);
-include_once($dir.'/sql_functions.php');
-include_once($dir.'/core_user.php');
-include_once($dir.'/core_awards.php');
-include_once($dir.'/core_types.php');
-include_once($dir.'/core_events.php');
-include_once($dir.'/core_opengraph.php');
-include_once($dir.'/login_only.php');
+require_once $dir.'/../fbsdk/facebook.php';
+
+function st_opengraph_submitAction($action, $object, $url)
+{
+	//if (!isArray($object))
+	//	throw new Exception('st_opengraph_submitAction($action, $object) - $object needs to be an array.');
+		
+	try {
+		// Proceed knowing you have a logged in user who's authenticated.
+		//$param = $object;
+		$param = array($object => $url);
+		$fbresult = $facebook->api('/me/snacktack:'.$action,'POST',$param);
+	} catch (Exception $e) {
+		$fbresult = $e->getMessage();
+	}
+		
+	return $fbresult;
+}
 
 ?>
