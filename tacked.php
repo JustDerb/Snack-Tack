@@ -20,7 +20,7 @@
 		print('
 			<ul class="info">
 				<li>Tacked Events</li>
-				<li>There are no events today!</li>');
+				<li>You don\'t have any tacked events... :(</li>');
 	else
 	{
 		print('
