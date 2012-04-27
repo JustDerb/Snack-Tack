@@ -17,12 +17,20 @@
 <?php require "includes/head.php"; ?>
 <?php require "includes/analytics.php"; ?>
 <?php if ($event): ?>
+<?php
+	$types = $event->array['Type'];
+	foreach ($types as $typeid)
+	{
+		$type = st_types_getType($typeid);
+		$ogimage = 'http://www.snacktack.com/'.$type->array['Icon'];
+	}
+?>
   <meta property="fb:app_id" content="116798491783875" /> 
   <meta property="og:type"   content="snacktack:event" /> 
   <meta property="og:url"    content="<?php print(st_getCurrentPage(true)); ?>" /> 
   <meta property="og:title"  content="<?php print($event->array['Name']); ?>" /> 
   <meta property="og:description"  content="<?php print($event->array['Description']); ?>" /> 
-  <meta property="og:image"  content="" /> 
+  <meta property="og:image"  content="<?php print($ogimage); ?>" /> 
 <?php endif ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
