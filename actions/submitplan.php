@@ -61,8 +61,13 @@
 						$msg['success'][] = $result->array['Message'];
 					}
 					$redirect = trim($result->array['URL']);
+					
 					if (!empty($redirect))
-						header( 'Location: '.$redirect ) ;
+					{
+						header( 'Location: '.$redirect );
+						//Publish to facebook
+						st_opengraph_submitAction('create', 'event', 'http://www.snacktack.com/'.$redirect);
+					}
 				}
 			}
 		}
