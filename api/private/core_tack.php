@@ -55,4 +55,26 @@ function st_tack_setTacked($eventID, $userID, $tacked = true)
 	return mysql_affected_rows($st_sql) == 1;
 }
 
+function st_tack_getTacked($userID)
+{
+	global $st_sql;
+	
+	$events = array();		
+	$userID = mysql_real_escape_string($userID,$st_sql);	
+	
+	//Check for record
+	$query =        "SELECT t.eventid FROM tacked t,events e WHERE ";
+	$query = $query."     t.userID='$userID' ";
+	$query = $query." AND e.id=t.eventid ";
+	$query = $query." AND (e.dateStart > NOW()) "; //Already passed?
+	$query = $query." ORDER BY e.dateStart ASC";
+	$result = mysql_query($query, $st_sql);
+	
+	while ($row = mysql_fetch_assoc($result)) {
+		$events[] = $row['eventid'];
+	}
+	
+	return $events;
+}
+
 ?>
