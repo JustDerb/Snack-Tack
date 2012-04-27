@@ -61,7 +61,14 @@ if ($user) {
 
 if ($_POST['form'] == "createEvent")
 {
-	$facebook->api('https://graph.facebook.com/me/snacktack:create?event=http://www.wadsworthit.com/snacktack/test/opengraph.php','POST');
+try {
+    // Proceed knowing you have a logged in user who's authenticated.
+    $fbresult = $facebook->api(array('/me/snacktack:create?event='.urlencode("http://www.wadsworthit.com/snacktack/test/opengraph.php"),'POST'));
+  } catch (FacebookApiException $e) {
+    $fbresult = $e;
+   }
+
+	
 }
 
 ?>
@@ -80,7 +87,7 @@ if ($_POST['form'] == "createEvent")
 </head>
 <body>
 <?php
-	$title = 'Awards';
+	$title = 'Open Graph';
 	include 'includes/top.php';
 	include 'includes/left.php';
 ?>
@@ -92,6 +99,12 @@ if ($_POST['form'] == "createEvent")
 			<input type="hidden" name="form" value="createEvent" />
 			<input type="submit" name="submit" />
 		</form>
+		<h3>Results</h3>
+		<pre>
+		<?php
+			print_r($fbresult);
+		?>
+		</pre>
 	</div>
 	<?php
 		include 'includes/me.php';
