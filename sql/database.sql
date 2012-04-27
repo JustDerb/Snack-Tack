@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2012 at 08:16 PM
+-- Generation Time: Apr 26, 2012 at 10:09 PM
 -- Server version: 5.5.15
 -- PHP Version: 5.2.17
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `fbEvent` text,
   PRIMARY KEY (`id`),
   KEY `ownerIdx` (`owner`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 -- --------------------------------------------------------
 
@@ -124,6 +124,21 @@ CREATE TABLE IF NOT EXISTS `organizations` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tacked`
+--
+
+CREATE TABLE IF NOT EXISTS `tacked` (
+  `eventid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `delay` int(11) NOT NULL DEFAULT '15',
+  `sent` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`eventid`,`userid`),
+  KEY `userid` (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `types`
 --
 
@@ -162,6 +177,7 @@ CREATE TABLE IF NOT EXISTS `userawards` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fbid` varchar(30) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
   `registered` datetime NOT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `networkid` varchar(30) NOT NULL,
@@ -190,14 +206,21 @@ ALTER TABLE `eventsratings`
 -- Constraints for table `eventstypes`
 --
 ALTER TABLE `eventstypes`
-  ADD CONSTRAINT `eventstypes_ibfk_1` FOREIGN KEY (`eventid`) REFERENCES `events` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `eventstypes_ibfk_2` FOREIGN KEY (`typeid`) REFERENCES `types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `eventstypes_ibfk_3` FOREIGN KEY (`eventid`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eventstypes_ibfk_4` FOREIGN KEY (`typeid`) REFERENCES `types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `organizations`
 --
 ALTER TABLE `organizations`
   ADD CONSTRAINT `organizations_ibfk_1` FOREIGN KEY (`ownerid`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tacked`
+--
+ALTER TABLE `tacked`
+  ADD CONSTRAINT `tacked_ibfk_3` FOREIGN KEY (`eventid`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tacked_ibfk_4` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `types`
