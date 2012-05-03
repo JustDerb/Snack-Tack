@@ -51,7 +51,7 @@
 				<li>Basic Info</li>
 				<li><input type="text" placeholder="Event Name" name="eventName" id="eventName" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_POST['eventName']) print($_POST['eventName']); ?>"/></li>
 				<li>
-					<textarea placeholder="Event Description" name="eventDescription" id="eventDescription" rows="3" wrap="on"><?php if ($_POST['eventDescription']) print($_POST['eventDescription']); ?></textarea>
+					<textarea placeholder="Event Description" name="eventDescription" id="eventDescription" rows="3"><?php if ($_POST['eventDescription']) print($_POST['eventDescription']); ?></textarea>
 				</li>
 			</ul>
 			

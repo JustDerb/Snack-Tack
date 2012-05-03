@@ -135,6 +135,10 @@ ul.info li {
 	text-decoration: none;	
 }
 
+ul.info li {
+	padding: 10px 10px;
+}
+
 ul.link li a:hover {
 	background-color: #CCCCCC;
 	color: #000000;
@@ -352,11 +356,16 @@ div.imgcontainer span.more {
 	z-index: 3;
 }
 
-/* For validity check
-div.imgContainer span.check,
 div.imgcontainer span.poop {
 	bottom: 2px;
 	position: absolute;
 	right: 17px;
 	z-index: 3;
-}*/
+}
+
+div.imgContainer span.check {
+	bottom: 2px;
+	position: absolute;
+	right: 33px;
+	z-index: 3;
+}
