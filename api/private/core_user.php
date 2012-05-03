@@ -85,7 +85,7 @@ function st_user_setPhone($fbID, $number, $cleartoken = false)
 	global $st_sql;
 	
 	//Error checking
-	if (!preg_match("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i", $number))
+	if (!empty($number) && !preg_match("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i", $number))
 		return new st_arr_message(1, "Invalid phone number.");
 	$number = str_replace(array(' ','.','-','(',')'), "", $number);
 	

@@ -4,35 +4,47 @@
 
 	if($_POST['form'] == 'phoneset')
 	{
-		$characters = array("-", ".", " ", "(", ")");
-		//Error checking
-		if (!preg_match("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i", $_POST['phone']))
-			array_push($msg['error'],'Invalid phone number.');
-		else if (strcasecmp(str_replace($characters, "", $st_user->array['Phone']),str_replace($characters, "", $_POST['phone'])) == 0)
+		if (array_key_exists('phone', $_POST) && empty($_POST['phone']))
 		{
-			array_push($msg['message'],'You already have verified this number.');
+			//Reset phone to nothing
+			st_user_setPhone($st_user->array['fbID'], "", true);
+			$st_user->array['Phone'] = "";
+			array_push($msg['success'],'You have reset your phone number.');
 			$showPhone = true;
 		}
 		else
 		{
-			require 'api/google/googlevoice.php';
+			$characters = array("-", ".", " ", "(", ")");
 			
-			$_POST['phone'] = str_replace(array(' ','.','-','(',')'), "", $_POST['phone']);
-			$token = st_user_generatePhoneToken($st_user);
-			
-			$gv = new GoogleVoice($googlevoice_email, $googlevoice_password);
-			if ($token->array['Error'] == 0)
+			//Error checking
+			if (!preg_match("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/i", $_POST['phone']))
+				array_push($msg['error'],'Invalid phone number.');
+			else if (strcasecmp(str_replace($characters, "", $st_user->array['Phone']),str_replace($characters, "", $_POST['phone'])) == 0)
 			{
-				$gv->sms($_POST['phone'], 'Your verification code is: '.$token->array['URL']);
-				if ($gv->info['http_code'] != 200)
-					array_push($msg['error'],'Error sending verification code. ('.$gv->info['http_code'].')');
-				else
-					array_push($msg['message'],'Verification number sent.');
-				$showPhone = false;
+				array_push($msg['message'],'You already have verified this number.');
+				$showPhone = true;
 			}
 			else
 			{
-				array_push($msg['error'],$token->array['Message']);
+				require 'api/google/googlevoice.php';
+				
+				$_POST['phone'] = str_replace(array(' ','.','-','(',')'), "", $_POST['phone']);
+				$token = st_user_generatePhoneToken($st_user);
+				
+				$gv = new GoogleVoice($googlevoice_email, $googlevoice_password);
+				if ($token->array['Error'] == 0)
+				{
+					$gv->sms($_POST['phone'], 'Your verification code is: '.$token->array['URL']);
+					if ($gv->info['http_code'] != 200)
+						array_push($msg['error'],'Error sending verification code. ('.$gv->info['http_code'].')');
+					else
+						array_push($msg['message'],'Verification number sent.');
+					$showPhone = false;
+				}
+				else
+				{
+					array_push($msg['error'],$token->array['Message']);
+				}
 			}
 		}
 	}
