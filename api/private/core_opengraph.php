@@ -19,19 +19,29 @@
 $dir = dirname(__FILE__);
 require_once $dir.'/../fbsdk/facebook.php';
 
+// Set to true to enable all open graph functionality
+$st_enableOpenGraph = true;
+
 function st_opengraph_submitAction($facebook, $action, $object, $url)
 {
 	//if (!isArray($object))
 	//	throw new Exception('st_opengraph_submitAction($action, $object) - $object needs to be an array.');
 		
-	try {
-		// Proceed knowing you have a logged in user who's authenticated.
-		//$param = $object;
-		$param = array($object => $url);
-		$fbresult = $facebook->api('/me/snacktack:'.$action,'POST',$param);
-	} catch (Exception $e) {
-		$fbresult = $e->getMessage();
+	global $st_enableOpenGraph;
+	
+	if ($st_enableOpenGraph)
+	{
+		try {
+			// Proceed knowing you have a logged in user who's authenticated.
+			//$param = $object;
+			$param = array($object => $url);
+			$fbresult = $facebook->api('/me/snacktack:'.$action,'POST',$param);
+		} catch (Exception $e) {
+			$fbresult = $e->getMessage();
+		}
 	}
+	else
+		$fbresult = "[]";
 		
 	return $fbresult;
 }
