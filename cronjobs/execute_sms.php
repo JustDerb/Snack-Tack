@@ -22,7 +22,7 @@ if ($token->array['Error'] == 0)
 	$query = $query."      u.id=t.userid AND e.id=t.eventid "; //Throw away some rows we do not want
 	//$query = $query."  AND t.userid=6 "; //For testing
 	$query = $query."  AND TIME_TO_SEC(TIMEDIFF(e.dateStart,NOW())) >= 0 "; //Hasn't already past
-	$query = $query."  AND TIME_TO_SEC(TIMEDIFF(e.dateStart,NOW())) < TIME_TO_SEC(TIME('00:15:00')) "; //Within 15 minutes
+	$query = $query."  AND TIME_TO_SEC(TIMEDIFF(e.dateStart,NOW())) < TIME_TO_SEC(TIME('00:31:00')) "; //Within 31 minutes
 	$query = $query."  AND t.sent=0 "; //Don't send it again
 	
 	$result = mysql_query($query, $st_sql);	
