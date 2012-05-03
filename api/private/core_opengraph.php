@@ -20,7 +20,7 @@ $dir = dirname(__FILE__);
 require_once $dir.'/../fbsdk/facebook.php';
 
 // Set to true to enable all open graph functionality
-$st_enableOpenGraph = true;
+$st_enableOpenGraph = false;
 
 function st_opengraph_submitAction($facebook, $action, $object, $url)
 {
