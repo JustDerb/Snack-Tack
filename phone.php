@@ -83,11 +83,7 @@
 			</ul>
 			
 			<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
-<?php if (!$showPhone): ?>
-			<div id="back" name="back" onclick="window.location.replace('profile.php')">Back</div>
-<?php else: ?>
-			<div id="back" name="back" onclick="window.history.back();">Back</div>
-<?php endif ?>
+			<div id="back" name="back" onclick="window.location.replace('profile.php')">Back</div>		
 		</form>
 <?php endif ?>
 			
