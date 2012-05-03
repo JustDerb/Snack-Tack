@@ -48,7 +48,7 @@
 			}
 ?>
 		</ul>
-		<div id="back" name="back" onclick="window.history.back();">Back</div>		
+		<div id="back" name="back" onclick="window.location = 'profile.php';">Back</div>		
 
 <?php include "includes/labelfix.php"; ?>
 	</body>
