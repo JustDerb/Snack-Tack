@@ -41,7 +41,7 @@ function printEventAwardInfo($typeIcon, $typeName, $eventName, $eventDescription
 						<td><p class="nameShort">' . $eventName . '</p></td>
 					</tr>
 					<tr>
-						<td><p class="timeNormal">@ ' . $eventDate->format("h:ia") . '</p></td>
+						<td><p class="timeNormal">' . $eventDate->format("D, M d") . ' @ ' . $eventDate->format("h:ia") . '</p></td>
 					</tr>
 					<tr>
 						<td><p class="descriptionShort">' . $eventDescription . '</p></td>
