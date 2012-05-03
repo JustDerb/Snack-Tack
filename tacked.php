@@ -40,6 +40,7 @@
 			printEventAwardInfo($type->array['Icon'], $type->array['Name'], $event->array['Name'], $event->array['Description'], $event->array['WhenStart'], "eventinfo.php?id=" . $event->array['ID'], true, $multipleTypes);	
 		}
 	}
+	print('</ul>');
 ?>
 
 
