@@ -58,10 +58,10 @@
 				$networks_string = $networks_string.'<li><input type="radio" name="networkOption" value="' . $network['nid'] . '" id="' . $network['nid'] . '" ';
 				if ($network['nid'] == $st_user->array['Network'])
 				{
-					$networks_string = $networks_string.'checked';
-					$num_networks++;
+					$networks_string = $networks_string.'checked';	
 				}
 				$networks_string = $networks_string.' /><label for="' . $network['nid'] . '">' . $network['name'] . '</label></li>';
+				$num_networks++;
 			}
 		}
 		if ($num_networks == 0 || array_key_exists('nocollege', $_GET))
