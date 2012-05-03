@@ -37,6 +37,9 @@ function st_DateTime_getDateTime($year, $month, $day, $hour, $minute, $am = true
 		$hour = $hour + 12;
 	if ($hour >= 24)
 		$hour = $hour - 24;
+	//DateTime takes a two digit day
+	if ($day < 10)
+		$day = "0".$day;
 	return new DateTime($year.'-'.$month.'-'.$day.' '.$hour.':'.$minute.':00');
 }
 
