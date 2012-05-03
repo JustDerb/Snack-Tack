@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- Dumping data for table `category`
 --
 
-UPDATE `category` SET `id` = 1,`name` = 'Food',`description` = 'Food-based sales' WHERE `category`.`id` = 1;
-UPDATE `category` SET `id` = 2,`name` = 'Apparel',`description` = 'Apparel-based sales.' WHERE `category`.`id` = 2;
-UPDATE `category` SET `id` = 3,`name` = 'Concert',`description` = 'Concert events' WHERE `category`.`id` = 3;
-UPDATE `category` SET `id` = 4,`name` = 'Other',`description` = 'Misc events' WHERE `category`.`id` = 4;
+INSERT INTO category (id, name, description) VALUES (1, 'Food', 'Food-based sales');
+INSERT INTO category (id, name, description) VALUES (2, 'Apparel', 'Apparel-based sales');
+INSERT INTO category (id, name, description) VALUES (3, 'Concert', 'Concert events');
+INSERT INTO category (id, name, description) VALUES (4, 'Other', 'Misc sales');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
