@@ -5,4 +5,6 @@
 	<pre><a href="sms.php">SMS</a></pre>	
 	<pre><a href="ajax.php">AJAX</a></pre>
 	<pre><a href="opengraph.php">Open Graph</a></pre>
+	<pre><a href="mobile_search.php" target="_blank">Mobile Search</a></pre>
+
 </div>
