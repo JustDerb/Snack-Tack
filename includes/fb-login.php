@@ -15,7 +15,8 @@
 * under the License.
 */
 
-require_once 'api/fbsdk/facebook.php';
+$dir = dirname(__FILE__);
+require_once $dir.'/../api/fbsdk/facebook.php';
 
 //start the session if necessary
 if( session_id() ) {
