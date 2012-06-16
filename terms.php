@@ -122,7 +122,7 @@
 		</h2>
 
 
-		<ul class="info">
+		<ul class="info terms">
 			<li>General</li>
 			<li>
 				Your privacy is very important to us. Accordingly, we have developed this Policy 
@@ -160,7 +160,7 @@
 			</li>
 		</ul>
 		
-		<ul class="info">
+		<ul class="info terms">
 			<li>Please note</li>
 			<li>
 				We are committed to conducting our business in accordance with these principles in order 
