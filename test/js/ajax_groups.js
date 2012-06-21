@@ -28,24 +28,24 @@ function insertResult(data)
 
 $("#orgtext").keyup(debounce(function() {
     var searchbox = $(this).val();
-    //var dataString = 's='+ searchbox;
-    if(searchbox!='') {
+    if(searchbox!='') {		
         $.ajax({
                 type: "GET",
                 url: "https://graph.facebook.com/search",
                 data: {
                 	q: searchbox,
                 	metadata: '1',
-                	type: 'page'
+                	type: 'page',
+                	access_token: fb_auth_token // Outputted in <header> by PHP
                 },
-                //dataType: 'json',
+                dataType: 'jsonp',
                 cache: true,
-                success: function(html){
-                	var json = jQuery.parseJSON(html);
-                	$("#resultsJSON").html(html).show();
-                	
+                success: function(json){
+                	//console.log(json);
+                	                	
                 	//Clear results
 					$('#resultsTable').empty();
+					$('#resultsTable').append('<li>Search Results</li>');
 
 					// Loop through each data item
                 	$.each(json.data, function(index, dataObj) {
@@ -53,6 +53,7 @@ $("#orgtext").keyup(debounce(function() {
                   	});
                 }
         });
+        
     } else {return false; }  
 }
 ,350 /*determines the delay in ms*/

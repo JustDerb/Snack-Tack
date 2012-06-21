@@ -11,7 +11,6 @@
 		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta property="og:site_name" content="Snack Tack" >
-		<script type="text/javascript" src="../../js/find.js"></script>
 		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault(); } // ]]></script>
 		<div id="header">
 			<a href="index.php"><img src="../img/logo_mini.png" id="logo" /></a>
@@ -20,29 +19,22 @@
 <?php endif ?>
 			<div id="clear"></div>
 		</div>
+		<script type="text/javascript">var fb_auth_token = "<?php echo ($facebook->getAccessToken()); ?>"</script>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
-
-<?php if (array_key_exists('terms', $_GET)): ?>
-		<ul class="message">
-			<li class="error">No events found. Try broadening your search criteria.</li>
-		</ul>
-<?php endif ?>
-
 		<form method="get" id="findForm">
 			<ul class="form">
 				<li>Search Options</li>
-				<li><input type="text" placeholder="Search Terms" name="terms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_GET['terms']) print($_GET['terms']); ?>"/>
+				<li><input type="text" placeholder="Search Terms" name="terms" id="orgtext" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_GET['terms']) print($_GET['terms']); ?>"/>
 			</ul>
 		</form>
-
-<?php if(array_key_exists('terms', $_GET)): ?>
-		<ul class="link" id="searchResults">
+		<ul class="info" id="resultsTable">
 			<li>Search Results</li>
 		</ul>
-<?php endif ?>
 		<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
 		<div id="back" name="back" onclick="window.location.replace('index.php');">Back</div>
+		<div class="facebookfeed" id="resultsJSON"></div>
+		<script type="text/javascript" src="js/ajax_groups.js"></script>
 <?php include "../includes/labelfix.php"; ?>
 	</body>
 </html>
