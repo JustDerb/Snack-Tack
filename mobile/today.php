@@ -1,12 +1,12 @@
 <?php 
-	require "includes/fb-login.php"; 
-	require "api/snacktack.php";
+	require "../includes/fb-login.php"; 
+	require "../api/snacktack.php";
 	include "includes/displayEventAwardInfo.php";
 ?>
 <html>
 	<head>
-<?php require "includes/head.php"; ?>
-<?php require "includes/analytics.php"; ?>
+<?php require "../includes/head.php"; ?>
+<?php require "../includes/analytics.php"; ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
@@ -34,7 +34,7 @@
 				$multipleTypes = true;
 				
 			$type = st_types_getType($types[0]);
-			printEventAwardInfo($type->array['Icon'], $type->array['Name'], $event->array['Name'], $event->array['Description'], $event->array['WhenStart'], "eventinfo.php?id=" . $event->array['ID'], true, $multipleTypes);	
+			printEventAwardInfo('../'.$type->array['Icon'], $type->array['Name'], $event->array['Name'], $event->array['Description'], $event->array['WhenStart'], "eventinfo.php?id=" . $event->array['ID'], true, $multipleTypes);	
 		}
 	}
 ?>

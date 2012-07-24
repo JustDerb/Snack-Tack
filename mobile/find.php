@@ -1,6 +1,6 @@
 <?php 
-	require "includes/fb-login.php"; 
-	require "api/snacktack.php";
+	require "../includes/fb-login.php"; 
+	require "../api/snacktack.php";
 	include "includes/displayEventAwardInfo.php";
 	
 	if (array_key_exists('terms', $_GET))
@@ -10,9 +10,9 @@
 ?>
 <html>
 	<head>
-<?php require "includes/head.php"; ?>
-		<script type="text/javascript" src="js/find.js"></script>
-<?php require "includes/analytics.php"; ?>
+<?php require "../includes/head.php"; ?>
+		<script type="text/javascript" src="../js/find.js"></script>
+<?php require "../includes/analytics.php"; ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
@@ -45,7 +45,7 @@
     		}
 		}
 		print('><label for="'.$type->array['ID'].'">');
-		printEventAwardInfo($type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false,false,false);
+		printEventAwardInfo('../'.$type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false,false,false);
 		//print($type->array['Category'].' - '.$type->array['Name']);
 		print('</label></li>');
 	}
@@ -69,7 +69,7 @@
 				$multipleTypes = true;
 				
 			$type = st_types_getType($types[0]);
-			printEventAwardInfo($type->array['Icon'], $type->array['Name'], $event->array['Name'], $event->array['Description'], $event->array['WhenStart'], "eventinfo.php?id=" . $event->array['ID'], true, $multipleTypes);		
+			printEventAwardInfo('../'.$type->array['Icon'], $type->array['Name'], $event->array['Name'], $event->array['Description'], $event->array['WhenStart'], "eventinfo.php?id=" . $event->array['ID'], true, $multipleTypes);		
 		}
 ?>
 		</ul>

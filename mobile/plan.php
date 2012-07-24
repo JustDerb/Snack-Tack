@@ -1,6 +1,6 @@
 <?php 
-	require "includes/fb-login.php"; 
-	require "api/snacktack.php"; 
+	require "../includes/fb-login.php"; 
+	require "../api/snacktack.php"; 
 	include "includes/displayEventAwardInfo.php";
 
 	//Grab our data before we include our form PHP code
@@ -10,9 +10,9 @@
 ?>
 <html>
 	<head>
-<?php require "includes/head.php"; ?>	
-		<script type="text/javascript" src="js/plan.js"></script>
-<?php require "includes/analytics.php"; ?>
+<?php require "../includes/head.php"; ?>	
+		<script type="text/javascript" src="../js/plan.js"></script>
+<?php require "../includes/analytics.php"; ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>
@@ -72,7 +72,7 @@
     		}
 		}
 		print('><label for="'.$type->array['ID'].'">');
-		printEventAwardInfo($type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false,false,false);
+		printEventAwardInfo('../'.$type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false,false,false);
 		//print($type->array['Category'].' - '.$type->array['Name']);
 		print('</label></li>');
 	}

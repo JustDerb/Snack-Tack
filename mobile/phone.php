@@ -1,6 +1,6 @@
 <?php 
-	require "includes/fb-login.php"; 
-	require "api/snacktack.php"; 
+	require "../includes/fb-login.php"; 
+	require "../api/snacktack.php"; 
 	
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
@@ -17,14 +17,14 @@
 ?>
 <html>
 	<head>
-<?php require "includes/head.php"; ?>
-		<script type="text/javascript" src="js/phone.js"></script>
-<?php require "includes/analytics.php"; ?>
+<?php require "../includes/head.php"; ?>
+		<script type="text/javascript" src="../js/phone.js"></script>
+<?php require "../includes/analytics.php"; ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">	
 		<script type="text/javascript">// <![CDATA[ function BlockMove(event) { event.preventDefault(); } // ]]></script>
 		<div id="header">
-			<a href="index.php"><img src="img/logo_mini.png" id="logo" /></a>
+			<a href="index.php"><img src="../img/logo_mini.png" id="logo" /></a>
 <?php if ($user): ?>
 			<a href="profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
 <?php endif ?>

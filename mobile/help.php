@@ -1,11 +1,11 @@
 <?php
-	require "includes/fb-login.php"; 
-	require "api/snacktack.php";
+	require "../includes/fb-login.php"; 
+	require "../api/snacktack.php";
 ?>
 <html>
 	<head>
-<?php require "includes/head.php"; ?>
-<?php require "includes/analytics.php"; ?>
+<?php require "../includes/head.php"; ?>
+<?php require "../sincludes/analytics.php"; ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">
 <?php include "includes/header.php"; ?>

@@ -20,7 +20,7 @@ function printEventAwardInfo($typeIcon, $typeName, $eventName, $eventDescription
 		// Check if there are more than one food types
 		if ($multipleTypes)
 		{
-			print('<span class="more"><img src="img/types/icons/plus.png" alt="+" /></span>');
+			print('<span class="more"><img src="../img/types/icons/plus.png" alt="+" /></span>');
 		}
 
 		/* Check for ratings (true = valid, false = invalid)

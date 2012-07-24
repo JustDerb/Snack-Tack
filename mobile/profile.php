@@ -1,6 +1,6 @@
 <?php 
-	require "includes/fb-login.php"; 
-	require "api/snacktack.php"; 
+	require "../includes/fb-login.php"; 
+	require "../api/snacktack.php"; 
 	//Grab our data before we include our form PHP code
 	$st_user = st_user_register($user_profile, true);
 	$msg = array();
@@ -77,9 +77,9 @@
 ?>
 <html>
 	<head>
-<?php require "includes/head.php"; ?>
-		<script type="text/javascript" src="js/profile.js"></script>
-<?php require "includes/analytics.php"; ?>
+<?php require "../includes/head.php"; ?>
+		<script type="text/javascript" src="../js/profile.js"></script>
+<?php require "../includes/analytics.php"; ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">	
 <?php include "includes/header.php"; ?>

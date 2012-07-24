@@ -1,6 +1,6 @@
 <?php
-	require "includes/fb-login.php"; 
-	require "api/snacktack.php";
+	require "../includes/fb-login.php"; 
+	require "../api/snacktack.php";
 	include "includes/displayEventAwardInfo.php";
 	  
 	$event = NULL;
@@ -33,8 +33,8 @@
 ?>
 <html>
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# snacktack: http://ogp.me/ns/fb/snacktack#">
-<?php require "includes/head.php"; ?>
-<?php require "includes/analytics.php"; ?>
+<?php require "../includes/head.php"; ?>
+<?php require "../includes/analytics.php"; ?>
 <?php if ($event): ?>
 <?php
 	$types = $event->array['Type'];
@@ -99,7 +99,7 @@
 	foreach ($types as $typeid)
 	{
 		$type = st_types_getType($typeid);
-		printEventAwardInfo($type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false);
+		printEventAwardInfo('../'.$type->array['Icon'], $type->array['Name'], $type->array['Name'], $type->array['Description'], $type->array['Category'], "", false);
 	}
 ?>
 		</ul>
@@ -127,7 +127,7 @@
 <?php if (!empty($event->array['FacebookEvent'])): ?>
 		<ul class="info">
 			<li class="head">Facebook Event URL</li>
-			<li><a href="<?php print($event->array['FacebookEvent']); ?>">To the Facebook!</a></li>
+			<li><a href="../<?php print($event->array['FacebookEvent']); ?>">To the Facebook!</a></li>
 		</ul>
 <?php endif ?>		
 
@@ -141,7 +141,7 @@
 
 		<ul class="link">
 			<li><?php print($tack); ?></li>
-			<li><a href="tackevent.php?id=<?php print($_GET['id']); ?>"><img src="img/types/default.png" alt="Tack" /><strong><?php print($tack); ?></strong> this event</a></li>
+			<li><a href="tackevent.php?id=<?php print($_GET['id']); ?>"><img src="../img/types/default.png" alt="Tack" /><strong><?php print($tack); ?></strong> this event</a></li>
 		</ul>
 <?php endif ?>	
 
