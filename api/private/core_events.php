@@ -103,14 +103,14 @@ function st_events_getUsersTacked($internalID)
 }
 
 
-function st_events_getEvents($daysAhead = 0, $sorting = "date")
+function st_events_getEvents($networkID, $daysAhead = 0, $sorting = "date")
 {
-	return st_events_lookupEvent("", $daysAhead, $sorting);
+	return st_events_lookupEvent("", $daysAhead, $networkID, $sorting);
 }
 
 
 //For searchs
-function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date", $foodIDs = NULL)
+function st_events_lookupEvent($searchTerms, $daysAhead, $networkID, $sorting = "date", $foodIDs = NULL)
 {
 	$events = array();
 	
@@ -127,6 +127,17 @@ function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date", $foo
 	
 	$searchTerms = st_mysql_encode($searchTerms,$st_sql);
 	$daysAhead = st_mysql_encode($daysAhead,$st_sql);
+	
+	if ($networkID <= 0)
+	{
+		$network = "";
+	}
+	else
+	{
+		$networkID = st_mysql_encode($networkID,$st_sql);
+		$network = " AND e.networkid='".$networkID."' ";
+	}
+
 	$foodOptions = '';
 	if (!empty($foodIDs) && is_array($foodIDs))
 	{
@@ -148,7 +159,7 @@ function st_events_lookupEvent($searchTerms, $daysAhead, $sorting = "date", $foo
 		$sort = " ORDER BY e.dateStart ASC";
 	
 	//Check for record
-	$query = "SELECT * FROM events e,eventstypes t WHERE ((name LIKE '%$searchTerms%')) AND e.id=t.eventid ";
+	$query = "SELECT * FROM events e,eventstypes t WHERE ((name LIKE '%$searchTerms%')) AND e.id=t.eventid ".$network;
 	$query = $query." AND (e.dateStart < DATE_ADD(NOW(),INTERVAL ".$daysAhead." DAY) AND (e.dateEnd > NOW())) ";
 	$query = $query.$foodOptions;
 	$query = $query.$sort;

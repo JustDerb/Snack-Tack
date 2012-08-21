@@ -3,9 +3,13 @@
 	require "../api/snacktack.php";
 	include "includes/displayEventAwardInfo.php";
 	
+	//Grab our data before we include our form PHP code
+	$st_user = st_user_register($user_profile, true);
+	st_loginonly_check($st_user, $facebook, "profile.php?nologin=1&url=find.php");
+	
 	if (array_key_exists('terms', $_GET))
 	{
-		$events = st_events_lookupEvent($_GET['terms'], 7, "date", $_GET['fo']);
+		$events = st_events_lookupEvent($_GET['terms'], 7, $st_user->array['Network'], "date", $_GET['fo']);
 	}
 ?>
 <html>
@@ -23,10 +27,11 @@
 		</ul>
 <?php endif ?>
 
+<?php if (!array_key_exists('terms', $_GET)): ?>
 		<form method="get" id="findForm">
 			<ul class="form">
 				<li>Search Options</li>
-				<li><input type="text" placeholder="Search Terms" name="terms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_GET['terms']) print($_GET['terms']); ?>"/>
+				<li><input type="text" placeholder="Search Terms (Optional)" name="terms" id="searchTerms" autocapitalizer="on" autocorrect="off" autocomplete="off" value="<?php if ($_GET['terms']) print($_GET['terms']); ?>"/>
 			</ul>
 			<ul class="form">
 				<li>Food Options</li>
@@ -56,6 +61,8 @@
 				-->
 			</ul>
 		</form>
+<?php endif ?>
+
 
 <?php if(array_key_exists('terms', $_GET) && !empty($events)): ?>
 		<ul class="link" id="searchResults">
@@ -75,7 +82,11 @@
 		</ul>
 <?php endif ?>
 		<div id="submit" name="submit" onclick="return validateForm();">Submit</div>
+<?php if (!array_key_exists('terms', $_GET)): ?>
 		<div id="back" name="back" onclick="window.location.replace('index.php');">Back</div>
+<?php else: ?>		
+		<div id="back" name="back" onclick="window.location.replace('find.php');">Back</div>
+<?php endif ?>	
 <?php include "includes/labelfix.php"; ?>
 	</body>
 </html>

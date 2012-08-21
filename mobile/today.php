@@ -2,6 +2,10 @@
 	require "../includes/fb-login.php"; 
 	require "../api/snacktack.php";
 	include "includes/displayEventAwardInfo.php";
+	
+	//Grab our data before we include our form PHP code
+	$st_user = st_user_register($user_profile, true);
+	$loggedIn = st_loginonly_check($st_user, $facebook, "profile.php?nologin=1&url=today.php", true);
 ?>
 <html>
 	<head>
@@ -13,7 +17,11 @@
 
 		<h2>Events</h2>
 <?php
-	$events = st_events_getEvents(1);
+	if ($loggedIn)
+		$networkID = $st_user->array['Network'];
+	else
+		$networkID = 0;
+	$events = st_events_getEvents($networkID, 1);
 	
 	if (empty($events))
 		print('
