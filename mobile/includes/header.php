@@ -14,9 +14,9 @@ EOT;
 		?>
 		
 		<div id="header">
-			<a href="../mobile/index.php"><img src="../img/logo_mini.png" id="logo" /></a>
+			<a href="../index.php"><img src="../img/logo_mini.png" id="logo" /></a>
 <?php if ($user): ?>
-			<a href="../mobile/profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
+			<a href="../profile.php"><img src="https://graph.facebook.com/<?php echo $user; ?>/picture" alt="" id="fbPicture" /></a>
 <?php endif ?>
 			<div id="clear"></div>
 		</div>
