@@ -1,4 +1,7 @@
 <?php
+	if (!$_GET['d'])
+		header('Location: http://m.snacktack.com');
+
 	require "includes/fb-login.php"; 
 	require "api/snacktack.php";
 ?>
