@@ -93,7 +93,7 @@
 			<li>Awards</li>
 			<li><a href="awards.php">View Your Awards</a></li>
 <?php else: ?>
-			<li><a href="<?php echo $loginUrl; ?>">Connect with Facebook</a></li>
+			<li><a href="<?php echo $loginUrl; ?>">Login with Facebook</a></li>
 <?php endif ?>
 		</ul>
 		

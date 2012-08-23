@@ -35,7 +35,11 @@
 	
 		<ul class="link">
 			<li>Settings</li>
+<?php if ($user): ?>
 			<li><a href="profile.php">Profile</a></li>
+<?php else: ?>
+			<li><a href="<?php echo $loginUrl; ?>">Login with Facebook</a></li>
+<?php endif ?>
 			<li><a href="help.php">Help</a></li>
 			<li><a href="terms.php">Privacy, Terms</a></li>
 		</ul>
