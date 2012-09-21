@@ -1,0 +1,25 @@
+﻿.event-title {
+	font-weight: bold;
+}
+
+.event-location, .event-time {
+	font-size: 0.75em;
+}
+
+.event-description {
+	
+}
+
+.expand {
+	font-size: 0.75em;
+}
+
+.snack-container {
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom:20px;
+}
+
+.row-left-border {
+	border-left:1px solid rgb(221, 221, 221);
+}
