@@ -67,6 +67,7 @@ require '../api/google/googlevoice.php';
 <?php
 	include 'includes/header.php';
 ?>
+    <script type="text/javascript">var fb_auth_token = "<?php echo ($facebook->getAccessToken()); ?>"</script>
 </head>
 <body>
 <?php
