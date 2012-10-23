@@ -7,7 +7,7 @@
 <?php
 $ST_HEADER_TITLE = "SnackTack";
 $ST_HEADER_EXTRAS = <<<EOT
-    <script src="js/desktop.js"></script>
+    <script src="../js/desktop.js"></script>
 EOT;
 require_once("includes/header.php");
 
