@@ -78,7 +78,7 @@
 <html>
 	<head>
 <?php require "../includes/head.php"; ?>
-		<script type="text/javascript" src="../js/profile.js"></script>
+		<script type="text/javascript" src="js/profile.js"></script>
 <?php require "../includes/analytics.php"; ?>
 	</head>
 	<body onload="setTimeout(function() { window.scrollTo(0, 1) }, 100);">	
