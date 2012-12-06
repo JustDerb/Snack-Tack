@@ -33,10 +33,17 @@ function st_DateTime_MySQLtoPHP($mysqldate)
 }
 function st_DateTime_getDateTime($year, $month, $day, $hour, $minute, $am = true)
 {
-	if (!$am)
-		$hour = $hour + 12;
-	if ($hour >= 24)
-		$hour = $hour - 24;
+	if ($hour != 12) {
+		if (!$am)
+			$hour = $hour + 12;
+		if ($hour >= 24)
+			$hour = $hour - 24;
+	} else {
+		if ($am)
+			$hour = 0;
+		else
+			$hour = 12;
+	}
 	//DateTime takes a two digit day
 	if ($day < 10)
 		$day = "0".$day;
