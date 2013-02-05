@@ -48,7 +48,7 @@ function st_user_isValidUser($st_user, $facebookObj)
 		}
 	}
 	
-	return new st_arr_message(1, "Invalid Facebook network.", "profile?nonetwork=1");
+	return new st_arr_message(1, "Invalid Facebook network.", "profile.php?nonetwork=1");
 }
 
 
